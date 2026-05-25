@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/core/utils/app_colors.dart';
 import 'package:hrx_app/core/utils/app_styles.dart';
 import 'package:hrx_app/features/onboarding/onboardingScreen.dart';
-import 'package:hrx_app/features/splash/widgets/hrx_gradient_bg.dart';
-import 'package:hrx_app/features/splash/widgets/hrx_logo.dart';
 
+import '../widgets/hrx_gradient_bg.dart';
+import '../widgets/hrx_logo.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
