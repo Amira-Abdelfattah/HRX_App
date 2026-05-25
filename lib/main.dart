@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hrx_app/features/splashScreen.dart';
+import 'package:hrx_app/core/utils/app_theme.dart';
+import 'package:hrx_app/features/splash/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Performix HRX',
-      theme: ThemeData(
-
-      colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),ome: SplashScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const SplashScreen(),
     );
   }
 }
