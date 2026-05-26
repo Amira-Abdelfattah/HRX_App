@@ -20,7 +20,7 @@ class HrxLogo extends StatelessWidget {
             fontSize: fontSize.sp,
             fontWeight: FontWeight.w500,
             letterSpacing: -0.5,
-            color: AppColors.primaryColor,
+            color: AppColors.accentDarkColor,
           ),
         ),
         Padding(
@@ -28,7 +28,7 @@ class HrxLogo extends StatelessWidget {
           child: Text(
             "|",
             style: AppStyles.light18HintText().copyWith(
-              color: AppColors.primaryColor.withOpacity(0.3),
+              color: AppColors.accentDarkColor.withOpacity(0.3),
               fontSize: (fontSize * .88).sp,
             ),
           ),
@@ -40,14 +40,14 @@ class HrxLogo extends StatelessWidget {
               "HR",
               style: AppStyles.bold32PrimaryDark().copyWith(
                 fontSize: fontSize.sp,
-                color: AppColors.primaryColor,
+                color: AppColors.accentDarkColor,
               ),
             ),
             Text(
               "X",
               style: AppStyles.bold32PrimaryDark().copyWith(
                 fontSize: fontSize.sp,
-                color: AppColors.accentColor,
+                color: AppColors.accentDarkColor,
               ),
             ),
           ],
