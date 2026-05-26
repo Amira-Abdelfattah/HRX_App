@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  Color? backgroundColor;
-  Widget? prefixIconButton;
-  String text;
-  TextStyle? textStyle;
-  Function onButtonClicked;
+  final Color? backgroundColor;
+  final Widget? prefixIconButton;
+  final String text;
+  final TextStyle? textStyle;
+  final VoidCallback onButtonClicked;
 
-  CustomElevatedButton({
+  const CustomElevatedButton({
+    super.key,
     required this.text,
     this.textStyle,
     required this.onButtonClicked,
@@ -20,29 +22,26 @@ class CustomElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return ElevatedButton(
-      onPressed: () {
-        onButtonClicked();
-      },
+      onPressed: onButtonClicked,
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(
-          horizontal: width * .04,
-          vertical: height * .02,
+          vertical: 16.h,
         ),
         backgroundColor: backgroundColor ?? AppColors.primaryColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: AppColors.primaryColor, width: 2),
+          borderRadius: BorderRadius.circular(16.r),
         ),
+        elevation: 0,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          prefixIconButton ?? SizedBox(),
-          SizedBox(width: width * .02),
-          Text(text, style: textStyle ?? AppStyles.medium20White),
+          if (prefixIconButton != null) ...[
+            prefixIconButton!,
+            SizedBox(width: 8.w),
+          ],
+          Text(text, style: textStyle ?? AppStyles.semi16White),
         ],
       ),
     );

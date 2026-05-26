@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:hrx_app/core/utils/app_colors.dart';
+import 'package:flutter/material.dart';
+
+import '../../core/utils/app_colors.dart';
 
 class HrxGradientBackground extends StatelessWidget {
   final Widget child;
@@ -11,19 +12,19 @@ class HrxGradientBackground extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            AppColors.surfaceColor,
-            Color(0xffEEF3FC),
-            AppColors.whiteColor,
+            AppColors.primaryColor,
+            AppColors.darkSurfaceColor,
+            AppColors.darkBackgroundColor,
           ],
-          stops: [0.0, 0.5, 1.0],
+          stops: [0.0, 0.6, 1.0],
         ),
       ),
-      child: SafeArea(child: child),
+      child: child,
     );
   }
 }
