@@ -91,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
                     style: AppStyles.regular12Grey().copyWith(
                       fontSize: 16.sp,
                       letterSpacing: 1.2.w,
-                      color: AppColors.textMutedColor.withOpacity(.8),
+                      color: AppColors.accentLightColor,
                     ),
                   ),
                 ],
