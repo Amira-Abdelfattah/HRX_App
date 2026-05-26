@@ -17,6 +17,7 @@ class OnboardingPageContent extends StatelessWidget {
         children: [
           SizedBox(height: 100.h),
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
             height: 350.h,
             width: double.infinity,
             decoration: BoxDecoration(
