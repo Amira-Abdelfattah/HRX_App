@@ -1,13 +1,11 @@
 class OnboardingModel {
   final String imagePath;
   final String title;
-  final String highlightWord;
   final String description;
 
   const OnboardingModel({
     required this.imagePath,
     required this.title,
-    required this.highlightWord,
     required this.description,
   });
 }
@@ -15,22 +13,20 @@ class OnboardingModel {
 const List<OnboardingModel> onboardingPages = [
   OnboardingModel(
     imagePath: 'assets/images/onboarding1.png',
-    title: 'HR Software That\nWorks for ',
-    highlightWord: 'You.',
-    description: 'Smart HR Solutions for Companies\nin the Middle East.',
+    title: 'Manage your team efficiently.',
+    description:
+        'Keep track of attendance, payroll, and performance seamlessly in one place.',
   ),
   OnboardingModel(
     imagePath: 'assets/images/onboarding2.png',
-    title: 'Your Corporate Identity\n& Data is ',
-    highlightWord: 'Secure.',
+    title: 'Smart HR Solutions for you.',
     description:
-        'Fully localized HR system tailored specifically\nto MENA labor laws with maximum privacy.',
+        'Leverage AI-driven insights to make informed decisions for your organization\'s growth and operational excellence.',
   ),
   OnboardingModel(
     imagePath: 'assets/images/onboarding3.png',
-    title: 'Empower Your Team\nWith Continuous ',
-    highlightWord: 'Support.',
+    title: 'Unified Management',
     description:
-        'Amazing after-sales support with no credit card required to start your journey.',
+        'Connect recruitment, payroll, and analytics into a single, powerful mobile experience designed for speed and clarity.',
   ),
 ];
