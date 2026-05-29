@@ -4,37 +4,51 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_styles.dart';
 
-class RegisterHeader extends StatelessWidget {
-  const RegisterHeader({super.key});
+class AuthHeader extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final bool showLogo;
+
+  const AuthHeader({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    this.showLogo = true,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'HRX',
-          style: AppStyles.bold28Primary().copyWith(
-            color: AppColors.accentColor,
-            fontSize: 22.sp,
+        if (showLogo)
+          Text(
+            'HRX',
+            style: AppStyles.bold28Primary().copyWith(
+              color: AppColors.accentColor,
+              fontSize: 22.sp,
+            ),
           ),
-        ),
-        SizedBox(height: 40.h),
+        SizedBox(height: showLogo ? 40.h : 20.h),
         Center(
           child: Column(
             children: [
               Text(
-                'Sign up to HR Saas',
+                title,
+                textAlign: TextAlign.center,
                 style: AppStyles.semi24White.copyWith(
-                  fontSize: 28.sp,
+                  fontSize: 32.sp,
                   color: AppColors.accentColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 12.h),
               Text(
-                'Enter details to create your account',
+                subtitle,
+                textAlign: TextAlign.center,
                 style: AppStyles.regular14Grey().copyWith(
                   color: AppColors.accentColor.withOpacity(0.7),
+                  fontSize: 16.sp,
                 ),
               ),
             ],
