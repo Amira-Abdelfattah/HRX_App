@@ -5,9 +5,10 @@ import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/hrx_gradient_bg.dart';
-import 'widgets/register_footer.dart';
+import 'login.dart';
+import 'widgets/auth_footer.dart';
+import 'widgets/auth_header.dart';
 import 'widgets/register_form.dart';
-import 'widgets/register_header.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -23,7 +24,10 @@ class RegisterScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20.h),
-                const RegisterHeader(),
+                const AuthHeader(
+                  title: 'Sign up to HR Saas',
+                  subtitle: 'Enter details to create your account',
+                ),
                 SizedBox(height: 40.h),
                 const RegisterForm(),
                 SizedBox(height: 30.h),
@@ -37,7 +41,18 @@ class RegisterScreen extends StatelessWidget {
                   onButtonClicked: () {},
                 ),
                 SizedBox(height: 24.h),
-                const RegisterFooter(),
+                AuthFooter(
+                  text: 'Already have an account? ',
+                  linkText: 'Sign In',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
+                ),
                 SizedBox(height: 40.h),
               ],
             ),
