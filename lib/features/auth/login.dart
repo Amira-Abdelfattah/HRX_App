@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
-import '../dashboard/dashboard.dart';
+import '../main_layout.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/hrx_gradient_bg.dart';
 import 'register.dart';
@@ -44,8 +44,7 @@ class LoginScreen extends StatelessWidget {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DashboardScreen(),
-                      ),
+                          builder: (context) => const MainLayout()),
                     );
                   },
                 ),
