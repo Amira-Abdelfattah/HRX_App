@@ -7,7 +7,14 @@ import 'drawer_user_section.dart';
 import 'hrx_logo.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final int selectedIndex;
+  final Function(int) onItemSelected;
+
+  const CustomDrawer({
+    super.key,
+    required this.selectedIndex,
+    required this.onItemSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,44 +43,52 @@ class CustomDrawer extends StatelessWidget {
                 DrawerMenuItem(
                   icon: Icons.grid_view_rounded,
                   title: 'Dashboard',
-                  isSelected: true,
-                  onTap: () {},
+                  isSelected: selectedIndex == 0,
+                  onTap: () => onItemSelected(0),
                 ),
                 DrawerMenuItem(
                   icon: Icons.people_outline,
                   title: 'Employees',
-                  onTap: () {},
-                ),
-                DrawerMenuItem(
-                  icon: Icons.bolt,
-                  title: 'Performix Engine',
-                  onTap: () {},
+                  isSelected: selectedIndex == 1,
+                  onTap: () => onItemSelected(1),
                 ),
                 DrawerMenuItem(
                   icon: Icons.calendar_month_outlined,
                   title: 'Attendance',
-                  onTap: () {},
-                ),
-                DrawerMenuItem(
-                  icon: Icons.person_add_alt_1_outlined,
-                  title: 'Recruitment',
-                  onTap: () {},
+                  isSelected: selectedIndex == 2,
+                  onTap: () => onItemSelected(2),
                 ),
                 DrawerMenuItem(
                   icon: Icons.monetization_on_outlined,
                   title: 'Payroll',
-                  onTap: () {},
+                  isSelected: selectedIndex == 3,
+                  onTap: () => onItemSelected(3),
+                ),
+                const Divider(),
+                // ربط باقي العناصر بالأرقام الجديدة
+                DrawerMenuItem(
+                  icon: Icons.bolt,
+                  title: 'Performix Engine',
+                  isSelected: selectedIndex == 4, // رقم 4
+                  onTap: () => onItemSelected(4),
+                ),
+                DrawerMenuItem(
+                  icon: Icons.person_add_alt_1_outlined,
+                  title: 'Recruitment',
+                  isSelected: selectedIndex == 5, // رقم 5
+                  onTap: () => onItemSelected(5),
                 ),
                 DrawerMenuItem(
                   icon: Icons.bar_chart_rounded,
                   title: 'Analytics',
-                  onTap: () {},
+                  isSelected: selectedIndex == 6, // رقم 6
+                  onTap: () => onItemSelected(6),
                 ),
-                const Divider(),
                 DrawerMenuItem(
                   icon: Icons.settings_outlined,
                   title: 'Settings',
-                  onTap: () {},
+                  isSelected: selectedIndex == 7, // رقم 7
+                  onTap: () => onItemSelected(7),
                 ),
               ],
             ),

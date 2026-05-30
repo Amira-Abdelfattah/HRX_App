@@ -21,14 +21,24 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> _pages = [
     const DashboardScreen(),
     const EmployeesScreen(),
-    const Center(child: Text("Attendance Page")),
+    const Center(child: Text("Attendance Screen")),
     const Center(child: Text("Payroll Page")),
+    const Center(child: Text("Performix Engine")),
+    const Center(child: Text("Recruitment Page")),
+    const Center(child: Text("Analytics Page")),
+    const Center(child: Text("Settings Page")),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(
+        selectedIndex: _currentIndex,
+        onItemSelected: (index) {
+          setState(() => _currentIndex = index);
+          Navigator.pop(context);
+        },
+      ),
       appBar: AppBar(
         toolbarHeight: 80.h,
         title: const CustomSearchBar(),
@@ -49,12 +59,15 @@ class _MainLayoutState extends State<MainLayout> {
         ],
       ),
       body: IndexedStack(index: _currentIndex, children: _pages),
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() => _currentIndex = index);
-        },
-      ),
+
+      bottomNavigationBar: _currentIndex < 4
+          ? CustomBottomNavBar(
+              currentIndex: _currentIndex,
+              onTap: (index) {
+                setState(() => _currentIndex = index);
+              },
+            )
+          : null,
     );
   }
 }
