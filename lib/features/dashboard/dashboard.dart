@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hrx_app/features/dashboard/widgets/attendance_productivity_chart.dart';
+import 'package:hrx_app/features/dashboard/widgets/department_performance_chart.dart';
+import 'package:hrx_app/features/dashboard/widgets/performance_trend_chart.dart';
+import 'package:hrx_app/features/dashboard/widgets/quick_actions_section.dart';
+import 'package:hrx_app/features/dashboard/widgets/recent_activity_section.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
@@ -19,9 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme
-        .of(context)
-        .brightness == Brightness.dark;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       drawer: const CustomDrawer(),
@@ -41,7 +44,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
             radius: 18,
             backgroundColor: AppColors.accentColor,
             child: Text(
-                'JD', style: TextStyle(color: Colors.white, fontSize: 12)),
+              'JD',
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
           ),
           SizedBox(width: 16.w),
         ],
@@ -107,7 +112,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
 
             SizedBox(height: 24.h),
-
+            const PerformanceTrendChart(),
+            SizedBox(height: 16.h),
+            const AttendanceProductivityChart(),
+            SizedBox(height: 24.h),
+            const DepartmentPerformanceChart(),
+            SizedBox(height: 16.h),
+            const RecentActivitySection(),
+            SizedBox(height: 24.h),
+            SizedBox(height: 24.h),
+            const QuickActionsSection(),
+            SizedBox(height: 16.h),
           ],
         ),
       ),
