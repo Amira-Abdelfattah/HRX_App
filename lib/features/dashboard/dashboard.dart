@@ -10,6 +10,7 @@ import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 import '../widgets/custom_drawer.dart';
+import '../widgets/custom_search_bar.dart';
 import 'widgets/stat_card.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -56,6 +57,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const CustomSearchBar(),
+            SizedBox(height: 24.h),
             Text(
               'Dashboard Overview',
               style: AppStyles.bold32PrimaryDark(
