@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
-import 'drawer_header.dart';
 import 'drawer_item.dart';
 import 'drawer_user_section.dart';
+import 'hrx_logo.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -18,7 +19,16 @@ class CustomDrawer extends StatelessWidget {
           : AppColors.whiteColor,
       child: Column(
         children: [
-          const DrawerHeaderWidget(),
+          Container(
+            height: 150.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isDark
+                  ? AppColors.darkSurfaceColor
+                  : AppColors.primaryColor,
+            ),
+            child: const HrxLogo(fontSize: 24),
+          ),
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
