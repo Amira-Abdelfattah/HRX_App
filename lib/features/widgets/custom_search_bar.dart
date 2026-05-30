@@ -39,6 +39,7 @@ class CustomSearchBar extends StatelessWidget {
       ),
       child: TextField(
         onChanged: onChanged,
+        textAlignVertical: TextAlignVertical.center,
         style: AppStyles.regular14PrimaryDark(
           color: isDark ? Colors.white : AppColors.primaryColor,
         ),
@@ -51,7 +52,8 @@ class CustomSearchBar extends StatelessWidget {
             color: AppColors.textMutedColor,
           ),
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(vertical: 12.h),
+          isDense: true,
+          contentPadding: EdgeInsets.zero,
         ),
       ),
     );
