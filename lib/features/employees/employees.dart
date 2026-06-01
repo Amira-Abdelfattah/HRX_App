@@ -76,35 +76,55 @@ class EmployeesScreen extends StatelessWidget {
           CustomPageHeader(
             title: 'Employees',
             subtitle: 'Manage your team members',
-            buttonLabel: 'Add Employee',
-            onButtonPressed: () {},
+            actionLabel: 'Add Employee',
+            onActionPressed: () {},
           ),
           SizedBox(height: 24.h),
 
           Row(
             children: [
               const Expanded(
-                child: SummaryCard(title: 'Total', value: '6'),
+                child: SummaryCard(
+                  title: 'Total',
+                  value: '6',
+                  subtitle: 'Employees',
+                  icon: Icons.people_alt_rounded,
+                  color: AppColors.primaryColor,
+                ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: 12.w),
               const Expanded(
                 child: SummaryCard(
                   title: 'Active',
                   value: '5',
+                  subtitle: 'At work',
+                  icon: Icons.check_circle_rounded,
                   color: AppColors.successColor,
                 ),
               ),
-              SizedBox(width: 10.w),
+            ],
+          ),
+          SizedBox(height: 12.h),
+          Row(
+            children: [
               const Expanded(
                 child: SummaryCard(
                   title: 'On Leave',
                   value: '1',
+                  subtitle: 'Approved',
+                  icon: Icons.calendar_month_rounded,
                   color: AppColors.warningColor,
                 ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: 12.w),
               const Expanded(
-                child: SummaryCard(title: 'Avg Perf.', value: '89'),
+                child: SummaryCard(
+                  title: 'Avg Perf.',
+                  value: '89%',
+                  subtitle: 'Team score',
+                  icon: Icons.speed_rounded,
+                  color: AppColors.secondaryColor,
+                ),
               ),
             ],
           ),
