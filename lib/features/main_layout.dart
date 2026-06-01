@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/utils/app_colors.dart';
+import 'attendance/attendance_screen.dart';
 import 'dashboard/dashboard.dart';
 import 'employees/employees.dart';
 import 'widgets/custom_bottom_nav_bar.dart';
@@ -21,7 +22,7 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> _pages = [
     const DashboardScreen(),
     const EmployeesScreen(),
-    const Center(child: Text("Attendance Screen")),
+    const AttendanceScreen(),
     const Center(child: Text("Payroll Page")),
     const Center(child: Text("Performix Engine")),
     const Center(child: Text("Recruitment Page")),
