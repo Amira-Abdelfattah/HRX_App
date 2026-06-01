@@ -8,7 +8,7 @@ import 'package:hrx_app/features/dashboard/widgets/recent_activity_section.dart'
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
-import 'widgets/stat_card.dart';
+import '../widgets/stat_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
