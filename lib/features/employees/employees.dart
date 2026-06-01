@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
+import '../widgets/custom_page_header.dart';
+import '../widgets/summary_card.dart';
 import 'widgets/employee_card.dart';
-import 'widgets/employee_summary_card.dart';
-import 'widgets/employees_header.dart';
 import 'widgets/employees_search_filter.dart';
 
 class EmployeesScreen extends StatelessWidget {
@@ -73,17 +73,22 @@ class EmployeesScreen extends StatelessWidget {
       padding: EdgeInsets.all(16.w),
       child: Column(
         children: [
-          const EmployeesHeader(),
+          CustomPageHeader(
+            title: 'Employees',
+            subtitle: 'Manage your team members',
+            buttonLabel: 'Add Employee',
+            onButtonPressed: () {},
+          ),
           SizedBox(height: 24.h),
 
           Row(
             children: [
               const Expanded(
-                child: EmployeeSummaryCard(title: 'Total', value: '6'),
+                child: SummaryCard(title: 'Total', value: '6'),
               ),
               SizedBox(width: 10.w),
               const Expanded(
-                child: EmployeeSummaryCard(
+                child: SummaryCard(
                   title: 'Active',
                   value: '5',
                   color: AppColors.successColor,
@@ -91,7 +96,7 @@ class EmployeesScreen extends StatelessWidget {
               ),
               SizedBox(width: 10.w),
               const Expanded(
-                child: EmployeeSummaryCard(
+                child: SummaryCard(
                   title: 'On Leave',
                   value: '1',
                   color: AppColors.warningColor,
@@ -99,7 +104,7 @@ class EmployeesScreen extends StatelessWidget {
               ),
               SizedBox(width: 10.w),
               const Expanded(
-                child: EmployeeSummaryCard(title: 'Avg Perf.', value: '89'),
+                child: SummaryCard(title: 'Avg Perf.', value: '89'),
               ),
             ],
           ),
