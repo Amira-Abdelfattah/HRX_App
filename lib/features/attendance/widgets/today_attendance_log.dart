@@ -54,7 +54,9 @@ class TodayAttendanceLog extends StatelessWidget {
       },
     ];
 
-    return Column(
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.only(bottom: 20.h),
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
