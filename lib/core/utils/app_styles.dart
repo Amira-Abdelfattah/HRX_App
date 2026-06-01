@@ -146,6 +146,12 @@ class AppStyles {
     color: color ?? AppColors.primaryDarkColor,
   );
 
+  static TextStyle semi16PrimaryDark({Color? color}) => GoogleFonts.poppins(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: color ?? AppColors.primaryDarkColor,
+  );
+
   static TextStyle medium16PrimaryDark({Color? color}) => GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,

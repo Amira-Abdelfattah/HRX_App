@@ -18,6 +18,7 @@ class AppColors {
   static const Color accentLightersColor = Color(0xffF2DB94);
 
   /* ── Light Mode Surfaces ── */
+  static const Color backgroundColor = Color(0xffF4F6FB);
   static const Color surfaceColor = Color(0xffF4F6FB);
   static const Color surfaceLightColor = Color(0xffE8F0FB);
   static const Color whiteColor = Color(0xffFFFFFF);
