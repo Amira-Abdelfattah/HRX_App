@@ -45,6 +45,10 @@ class _MainLayoutState extends State<MainLayout> {
         title: const CustomSearchBar(),
         actions: [
           IconButton(
+            icon: const Icon(Icons.dark_mode_outlined),
+            onPressed: () {},
+          ),
+          IconButton(
             icon: const Icon(Icons.notifications_none),
             onPressed: () {},
           ),
