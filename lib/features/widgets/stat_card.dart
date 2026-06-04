@@ -7,7 +7,7 @@ import '../../../core/utils/app_styles.dart';
 class StatCard extends StatelessWidget {
   final String title;
   final String value;
-  final String trend;
+  final String? trend;
   final bool isPositive;
   final IconData icon;
   final Color color;
@@ -17,7 +17,7 @@ class StatCard extends StatelessWidget {
     super.key,
     required this.title,
     required this.value,
-    required this.trend,
+    this.trend,
     this.isPositive = true,
     required this.icon,
     required this.color,
@@ -38,6 +38,15 @@ class StatCard extends StatelessWidget {
               ? AppColors.darkBorderColor
               : AppColors.borderColor.withOpacity(0.3),
         ),
+        boxShadow: isDark
+            ? []
+            : [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,24 +59,28 @@ class StatCard extends StatelessWidget {
             ),
             child: Icon(icon, color: color, size: 20.sp),
           ),
-          const Spacer(),
+          SizedBox(height: 16.h),
           Text(title, style: AppStyles.regular12Grey()),
           SizedBox(height: 4.h),
           Text(
             value,
             style: AppStyles.bold28PrimaryDarkNumber(
               color: isDark ? Colors.white : AppColors.primaryColor,
-            ),
+            ).copyWith(fontSize: 24.sp),
           ),
-          SizedBox(height: 4.h),
-          Text(
-            trend,
-            style: AppStyles.medium12Grey(
-              color:
-                  trendColor ??
-                  (isPositive ? AppColors.successColor : AppColors.dangerColor),
+          if (trend != null) ...[
+            SizedBox(height: 4.h),
+            Text(
+              trend!,
+              style: AppStyles.medium12Grey(
+                color:
+                    trendColor ??
+                    (isPositive
+                        ? AppColors.successColor
+                        : AppColors.dangerColor),
+              ),
             ),
-          ),
+          ],
         ],
       ),
     );
