@@ -65,29 +65,28 @@ class CustomDrawer extends StatelessWidget {
                   onTap: () => onItemSelected(3),
                 ),
                 const Divider(),
-                // ربط باقي العناصر بالأرقام الجديدة
                 DrawerMenuItem(
                   icon: Icons.bolt,
                   title: 'Performix Engine',
-                  isSelected: selectedIndex == 4, // رقم 4
+                  isSelected: selectedIndex == 4,
                   onTap: () => onItemSelected(4),
                 ),
                 DrawerMenuItem(
                   icon: Icons.person_add_alt_1_outlined,
                   title: 'Recruitment',
-                  isSelected: selectedIndex == 5, // رقم 5
+                  isSelected: selectedIndex == 5,
                   onTap: () => onItemSelected(5),
                 ),
                 DrawerMenuItem(
                   icon: Icons.bar_chart_rounded,
                   title: 'Analytics',
-                  isSelected: selectedIndex == 6, // رقم 6
+                  isSelected: selectedIndex == 6,
                   onTap: () => onItemSelected(6),
                 ),
                 DrawerMenuItem(
                   icon: Icons.settings_outlined,
                   title: 'Settings',
-                  isSelected: selectedIndex == 7, // رقم 7
+                  isSelected: selectedIndex == 7,
                   onTap: () => onItemSelected(7),
                 ),
               ],
