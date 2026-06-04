@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hrx_app/features/payroll/payroll.dart';
 
 import '../core/utils/app_colors.dart';
 import 'attendance/attendance_screen.dart';
@@ -23,7 +24,7 @@ class _MainLayoutState extends State<MainLayout> {
     const DashboardScreen(),
     const EmployeesScreen(),
     const AttendanceScreen(),
-    const Center(child: Text("Payroll Page")),
+    const PayrollScreen(),
     const Center(child: Text("Performix Engine")),
     const Center(child: Text("Recruitment Page")),
     const Center(child: Text("Analytics Page")),
