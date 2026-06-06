@@ -48,40 +48,55 @@ class StatCard extends StatelessWidget {
                 ),
               ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.all(8.w),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              shape: BoxShape.circle,
+      child: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: EdgeInsets.all(8.w),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: color, size: 20.sp),
             ),
-            child: Icon(icon, color: color, size: 20.sp),
-          ),
-          SizedBox(height: 16.h),
-          Text(title, style: AppStyles.regular12Grey()),
-          SizedBox(height: 4.h),
-          Text(
-            value,
-            style: AppStyles.bold28PrimaryDarkNumber(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ).copyWith(fontSize: 24.sp),
-          ),
-          if (trend != null) ...[
-            SizedBox(height: 4.h),
+            SizedBox(height: 10.h),
             Text(
-              trend!,
-              style: AppStyles.medium12Grey(
-                color:
-                    trendColor ??
-                    (isPositive
-                        ? AppColors.successColor
-                        : AppColors.dangerColor),
+              title,
+              style: AppStyles.regular12Grey(),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 2.h),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                value,
+                style: AppStyles.bold28PrimaryDarkNumber(
+                  color: isDark ? Colors.white : AppColors.primaryColor,
+                ).copyWith(fontSize: 24.sp),
               ),
             ),
+            if (trend != null) ...[
+              SizedBox(height: 2.h),
+              Text(
+                trend!,
+                style: AppStyles.medium12Grey(
+                  color:
+                      trendColor ??
+                      (isPositive
+                          ? AppColors.successColor
+                          : AppColors.dangerColor),
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }
