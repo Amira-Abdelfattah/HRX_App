@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hrx_app/core/providers/theme_provider.dart';
 import 'package:hrx_app/features/payroll/payroll.dart';
 import 'package:hrx_app/features/performix_engin/performix_engin.dart';
 import 'package:hrx_app/features/recruitment/recruitment.dart';
+import 'package:hrx_app/features/settings/settings_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../core/utils/app_colors.dart';
 import 'analytics/analytics_screen.dart';
@@ -31,11 +34,13 @@ class _MainLayoutState extends State<MainLayout> {
     const PerformixEngineScreen(),
     const RecruitmentScreen(),
     const AnalyticsScreen(),
-    const Center(child: Text("Settings Page")),
+    const SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       drawer: CustomDrawer(
         selectedIndex: _currentIndex,
@@ -49,8 +54,15 @@ class _MainLayoutState extends State<MainLayout> {
         title: const CustomSearchBar(),
         actions: [
           IconButton(
-            icon: const Icon(Icons.dark_mode_outlined),
-            onPressed: () {},
+            icon: Icon(
+              themeProvider.isDarkMode
+                  ? Icons.light_mode_outlined
+                  : Icons.dark_mode_outlined,
+              color: themeProvider.isDarkMode ? Colors.amber : null,
+            ),
+            onPressed: () {
+              themeProvider.toggleTheme(!themeProvider.isDarkMode);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.notifications_none),
