@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hrx_app/core/providers/theme_provider.dart';
-import 'package:hrx_app/features/payroll/payroll.dart';
-import 'package:hrx_app/features/performix_engin/performix_engin.dart';
-import 'package:hrx_app/features/recruitment/recruitment.dart';
-import 'package:hrx_app/features/settings/settings_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../core/providers/theme_provider.dart';
 import '../core/utils/app_colors.dart';
 import 'analytics/analytics_screen.dart';
 import 'attendance/attendance_screen.dart';
 import 'dashboard/dashboard.dart';
 import 'employees/employees.dart';
+import 'payroll/payroll.dart';
+import 'performix_engin/performix_engin.dart';
+import 'recruitment/recruitment.dart';
+import 'settings/settings_screen.dart';
 import 'widgets/custom_bottom_nav_bar.dart';
 import 'widgets/custom_drawer.dart';
 import 'widgets/custom_search_bar.dart';

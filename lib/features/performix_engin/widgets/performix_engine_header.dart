@@ -29,7 +29,7 @@ class EngineHeader extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(12.w),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(16.r),
                 ),
                 child: Icon(
@@ -54,7 +54,7 @@ class EngineHeader extends StatelessWidget {
                     Text(
                       'Smart Performance Evaluation System',
                       style: AppStyles.regular14Grey(
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -84,7 +84,8 @@ class EngineHeader extends StatelessWidget {
       children: [
         Text(
           label,
-          style: AppStyles.regular12Grey(color: Colors.white.withOpacity(0.6)),
+          style: AppStyles.regular12Grey(
+              color: Colors.white.withValues(alpha: 0.6)),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

@@ -160,7 +160,7 @@ class InsightsView extends StatelessWidget {
                   sub,
                   style: TextStyle(
                     fontSize: 9.sp,
-                    color: textColor.withOpacity(0.8),
+                    color: textColor.withValues(alpha: 0.8),
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -300,7 +300,7 @@ class InsightsView extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 12.h),
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.03),
+        color: color.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(12.r),
         border: Border(left: BorderSide(color: color, width: 4)),
       ),

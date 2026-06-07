@@ -48,7 +48,7 @@ class EmployeeCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 22.r,
-                    backgroundColor: statusColor.withOpacity(0.1),
+                    backgroundColor: statusColor.withValues(alpha: 0.1),
                     child: Text(
                       initials,
                       style: AppStyles.semi16PrimaryMenu(color: statusColor),
@@ -136,7 +136,7 @@ class EmployeeCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
                 decoration: BoxDecoration(
-                  color: statusColor.withOpacity(0.1),
+                  color: statusColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Text(

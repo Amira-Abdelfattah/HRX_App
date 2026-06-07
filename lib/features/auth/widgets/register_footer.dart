@@ -14,7 +14,7 @@ class RegisterFooter extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           style: AppStyles.regular14Grey().copyWith(
-            color: AppColors.accentColor.withOpacity(0.7),
+            color: AppColors.accentColor.withValues(alpha: 0.7),
           ),
           children: [
             const TextSpan(text: 'Already have an account? '),

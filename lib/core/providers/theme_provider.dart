@@ -24,17 +24,11 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   ThemeMode get themeMode => _themeMode;
-
   String get language => _language;
-
   bool get emailNotifications => _emailNotifications;
-
   bool get pushNotifications => _pushNotifications;
-
   bool get performanceAlerts => _performanceAlerts;
-
   bool get leaveRequests => _leaveRequests;
-
   bool get newHires => _newHires;
 
   bool get isDarkMode {
@@ -101,14 +95,9 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Getters for keys to use in UI
   static String get emailKey => _emailNotifKey;
-
   static String get pushKey => _pushNotifKey;
-
   static String get perfKey => _perfAlertsKey;
-
   static String get leaveKey => _leaveReqKey;
-
   static String get hiresKey => _newHiresKey;
 }

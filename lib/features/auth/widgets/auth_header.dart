@@ -47,7 +47,7 @@ class AuthHeader extends StatelessWidget {
                 subtitle,
                 textAlign: TextAlign.center,
                 style: AppStyles.regular14Grey().copyWith(
-                  color: AppColors.accentColor.withOpacity(0.7),
+                  color: AppColors.accentColor.withValues(alpha: 0.7),
                   fontSize: 16.sp,
                 ),
               ),

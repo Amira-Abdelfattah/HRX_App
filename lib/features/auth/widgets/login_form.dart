@@ -24,13 +24,13 @@ class _LoginFormState extends State<LoginForm> {
         const FieldLabel(label: 'Email Address'),
         CustomTextField(
           hintText: 'admin@gmail.com',
-          filledColor: Colors.white.withOpacity(0.1),
+          filledColor: Colors.white.withValues(alpha: 0.1),
           borderColor: Colors.transparent,
           style: AppStyles.medium14Category().copyWith(
             color: AppColors.accentColor,
           ),
           hintStyle: AppStyles.regular14Grey().copyWith(
-            color: AppColors.accentColor.withOpacity(0.4),
+            color: AppColors.accentColor.withValues(alpha: 0.4),
           ),
         ),
         SizedBox(height: 20.h),
@@ -38,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
         CustomTextField(
           hintText: '******',
           obSecureText: true,
-          filledColor: Colors.white.withOpacity(0.1),
+          filledColor: Colors.white.withValues(alpha: 0.1),
           borderColor: Colors.transparent,
           suffixIcon: const Icon(
             Icons.visibility_off_outlined,
@@ -49,7 +49,7 @@ class _LoginFormState extends State<LoginForm> {
             color: AppColors.accentColor,
           ),
           hintStyle: AppStyles.regular14Grey().copyWith(
-            color: AppColors.accentColor.withOpacity(0.4),
+            color: AppColors.accentColor.withValues(alpha: 0.4),
           ),
         ),
         SizedBox(height: 10.h),

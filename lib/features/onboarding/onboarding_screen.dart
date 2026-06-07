@@ -76,7 +76,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             controlsPadding: EdgeInsets.only(bottom: 110.h),
             dotsContainerDecorator: const BoxDecoration(
-                color: Colors.transparent),
+              color: Colors.transparent,
+            ),
           ),
         ),
       ),

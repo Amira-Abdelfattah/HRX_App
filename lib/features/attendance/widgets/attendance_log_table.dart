@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_styles.dart';
 import '../../widgets/status_badge.dart';
@@ -48,7 +49,10 @@ class AttendanceLogTable extends StatelessWidget {
                             if (index != data.length - 1)
                               Divider(
                                 height: 1,
-                                color: isDark ? AppColors.darkBorderColor : AppColors.borderColor.withOpacity(0.5),
+                                color: isDark
+                                    ? AppColors.darkBorderColor
+                                    : AppColors.borderColor.withValues(
+                                    alpha: 0.5),
                               ),
                           ],
                         );
@@ -66,7 +70,8 @@ class AttendanceLogTable extends StatelessWidget {
 
   Widget _buildHeader(bool isDark) {
     return Container(
-      color: isDark ? AppColors.darkBackgroundColor : AppColors.backgroundColor.withOpacity(0.5),
+      color: isDark ? AppColors.darkBackgroundColor : AppColors.backgroundColor
+          .withValues(alpha: 0.5),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       child: Row(
         children: [

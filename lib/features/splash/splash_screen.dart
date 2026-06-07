@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/core/utils/app_colors.dart';
 import 'package:hrx_app/core/utils/app_styles.dart';
-import 'package:hrx_app/features/onboarding/onboardingScreen.dart';
+import 'package:hrx_app/features/onboarding/onboarding_screen.dart';
 
 import '../widgets/hrx_gradient_bg.dart';
 import '../widgets/hrx_logo.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -42,15 +43,13 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.3),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: const Interval(0.2, 1.0, curve: Curves.easeOutQuart),
-      ),
-    );
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: const Interval(0.2, 1.0, curve: Curves.easeOutQuart),
+          ),
+        );
 
     _animationController.forward();
   }

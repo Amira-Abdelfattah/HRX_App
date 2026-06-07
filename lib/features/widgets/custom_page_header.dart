@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_styles.dart';
 
@@ -21,8 +22,6 @@ class CustomPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -32,9 +31,7 @@ class CustomPageHeader extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppStyles.bold32PrimaryDark(
-                  color: isDark ? Colors.white : AppColors.primaryColor,
-                ),
+                style: AppStyles.bold32PrimaryDark(),
               ),
               Text(
                 subtitle,

@@ -17,13 +17,13 @@ class RegisterForm extends StatelessWidget {
         const FieldLabel(label: 'Your name'),
         CustomTextField(
           hintText: 'Hussain Ahmed',
-          filledColor: Colors.white.withOpacity(0.1),
+          filledColor: Colors.white.withValues(alpha: 0.1),
           borderColor: Colors.transparent,
           style: AppStyles.medium14Category().copyWith(
             color: AppColors.accentColor,
           ),
           hintStyle: AppStyles.regular14Grey().copyWith(
-            color: AppColors.accentColor.withOpacity(0.4),
+            color: AppColors.accentColor.withValues(alpha: 0.4),
           ),
         ),
         SizedBox(height: 10.h),
@@ -36,13 +36,13 @@ class RegisterForm extends StatelessWidget {
                   const FieldLabel(label: 'Company'),
                   CustomTextField(
                     hintText: 'Acme Corp',
-                    filledColor: Colors.white.withOpacity(0.1),
+                    filledColor: Colors.white.withValues(alpha: 0.1),
                     borderColor: Colors.transparent,
                     style: AppStyles.medium14Category().copyWith(
                       color: AppColors.accentColor,
                     ),
                     hintStyle: AppStyles.regular14Grey().copyWith(
-                      color: AppColors.accentColor.withOpacity(0.4),
+                      color: AppColors.accentColor.withValues(alpha: 0.4),
                     ),
                   ),
                 ],
@@ -56,7 +56,7 @@ class RegisterForm extends StatelessWidget {
                   const FieldLabel(label: 'Role'),
                   CustomTextField(
                     hintText: 'HR Manager',
-                    filledColor: Colors.white.withOpacity(0.1),
+                    filledColor: Colors.white.withValues(alpha: 0.1),
                     borderColor: Colors.transparent,
                     suffixIcon: const Icon(
                       Icons.keyboard_arrow_down_rounded,
@@ -66,7 +66,7 @@ class RegisterForm extends StatelessWidget {
                       color: AppColors.accentColor,
                     ),
                     hintStyle: AppStyles.regular14Grey().copyWith(
-                      color: AppColors.accentColor.withOpacity(0.4),
+                      color: AppColors.accentColor.withValues(alpha: 0.4),
                     ),
                   ),
                 ],
@@ -78,13 +78,13 @@ class RegisterForm extends StatelessWidget {
         const FieldLabel(label: 'Your E-mail or Phone Number'),
         CustomTextField(
           hintText: 'yourmale0123@gmail.com',
-          filledColor: Colors.white.withOpacity(0.1),
+          filledColor: Colors.white.withValues(alpha: 0.1),
           borderColor: Colors.transparent,
           style: AppStyles.medium14Category().copyWith(
             color: AppColors.accentColor,
           ),
           hintStyle: AppStyles.regular14Grey().copyWith(
-            color: AppColors.accentColor.withOpacity(0.4),
+            color: AppColors.accentColor.withValues(alpha: 0.4),
           ),
         ),
         SizedBox(height: 10.h),
@@ -98,7 +98,7 @@ class RegisterForm extends StatelessWidget {
                   CustomTextField(
                     hintText: '*********',
                     obSecureText: true,
-                    filledColor: Colors.white.withOpacity(0.1),
+                    filledColor: Colors.white.withValues(alpha: 0.1),
                     borderColor: Colors.transparent,
                     suffixIcon: const Icon(
                       Icons.visibility_off_outlined,
@@ -109,7 +109,7 @@ class RegisterForm extends StatelessWidget {
                       color: AppColors.accentColor,
                     ),
                     hintStyle: AppStyles.regular14Grey().copyWith(
-                      color: AppColors.accentColor.withOpacity(0.4),
+                      color: AppColors.accentColor.withValues(alpha: 0.4),
                     ),
                   ),
                 ],
@@ -124,7 +124,7 @@ class RegisterForm extends StatelessWidget {
                   CustomTextField(
                     hintText: '*********',
                     obSecureText: true,
-                    filledColor: Colors.white.withOpacity(0.1),
+                    filledColor: Colors.white.withValues(alpha: 0.1),
                     borderColor: Colors.transparent,
                     suffixIcon: const Icon(
                       Icons.visibility_off_outlined,
@@ -135,7 +135,7 @@ class RegisterForm extends StatelessWidget {
                       color: AppColors.accentColor,
                     ),
                     hintStyle: AppStyles.regular14Grey().copyWith(
-                      color: AppColors.accentColor.withOpacity(0.4),
+                      color: AppColors.accentColor.withValues(alpha: 0.4),
                     ),
                   ),
                 ],
