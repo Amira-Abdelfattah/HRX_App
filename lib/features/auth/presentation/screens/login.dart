@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/utils/app_colors.dart';
-import '../../core/utils/app_styles.dart';
-import '../main_layout.dart';
-import '../widgets/custom_elevated_button.dart';
-import '../widgets/hrx_gradient_bg.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../main_layout.dart';
+import '../../../widgets/custom_elevated_button.dart';
+import '../../../widgets/hrx_gradient_bg.dart';
+import '../widgets/auth_footer.dart';
+import '../widgets/auth_header.dart';
+import '../widgets/login_form.dart';
 import 'register.dart';
-import 'widgets/auth_footer.dart';
-import 'widgets/auth_header.dart';
-import 'widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
