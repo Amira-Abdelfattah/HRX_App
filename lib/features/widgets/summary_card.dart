@@ -35,7 +35,7 @@ class SummaryCard extends StatelessWidget {
         border: Border.all(
           color: isDark
               ? AppColors.darkBorderColor
-              : AppColors.borderColor.withOpacity(0.5),
+              : AppColors.borderColor.withValues(alpha: 0.5),
         ),
       ),
       child: Column(
@@ -45,7 +45,7 @@ class SummaryCard extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: color, size: 20.sp),
