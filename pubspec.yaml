@@ -45,7 +45,9 @@ dependencies:
   dio: ^5.7.0
   dartz: ^0.10.1
   equatable: ^2.0.5
+  flutter_bloc: ^8.1.6
   injectable: ^2.4.4
+  bloc: ^8.1.1
 
 dev_dependencies:
   flutter_test:
