@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/core/utils/app_colors.dart';
 import 'package:hrx_app/core/utils/app_styles.dart';
@@ -10,6 +10,11 @@ class HrxLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryAccent = isDark
+        ? AppColors.accentColor
+        : AppColors.accentDarkColor;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,7 +25,7 @@ class HrxLogo extends StatelessWidget {
             fontSize: fontSize.sp,
             fontWeight: FontWeight.w500,
             letterSpacing: -0.5,
-            color: AppColors.accentDarkColor,
+            color: primaryAccent,
           ),
         ),
         Padding(
@@ -28,7 +33,7 @@ class HrxLogo extends StatelessWidget {
           child: Text(
             "|",
             style: AppStyles.light18HintText().copyWith(
-              color: AppColors.accentDarkColor.withOpacity(0.3),
+              color: primaryAccent.withValues(alpha: 0.3),
               fontSize: (fontSize * .88).sp,
             ),
           ),
@@ -40,14 +45,14 @@ class HrxLogo extends StatelessWidget {
               "HR",
               style: AppStyles.bold32PrimaryDark().copyWith(
                 fontSize: fontSize.sp,
-                color: AppColors.accentDarkColor,
+                color: primaryAccent,
               ),
             ),
             Text(
               "X",
               style: AppStyles.bold32PrimaryDark().copyWith(
                 fontSize: fontSize.sp,
-                color: AppColors.accentDarkColor,
+                color: primaryAccent,
               ),
             ),
           ],

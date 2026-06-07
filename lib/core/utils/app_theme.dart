@@ -15,15 +15,15 @@ class AppTheme {
 
       colorScheme: const ColorScheme.light(
         primary: AppColors.primaryColor,
+        // Navy
         secondary: AppColors.secondaryColor,
         surface: AppColors.whiteColor,
         error: AppColors.dangerColor,
         onPrimary: AppColors.whiteColor,
         onSecondary: AppColors.whiteColor,
-        onSurface: AppColors.textBodyColor,
+        onSurface: AppColors.blackColor, // Black text
       ),
 
-      // Design System
       cardTheme: CardThemeData(
         color: AppColors.whiteColor,
         elevation: 0,
@@ -31,24 +31,6 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(AppColors.radiusMd)),
           side: BorderSide(color: AppColors.borderColor),
         ),
-      ),
-
-      // App Bar
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.whiteColor,
-        elevation: 0,
-        iconTheme: IconThemeData(color: AppColors.textPrimaryColor),
-        titleTextStyle: TextStyle(
-          color: AppColors.textPrimaryColor,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-
-      // Divider
-      dividerTheme: const DividerThemeData(
-        color: AppColors.borderLightColor,
-        thickness: 1,
       ),
     );
   }
@@ -58,17 +40,19 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      primaryColor: AppColors.primaryLightColor,
+      primaryColor: AppColors.accentColor,
+      // Gold (Dark Navy becomes Gold)
       scaffoldBackgroundColor: AppColors.darkBackgroundColor,
 
       colorScheme: const ColorScheme.dark(
-        primary: AppColors.primaryLightColor,
+        primary: AppColors.accentColor,
+        // Gold
         secondary: AppColors.secondaryColor,
         surface: AppColors.darkSurfaceColor,
         error: AppColors.dangerColor,
-        onPrimary: AppColors.whiteColor,
+        onPrimary: AppColors.darkBackgroundColor,
         onSecondary: AppColors.whiteColor,
-        onSurface: AppColors.darkTextPrimary,
+        onSurface: AppColors.whiteColor, // White text
       ),
 
       cardTheme: CardThemeData(
@@ -78,22 +62,6 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(AppColors.radiusMd)),
           side: BorderSide(color: AppColors.darkBorderColor),
         ),
-      ),
-
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.darkSurfaceColor,
-        elevation: 0,
-        iconTheme: IconThemeData(color: AppColors.darkTextPrimary),
-        titleTextStyle: TextStyle(
-          color: AppColors.darkTextPrimary,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-
-      dividerTheme: const DividerThemeData(
-        color: AppColors.darkBorderColor,
-        thickness: 1,
       ),
     );
   }
