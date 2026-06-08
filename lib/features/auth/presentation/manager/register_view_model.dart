@@ -27,17 +27,17 @@ class RegisterViewModel extends Cubit<RegisterStates> {
 
   void togglePasswordVisibility() {
     isPasswordVisible = !isPasswordVisible;
-    emit(RegisterInitialState());
+    emit(RegisterUpdateState());
   }
 
   void toggleConfirmPasswordVisibility() {
     isConfirmPasswordVisible = !isConfirmPasswordVisible;
-    emit(RegisterInitialState());
+    emit(RegisterUpdateState());
   }
 
   void changeRole(String role) {
     selectedRole = role;
-    emit(RegisterInitialState());
+    emit(RegisterUpdateState());
   }
 
   void register() async {

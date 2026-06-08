@@ -23,7 +23,7 @@ class AuthFooter extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           style: AppStyles.regular14Grey().copyWith(
-            color: AppColors.accentColor.withValues(alpha: 0.7),
+            color: AppColors.accentColor.withOpacity(0.7),
             fontSize: 14.sp,
           ),
           children: [
