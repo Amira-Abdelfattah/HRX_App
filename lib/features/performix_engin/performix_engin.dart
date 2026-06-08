@@ -136,7 +136,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           Icon(
             Icons.trending_up,
             size: 40.sp,
-            color: AppColors.textMutedColor.withValues(alpha: 0.5),
+            color: AppColors.textMutedColor.withOpacity(0.5),
           ),
           SizedBox(height: 16.h),
           Text(
