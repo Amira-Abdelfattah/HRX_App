@@ -51,8 +51,7 @@ class AttendanceLogTable extends StatelessWidget {
                                 height: 1,
                                 color: isDark
                                     ? AppColors.darkBorderColor
-                                    : AppColors.borderColor.withValues(
-                                    alpha: 0.5),
+                                    : AppColors.borderColor.withOpacity(0.5),
                               ),
                           ],
                         );
@@ -71,7 +70,7 @@ class AttendanceLogTable extends StatelessWidget {
   Widget _buildHeader(bool isDark) {
     return Container(
       color: isDark ? AppColors.darkBackgroundColor : AppColors.backgroundColor
-          .withValues(alpha: 0.5),
+          .withOpacity(0.5),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       child: Row(
         children: [
