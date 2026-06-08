@@ -33,7 +33,7 @@ class HrxLogo extends StatelessWidget {
           child: Text(
             "|",
             style: AppStyles.light18HintText().copyWith(
-              color: primaryAccent.withValues(alpha: 0.3),
+              color: primaryAccent.withOpacity(0.3),
               fontSize: (fontSize * .88).sp,
             ),
           ),

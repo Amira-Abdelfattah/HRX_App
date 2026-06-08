@@ -23,6 +23,7 @@ class CustomTextField extends StatelessWidget {
   final void Function()? onTap;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final FocusNode? focusNode;
 
   const CustomTextField({
     super.key,
@@ -42,6 +43,7 @@ class CustomTextField extends StatelessWidget {
     this.borderColor,
     this.readOnly,
     this.onTap,
+    this.focusNode,
   });
 
   @override
@@ -58,6 +60,7 @@ class CustomTextField extends StatelessWidget {
         keyboardType: keyboardType,
         validator: validator,
         controller: controller,
+        focusNode: focusNode,
         maxLines: maxLines ?? 1,
         cursorColor: isDark ? AppColors.whiteColor : AppColors.blackColor,
         style: style ?? AppStyles.semi20Primary(),
