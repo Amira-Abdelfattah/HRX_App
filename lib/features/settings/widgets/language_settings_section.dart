@@ -38,7 +38,7 @@ class _LanguageSettingsSectionState extends State<LanguageSettingsSection> {
                   : AppColors.backgroundColor,
               borderRadius: BorderRadius.circular(12.r),
               border: Border.all(
-                color: AppColors.borderColor.withValues(alpha: 0.3),
+                color: AppColors.borderColor.withOpacity(0.3),
               ),
             ),
             child: DropdownButtonHideUnderline(
