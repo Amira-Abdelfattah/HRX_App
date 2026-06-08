@@ -94,7 +94,7 @@ class NotificationSettingsSection extends StatelessWidget {
             value: value,
             onChanged: onChanged,
             activeThumbColor: AppColors.primaryColor,
-            activeTrackColor: AppColors.primaryColor.withValues(alpha: 0.5),
+            activeTrackColor: AppColors.primaryColor.withOpacity(0.5),
           ),
         ],
       ),
