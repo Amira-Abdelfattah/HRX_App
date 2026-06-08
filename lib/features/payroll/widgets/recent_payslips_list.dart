@@ -20,7 +20,7 @@ class RecentPayslipsList extends StatelessWidget {
         border: Border.all(
           color: isDark
               ? AppColors.darkBorderColor
-              : AppColors.borderColor.withValues(alpha: 0.5),
+              : AppColors.borderColor.withOpacity(0.5),
         ),
       ),
       child: Column(
