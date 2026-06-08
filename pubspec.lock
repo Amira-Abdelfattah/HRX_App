@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.0.1"
+  animated_payment_card:
+    dependency: "direct main"
+    description:
+      name: animated_payment_card
+      sha256: "119a60cb35ca98d815c1cd1a1382c8927c3e797497b064df7f4edcafe0e3a5e3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   ansicolor:
     dependency: transitive
     description:

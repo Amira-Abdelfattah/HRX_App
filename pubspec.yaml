@@ -48,6 +48,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   injectable: ^2.4.4
   bloc: ^8.1.1
+  animated_payment_card: ^1.0.0
 
 dev_dependencies:
   flutter_test:
