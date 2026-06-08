@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 
 class FieldLabel extends StatelessWidget {
@@ -18,7 +17,7 @@ class FieldLabel extends StatelessWidget {
         style: AppStyles.semi16White.copyWith(
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.accentColor,
+          color: Colors.white.withValues(alpha: 0.9),
         ),
       ),
     );

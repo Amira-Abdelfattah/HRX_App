@@ -65,14 +65,14 @@ class RegisterScreen extends StatelessWidget {
                     children: [
                       SizedBox(height: 20.h),
                       const AuthHeader(
-                        title: 'Sign up to HR Saas',
+                        title: 'Subscribe to HR Saas',
                         subtitle: 'Enter details to create your account',
                       ),
                       SizedBox(height: 40.h),
                       const RegisterForm(),
                       SizedBox(height: 30.h),
                       CustomElevatedButton(
-                        text: 'Sign up',
+                        text: 'Subscribe',
                         backgroundColor: AppColors.accentColor,
                         textStyle: AppStyles.semi20Primary().copyWith(
                           color: AppColors.primaryColor,
