@@ -52,13 +52,13 @@ class QuickActionsSection extends StatelessWidget {
               QuickActionButton(
                 icon: Icons.trending_up_rounded,
                 label: 'View Analytics',
-                backgroundColor: Colors.white.withValues(alpha: 0.2),
+                backgroundColor: Colors.white.withOpacity(0.2),
                 onPressed: () {},
               ),
               QuickActionButton(
                 icon: Icons.check_circle_outline,
                 label: 'Approve Leave (5)',
-                backgroundColor: Colors.white.withValues(alpha: 0.2),
+                backgroundColor: Colors.white.withOpacity(0.2),
                 onPressed: () {},
               ),
             ],
