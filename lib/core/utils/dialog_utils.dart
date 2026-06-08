@@ -27,7 +27,9 @@ class DialogUtils {
   }
 
   static void hideLoading(BuildContext context) {
-    Navigator.pop(context);
+    if (Navigator.canPop(context)) {
+      Navigator.pop(context);
+    }
   }
 
   static void showMessage({
@@ -44,11 +46,8 @@ class DialogUtils {
       actions.add(
         TextButton(
           onPressed: () {
-            Navigator.pop(context);
-            // if(posAction != null){
-            //   posAction.call();
-            // }
-            posAction?.call();
+            if (Navigator.canPop(context)) Navigator.pop(context);
+            if (posAction != null) Future.microtask(() => posAction.call());
           },
           child: Text(posActionName, style: AppStyles.semi20Primary()),
         ),
@@ -58,8 +57,8 @@ class DialogUtils {
       actions.add(
         TextButton(
           onPressed: () {
-            Navigator.pop(context);
-            negAction?.call();
+            if (Navigator.canPop(context)) Navigator.pop(context);
+            if (negAction != null) Future.microtask(() => negAction.call());
           },
           child: Text(negActionName, style: AppStyles.semi20Primary()),
         ),
