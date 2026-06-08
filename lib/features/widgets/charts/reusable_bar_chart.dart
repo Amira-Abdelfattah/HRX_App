@@ -49,7 +49,7 @@ class ReusableBarChart extends StatelessWidget {
         labelStyle: AppStyles.regular10Grey(),
         majorGridLines: MajorGridLines(
           width: 1,
-          color: AppColors.borderColor.withValues(alpha: 0.1),
+          color: AppColors.borderColor.withOpacity(0.1),
           dashArray: const <double>[5, 5],
         ),
       ),
