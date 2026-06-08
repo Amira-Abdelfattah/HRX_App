@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hrx_app/features/dashboard/dashboard.dart';
+import 'package:hrx_app/features/subscription/presentation/screens/payment_screen.dart';
 
 import '../../../../core/api/api_manager.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/dialog_utils.dart';
+import '../../../../core/utils/navigator_key.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/hrx_gradient_bg.dart';
 import '../../data/datasources/auth_remote_data_source.dart';
@@ -44,12 +45,12 @@ class RegisterScreen extends StatelessWidget {
               message: 'Registered successfully',
               posActionName: 'Ok',
               posAction: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DashboardScreen(),
-                  ),
-                );
+                Future.delayed(const Duration(milliseconds: 120), () {
+                  navigatorKey.currentState?.pushReplacement(
+                    MaterialPageRoute(
+                        builder: (context) => const PaymentScreen()),
+                  );
+                });
               },
             );
           }

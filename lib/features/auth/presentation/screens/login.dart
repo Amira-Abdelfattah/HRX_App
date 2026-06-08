@@ -11,8 +11,24 @@ import '../widgets/auth_header.dart';
 import '../widgets/login_form.dart';
 import 'register.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +47,11 @@ class LoginScreen extends StatelessWidget {
                   showLogo: false,
                 ),
                 SizedBox(height: 40.h),
-                const LoginForm(),
+                LoginForm(
+                  formKey: _formKey,
+                  emailController: _emailController,
+                  passwordController: _passwordController,
+                ),
                 SizedBox(height: 30.h),
                 CustomElevatedButton(
                   text: 'Sign in',
@@ -41,11 +61,13 @@ class LoginScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   onButtonClicked: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const MainLayout()),
-                    );
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainLayout()),
+                      );
+                    }
                   },
                 ),
                 SizedBox(height: 24.h),
