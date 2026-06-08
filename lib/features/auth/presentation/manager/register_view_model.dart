@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/flutter_toast.dart';
 import '../../domain/usecases/register_use_case.dart';
 import 'register_states.dart';
 
@@ -18,9 +19,26 @@ class RegisterViewModel extends Cubit<RegisterStates> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final TextEditingController companyController = TextEditingController();
-  final TextEditingController roleController = TextEditingController();
+  String selectedRole = 'HR Manager';
 
   final formKey = GlobalKey<FormState>();
+  bool isPasswordVisible = false;
+  bool isConfirmPasswordVisible = false;
+
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
+    emit(RegisterInitialState());
+  }
+
+  void toggleConfirmPasswordVisibility() {
+    isConfirmPasswordVisible = !isConfirmPasswordVisible;
+    emit(RegisterInitialState());
+  }
+
+  void changeRole(String role) {
+    selectedRole = role;
+    emit(RegisterInitialState());
+  }
 
   void register() async {
     if (formKey.currentState!.validate()) {
@@ -29,7 +47,7 @@ class RegisterViewModel extends Cubit<RegisterStates> {
         fullName: nameController.text,
         email: emailController.text,
         password: passwordController.text,
-        role: roleController.text,
+        role: selectedRole,
         companyName: companyController.text,
       );
 
@@ -37,6 +55,8 @@ class RegisterViewModel extends Cubit<RegisterStates> {
         (failure) => emit(RegisterErrorState(failure.errorMessage)),
         (responseEntity) => emit(RegisterSuccessState(responseEntity)),
       );
+    } else {
+      ToastMessage.toastMsg("Please fill out all fields correctly");
     }
   }
 
@@ -47,7 +67,6 @@ class RegisterViewModel extends Cubit<RegisterStates> {
     passwordController.dispose();
     confirmPasswordController.dispose();
     companyController.dispose();
-    roleController.dispose();
     return super.close();
   }
 }

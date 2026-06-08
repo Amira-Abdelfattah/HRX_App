@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hrx_app/features/auth/register.dart';
 import 'package:hrx_app/features/widgets/hrx_gradient_bg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../core/utils/app_colors.dart';
+import '../auth/presentation/screens/register.dart';
 import 'onboarding_footer.dart';
 import 'onboarding_header.dart';
 import 'onboarding_model.dart';

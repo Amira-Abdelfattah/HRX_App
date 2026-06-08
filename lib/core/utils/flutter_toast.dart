@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'app_colors.dart';
@@ -11,7 +12,7 @@ class ToastMessage {
       timeInSecForIosWeb: 5,
       backgroundColor: AppColors.dangerColor,
       textColor: AppColors.whiteColor,
-      fontSize: 30,
+      fontSize: 14.sp,
     );
   }
 }

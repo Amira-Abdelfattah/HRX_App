@@ -24,13 +24,13 @@ class RegisterForm extends StatelessWidget {
             controller: viewModel.nameController,
             validator: AppValidator.validateFullName,
             hintText: 'Hussain Ahmed',
-            filledColor: Colors.white.withValues(alpha: 0.1),
+            filledColor: const Color(0xff1E3A73),
             borderColor: Colors.transparent,
             style: AppStyles.medium14Category().copyWith(
-              color: AppColors.accentColor,
+              color: Colors.white,
             ),
             hintStyle: AppStyles.regular14Grey().copyWith(
-              color: AppColors.accentColor.withValues(alpha: 0.4),
+              color: Colors.white.withValues(alpha: 0.3),
             ),
           ),
           SizedBox(height: 10.h),
@@ -45,13 +45,13 @@ class RegisterForm extends StatelessWidget {
                       controller: viewModel.companyController,
                       validator: AppValidator.validateCompanyName,
                       hintText: 'Acme Corp',
-                      filledColor: Colors.white.withValues(alpha: 0.1),
+                      filledColor: const Color(0xff1E3A73),
                       borderColor: Colors.transparent,
                       style: AppStyles.medium14Category().copyWith(
-                        color: AppColors.accentColor,
+                        color: Colors.white,
                       ),
                       hintStyle: AppStyles.regular14Grey().copyWith(
-                        color: AppColors.accentColor.withValues(alpha: 0.4),
+                        color: Colors.white.withValues(alpha: 0.3),
                       ),
                     ),
                   ],
@@ -63,41 +63,70 @@ class RegisterForm extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const FieldLabel(label: 'Role'),
-                    CustomTextField(
-                      controller: viewModel.roleController,
-                      validator: AppValidator.validateRole,
-                      hintText: 'HR Manager',
-                      filledColor: Colors.white.withValues(alpha: 0.1),
-                      borderColor: Colors.transparent,
-                      suffixIcon: const Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        color: AppColors.accentColor,
-                      ),
+                    DropdownButtonFormField<String>(
+                      value: viewModel.selectedRole,
+                      dropdownColor: const Color(0xff1E3A73),
                       style: AppStyles.medium14Category().copyWith(
-                        color: AppColors.accentColor,
+                        color: Colors.white,
                       ),
-                      hintStyle: AppStyles.regular14Grey().copyWith(
-                        color: AppColors.accentColor.withValues(alpha: 0.4),
+                      icon: const Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: Colors.white54,
                       ),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xff1E3A73),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16.w,
+                          vertical: 12.h,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16.r),
+                          borderSide: const BorderSide(
+                            color: Colors.transparent,
+                            width: 1.5,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16.r),
+                          borderSide: const BorderSide(
+                            color: AppColors.accentColor,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      items: ['HR Manager', 'Manager', 'Employee']
+                          .map((role) =>
+                          DropdownMenuItem(
+                            value: role,
+                            child: Text(role),
+                          ))
+                          .toList(),
+                      onChanged: (value) {
+                        if (value != null) {
+                          viewModel.changeRole(value);
+                        }
+                      },
                     ),
+                    SizedBox(height: 20.h),
                   ],
                 ),
               ),
             ],
           ),
           SizedBox(height: 10.h),
-          const FieldLabel(label: 'Your E-mail'),
+          const FieldLabel(label: 'Your E-mail or Phone Number'),
           CustomTextField(
             controller: viewModel.emailController,
             validator: AppValidator.validateEmail,
             hintText: 'yourmale0123@gmail.com',
-            filledColor: Colors.white.withValues(alpha: 0.1),
+            filledColor: const Color(0xff1E3A73),
             borderColor: Colors.transparent,
             style: AppStyles.medium14Category().copyWith(
-              color: AppColors.accentColor,
+              color: Colors.white,
             ),
             hintStyle: AppStyles.regular14Grey().copyWith(
-              color: AppColors.accentColor.withValues(alpha: 0.4),
+              color: Colors.white.withValues(alpha: 0.3),
             ),
           ),
           SizedBox(height: 10.h),
@@ -112,19 +141,24 @@ class RegisterForm extends StatelessWidget {
                       controller: viewModel.passwordController,
                       validator: AppValidator.validatePassword,
                       hintText: '*********',
-                      obSecureText: true,
-                      filledColor: Colors.white.withValues(alpha: 0.1),
+                      obSecureText: !viewModel.isPasswordVisible,
+                      filledColor: const Color(0xff1E3A73),
                       borderColor: Colors.transparent,
-                      suffixIcon: const Icon(
-                        Icons.visibility_off_outlined,
-                        color: AppColors.accentColor,
-                        size: 20,
+                      suffixIcon: IconButton(
+                        onPressed: viewModel.togglePasswordVisibility,
+                        icon: Icon(
+                          viewModel.isPasswordVisible
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Colors.white54,
+                          size: 20,
+                        ),
                       ),
                       style: AppStyles.medium14Category().copyWith(
-                        color: AppColors.accentColor,
+                        color: Colors.white,
                       ),
                       hintStyle: AppStyles.regular14Grey().copyWith(
-                        color: AppColors.accentColor.withValues(alpha: 0.4),
+                        color: Colors.white.withValues(alpha: 0.3),
                       ),
                     ),
                   ],
@@ -143,19 +177,24 @@ class RegisterForm extends StatelessWidget {
                         viewModel.passwordController.text,
                       ),
                       hintText: '*********',
-                      obSecureText: true,
-                      filledColor: Colors.white.withValues(alpha: 0.1),
+                      obSecureText: !viewModel.isConfirmPasswordVisible,
+                      filledColor: const Color(0xff1E3A73),
                       borderColor: Colors.transparent,
-                      suffixIcon: const Icon(
-                        Icons.visibility_off_outlined,
-                        color: AppColors.accentColor,
-                        size: 20,
+                      suffixIcon: IconButton(
+                        onPressed: viewModel.toggleConfirmPasswordVisibility,
+                        icon: Icon(
+                          viewModel.isConfirmPasswordVisible
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: Colors.white54,
+                          size: 20,
+                        ),
                       ),
                       style: AppStyles.medium14Category().copyWith(
-                        color: AppColors.accentColor,
+                        color: Colors.white,
                       ),
                       hintStyle: AppStyles.regular14Grey().copyWith(
-                        color: AppColors.accentColor.withValues(alpha: 0.4),
+                        color: Colors.white.withValues(alpha: 0.3),
                       ),
                     ),
                   ],
