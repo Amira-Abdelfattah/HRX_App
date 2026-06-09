@@ -1,5 +1,7 @@
+import '../../../../core/api/api_constants.dart';
 import '../../../../core/api/api_manager.dart';
 import '../../../../core/api/end_points.dart';
+import '../models/login_response_model.dart';
 import '../models/register_response_model.dart';
 
 abstract class AuthRemoteDataSource {
@@ -9,6 +11,11 @@ abstract class AuthRemoteDataSource {
     required String password,
     required String role,
     required String companyName,
+  });
+
+  Future<LoginResponseModel> login({
+    required String email,
+    required String password,
   });
 }
 
@@ -36,5 +43,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       },
     );
     return RegisterResponseModel.fromJson(response.data);
+  }
+
+  @override
+  Future<LoginResponseModel> login({
+    required String email,
+    required String password,
+  }) async {
+    var response = await apiManager.postData(
+      endPoint: EndPoints.login,
+      baseUrl: ApiConstants.odooBaseUrl,
+      body: {"email": email, "password": password},
+    );
+    return LoginResponseModel.fromJson(
+      response.data['result'] as Map<String, dynamic>,
+    );
   }
 }
