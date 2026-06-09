@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hrx_app/features/subscription/presentation/screens/payment_screen.dart';
 
 import '../../../../core/api/api_manager.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/dialog_utils.dart';
 import '../../../../core/utils/navigator_key.dart';
+import '../../../payment/presentation/screens/payment_screen.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/hrx_gradient_bg.dart';
 import '../../data/datasources/auth_remote_data_source.dart';
@@ -39,6 +39,14 @@ class RegisterScreen extends StatelessWidget {
             DialogUtils.hideLoading(context);
             DialogUtils.showMessage(context: context, message: state.message);
           } else if (state is RegisterSuccessState) {
+            var vm = RegisterViewModel.get(context);
+            final userData = {
+              'name': vm.nameController.text,
+              'email': vm.emailController.text,
+              'password': vm.passwordController.text,
+              'company': vm.companyController.text,
+              'role': vm.selectedRole,
+            };
             DialogUtils.hideLoading(context);
             DialogUtils.showMessage(
               context: context,
@@ -48,7 +56,10 @@ class RegisterScreen extends StatelessWidget {
                 Future.delayed(const Duration(milliseconds: 120), () {
                   navigatorKey.currentState?.pushReplacement(
                     MaterialPageRoute(
-                        builder: (context) => const PaymentScreen()),
+                      builder: (context) => PaymentScreen(
+                        userData: userData,
+                      ),
+                    ),
                   );
                 });
               },

@@ -5,10 +5,12 @@ import 'package:hrx_app/core/utils/app_theme.dart';
 import 'package:hrx_app/features/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'core/di/service_locator.dart';
 import 'core/utils/navigator_key.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   await Future.delayed(const Duration(milliseconds: 100));
 
   runApp(
