@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../domain/usecases/login_use_case.dart';
 import 'login_states.dart';
 
+@injectable
 class LoginViewModel extends Cubit<LoginStates> {
   final LoginUseCase loginUseCase;
 
   LoginViewModel(
     this.loginUseCase, {
-    String? initialEmail,
-    String? initialPassword,
+    @factoryParam String? initialEmail,
+    @factoryParam String? initialPassword,
   }) : super(LoginInitialState()) {
     if (initialEmail != null) {
       emailController.text = initialEmail;

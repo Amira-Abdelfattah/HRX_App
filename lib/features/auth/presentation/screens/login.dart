@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/api/api_manager.dart';
+import '../../../../core/di/service_locator.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/dialog_utils.dart';
 import '../../../main_layout.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/hrx_gradient_bg.dart';
-import '../../data/datasources/auth_remote_data_source.dart';
-import '../../data/repositories/auth_repository_impl.dart';
-import '../../domain/usecases/login_use_case.dart';
 import '../manager/login_states.dart';
 import '../manager/login_view_model.dart';
 import '../widgets/auth_footer.dart';
@@ -33,12 +30,9 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          LoginViewModel(
-            LoginUseCase(
-              AuthRepositoryImpl(AuthRemoteDataSourceImpl(ApiManager.instance)),
-            ),
-            initialEmail: initialEmail,
-            initialPassword: initialPassword,
+          getIt<LoginViewModel>(
+            param1: initialEmail,
+            param2: initialPassword,
           ),
       child: BlocConsumer<LoginViewModel, LoginStates>(
         listener: (context, state) {

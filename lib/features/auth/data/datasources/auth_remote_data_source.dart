@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../../core/api/api_constants.dart';
 import '../../../../core/api/api_manager.dart';
 import '../../../../core/api/end_points.dart';
@@ -19,6 +21,7 @@ abstract class AuthRemoteDataSource {
   });
 }
 
+@Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final ApiManager apiManager;
 

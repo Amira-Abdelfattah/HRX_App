@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/api/api_manager.dart';
+import '../../../../core/di/service_locator.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/dialog_utils.dart';
@@ -10,9 +10,6 @@ import '../../../../core/utils/navigator_key.dart';
 import '../../../payment/presentation/screens/payment_screen.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/hrx_gradient_bg.dart';
-import '../../data/datasources/auth_remote_data_source.dart';
-import '../../data/repositories/auth_repository_impl.dart';
-import '../../domain/usecases/register_use_case.dart';
 import '../manager/register_states.dart';
 import '../manager/register_view_model.dart';
 import '../widgets/auth_footer.dart';
@@ -26,11 +23,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterViewModel(
-        RegisterUseCase(
-          AuthRepositoryImpl(AuthRemoteDataSourceImpl(ApiManager.instance)),
-        ),
-      ),
+      create: (context) => getIt<RegisterViewModel>(),
       child: BlocConsumer<RegisterViewModel, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterLoadingState) {
