@@ -1,4 +1,3 @@
-// lib/features/dashboard/widgets/quick_actions_section.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
