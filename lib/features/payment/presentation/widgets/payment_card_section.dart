@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
-import '../../../auth/presentation/screens/login.dart';
 import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/custom_txt_field.dart';
 import '../manager/payment_states.dart';
@@ -155,22 +154,7 @@ class PaymentCardSection extends StatelessWidget {
           selectedPlanIndex: vm.selectedPlanIndex,
         ),
         SizedBox(height: 30.h),
-        BlocConsumer<PaymentViewModel, PaymentStates>(
-          listener: (context, state) {
-            if (state is PaymentSuccessState) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
-            } else if (state is PaymentErrorState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.message),
-                  backgroundColor: Colors.red,
-                ),
-              );
-            }
-          },
+        BlocBuilder<PaymentViewModel, PaymentStates>(
           builder: (context, state) {
             return CustomElevatedButton(
               text: state is PaymentLoadingState
