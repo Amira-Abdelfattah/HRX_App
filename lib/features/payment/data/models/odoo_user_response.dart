@@ -1,3 +1,5 @@
+import '../../domain/entities/odoo_user_entity.dart';
+
 class OdooUserResponse {
   String? jsonrpc;
   int? id;
@@ -31,5 +33,16 @@ class OdooResult {
     role = json['role'];
     companyId = json['company_id'];
     jobId = json['job_id'];
+  }
+
+  OdooUserEntity toEntity() {
+    return OdooUserEntity(
+      status: status ?? "",
+      userId: userId ?? 0,
+      name: name ?? "",
+      email: email ?? "",
+      role: role ?? "",
+      companyId: companyId ?? 0,
+    );
   }
 }

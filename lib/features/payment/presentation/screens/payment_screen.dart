@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../core/utils/dialog_utils.dart';
 import '../../../widgets/hrx_gradient_bg.dart';
+import '../../../../core/di/service_locator.dart';
 import '../manager/payment_states.dart';
 import '../manager/payment_view_model.dart';
 import '../widgets/payment_app_bar.dart';
@@ -13,12 +14,13 @@ import '../widgets/payment_card_section.dart';
 import '../widgets/payment_header.dart';
 
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({super.key});
+  final Map<String, dynamic> userData;
+  const PaymentScreen({super.key, required this.userData});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PaymentViewModel()..init(),
+      create: (context) => getIt<PaymentViewModel>()..init(),
       child: BlocConsumer<PaymentViewModel, PaymentStates>(
         listener: _handleStates,
         builder: (context, state) {
@@ -95,7 +97,7 @@ class PaymentScreen extends StatelessWidget {
             children: [
               Expanded(child: PaymentBillingSection(vm: vm)),
               SizedBox(width: 40.w),
-              Expanded(child: PaymentCardSection(vm: vm)),
+              Expanded(child: PaymentCardSection(vm: vm, userData: userData)),
             ],
           );
         }
@@ -103,7 +105,7 @@ class PaymentScreen extends StatelessWidget {
           children: [
             PaymentBillingSection(vm: vm),
             SizedBox(height: 40.h),
-            PaymentCardSection(vm: vm),
+            PaymentCardSection(vm: vm, userData: userData),
           ],
         );
       },

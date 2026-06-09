@@ -1,9 +1,11 @@
+import 'package:injectable/injectable.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failures.dart';
 import '../../domain/entities/odoo_user_entity.dart';
 import '../../domain/repositories/payment_repository.dart';
 import '../datasources/payment_remote_data_source.dart';
 
+@LazySingleton(as: PaymentRepository)
 class PaymentRepositoryImpl implements PaymentRepository {
   final PaymentRemoteDataSource remoteDataSource;
 

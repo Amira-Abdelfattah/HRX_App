@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import '../../../../core/api/api_manager.dart';
 import '../../../../core/api/api_constants.dart';
 import '../../../../core/api/end_points.dart';
@@ -13,6 +14,7 @@ abstract class PaymentRemoteDataSource {
   });
 }
 
+@LazySingleton(as: PaymentRemoteDataSource)
 class PaymentRemoteDataSourceImpl implements PaymentRemoteDataSource {
   @override
   Future<OdooUserResponse> addOdooUser({

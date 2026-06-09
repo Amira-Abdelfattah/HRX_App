@@ -14,8 +14,9 @@ import 'payment_summary.dart';
 
 class PaymentCardSection extends StatelessWidget {
   final PaymentViewModel vm;
+  final Map<String, dynamic> userData;
 
-  const PaymentCardSection({super.key, required this.vm});
+  const PaymentCardSection({super.key, required this.vm, required this.userData});
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +182,13 @@ class PaymentCardSection extends StatelessWidget {
               ).copyWith(fontSize: 16.sp),
               onButtonClicked: state is PaymentLoadingState
                   ? () {}
-                  : () => vm.processPayment(),
+                  : () => vm.processPayment(
+                        name: userData['name'] ?? '',
+                        email: userData['email'] ?? '',
+                        password: userData['password'] ?? '',
+                        role: userData['role'] ?? '',
+                        companyName: userData['company'] ?? '',
+                      ),
             );
           },
         ),

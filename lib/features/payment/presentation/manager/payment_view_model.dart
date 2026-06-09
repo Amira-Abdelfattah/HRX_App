@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+import '../../domain/usecases/add_odoo_user_usecase.dart';
 import 'payment_states.dart';
 
+@injectable
 class PaymentViewModel extends Cubit<PaymentStates> {
-  PaymentViewModel() : super(PaymentInitialState());
+  final AddOdooUserUseCase addOdooUserUseCase;
+
+  PaymentViewModel(this.addOdooUserUseCase) : super(PaymentInitialState());
 
   static PaymentViewModel get(context) => BlocProvider.of(context);
 
@@ -46,12 +51,28 @@ class PaymentViewModel extends Cubit<PaymentStates> {
     emit(PaymentUpdateState());
   }
 
-  void processPayment() {
+  void processPayment({
+    required String name,
+    required String email,
+    required String password,
+    required String role,
+    required String companyName,
+  }) async {
     if (formKey.currentState!.validate()) {
       emit(PaymentLoadingState());
-      Future.delayed(const Duration(seconds: 2), () {
-        emit(PaymentSuccessState());
-      });
+
+      final result = await addOdooUserUseCase.call(
+        name: name,
+        email: email,
+        password: password,
+        role: role,
+        companyName: companyName,
+      );
+
+      result.fold(
+        (failure) => emit(PaymentErrorState(failure.errorMessage)),
+        (entity) => emit(PaymentSuccessState()),
+      );
     } else {
       emit(PaymentErrorState('Please enter all required data first.'));
     }
