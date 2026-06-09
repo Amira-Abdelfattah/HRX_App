@@ -1,19 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import 'api_constants.dart';
 
+@singleton
 class ApiManager {
   late Dio dio;
 
-  ApiManager._() {
+  ApiManager() {
     dio = Dio();
-  }
-
-  static ApiManager? _instance;
-
-  static ApiManager get instance {
-    _instance ??= ApiManager._();
-    return _instance!;
   }
 
   Future<Response> getData({
