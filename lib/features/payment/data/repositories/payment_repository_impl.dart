@@ -31,7 +31,10 @@ class PaymentRepositoryImpl implements PaymentRepository {
       if (response.result?.status == "success") {
         return Right(response.result!.toEntity());
       } else {
-        return Left(Failures(errorMessage: "Odoo Registration Failed"));
+        String errorMsg = response.error?.data?['message'] ??
+            response.error?.message ??
+            "Registration failed. Email might already exist.";
+        return Left(Failures(errorMessage: errorMsg));
       }
     } catch (e) {
       return Left(Failures(errorMessage: e.toString()));

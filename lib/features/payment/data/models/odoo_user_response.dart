@@ -4,13 +4,27 @@ class OdooUserResponse {
   String? jsonrpc;
   int? id;
   OdooResult? result;
+  OdooError? error;
 
-  OdooUserResponse({this.jsonrpc, this.id, this.result});
+  OdooUserResponse({this.jsonrpc, this.id, this.result, this.error});
 
   OdooUserResponse.fromJson(Map<String, dynamic> json) {
     jsonrpc = json['jsonrpc'];
     id = json['id'];
     result = json['result'] != null ? OdooResult.fromJson(json['result']) : null;
+    error = json['error'] != null ? OdooError.fromJson(json['error']) : null;
+  }
+}
+
+class OdooError {
+  String? message;
+  dynamic data;
+
+  OdooError({this.message, this.data});
+
+  OdooError.fromJson(Map<String, dynamic> json) {
+    message = json['message'];
+    data = json['data'];
   }
 }
 
