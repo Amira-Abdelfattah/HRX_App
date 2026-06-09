@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/utils/flutter_toast.dart';
 import '../../domain/usecases/register_use_case.dart';
 import 'register_states.dart';
 
+@injectable
 class RegisterViewModel extends Cubit<RegisterStates> {
   final RegisterUseCase registerUseCase;
 
