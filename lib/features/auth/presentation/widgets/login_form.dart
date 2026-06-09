@@ -5,38 +5,27 @@ import 'package:hrx_app/core/utils/app_validator.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../widgets/custom_txt_field.dart';
+import '../manager/login_view_model.dart';
 import 'field_label.dart';
 
-class LoginForm extends StatefulWidget {
-  final GlobalKey<FormState> formKey;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
+class LoginForm extends StatelessWidget {
+  final LoginViewModel vm;
 
   const LoginForm({
     super.key,
-    required this.formKey,
-    required this.emailController,
-    required this.passwordController,
+    required this.vm,
   });
-
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  bool rememberMe = false;
-  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: widget.formKey,
+      key: vm.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const FieldLabel(label: 'Email Address'),
           CustomTextField(
-            controller: widget.emailController,
+            controller: vm.emailController,
             validator: AppValidator.validateEmail,
             hintText: 'admin@gmail.com',
             filledColor: Colors.white.withOpacity(0.1),
@@ -51,25 +40,21 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: 20.h),
           const FieldLabel(label: 'Password'),
           CustomTextField(
-            controller: widget.passwordController,
+            controller: vm.passwordController,
             validator: AppValidator.validatePassword,
             hintText: '******',
-            obSecureText: !isPasswordVisible,
+            obSecureText: !vm.isPasswordVisible,
             filledColor: Colors.white.withOpacity(0.1),
             borderColor: Colors.transparent,
             suffixIcon: IconButton(
               icon: Icon(
-                isPasswordVisible
+                vm.isPasswordVisible
                     ? Icons.visibility_outlined
                     : Icons.visibility_off_outlined,
                 color: AppColors.accentColor,
                 size: 20,
               ),
-              onPressed: () {
-                setState(() {
-                  isPasswordVisible = !isPasswordVisible;
-                });
-              },
+              onPressed: vm.togglePasswordVisibility,
             ),
             style: AppStyles.medium14Category().copyWith(
               color: AppColors.accentColor,
@@ -88,14 +73,14 @@ class _LoginFormState extends State<LoginForm> {
                     width: 24.w,
                     height: 24.h,
                     child: Checkbox(
-                      value: rememberMe,
+                      value: vm.rememberMe,
                       activeColor: AppColors.accentColor,
                       checkColor: AppColors.primaryColor,
                       side: const BorderSide(color: Colors.white70, width: 1.5),
                       onChanged: (value) {
-                        setState(() {
-                          rememberMe = value!;
-                        });
+                        if (value != null) {
+                          vm.toggleRememberMe(value);
+                        }
                       },
                     ),
                   ),

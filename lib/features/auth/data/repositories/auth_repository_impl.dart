@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../domain/entities/RegisterResponseEntity.dart';
+import '../../domain/entities/login_response_entity.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_remote_data_source.dart';
 
@@ -26,6 +27,20 @@ class AuthRepositoryImpl implements AuthRepository {
         role: role,
         companyName: companyName,
       );
+      return Right(result);
+    } catch (e) {
+      return Left(ServerError(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, LoginResponseEntity>> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final result = await remoteDataSource.login(
+          email: email, password: password);
       return Right(result);
     } catch (e) {
       return Left(ServerError(errorMessage: e.toString()));

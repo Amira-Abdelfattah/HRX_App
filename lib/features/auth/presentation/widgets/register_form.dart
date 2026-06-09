@@ -122,8 +122,8 @@ class RegisterForm extends StatelessWidget {
               const FieldLabel(label: 'Your E-mail or Phone Number'),
               CustomTextField(
                 controller: viewModel.emailController,
-                validator: AppValidator.validateEmail,
-                hintText: 'yourmale0123@gmail.com',
+                validator: AppValidator.validateEmailOrPhone,
+                hintText: 'yourmale0123@gmail.com or 01012345678',
                 filledColor: const Color(0xff1E3A73),
                 borderColor: Colors.transparent,
                 style: AppStyles.medium14Category().copyWith(
