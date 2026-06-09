@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../../../core/utils/dialog_utils.dart';
-import '../../../widgets/hrx_gradient_bg.dart';
 import '../../../../core/di/service_locator.dart';
+import '../../../../core/utils/dialog_utils.dart';
+import '../../../../core/utils/navigator_key.dart';
+import '../../../auth/presentation/screens/login.dart';
+import '../../../widgets/hrx_gradient_bg.dart';
 import '../manager/payment_states.dart';
 import '../manager/payment_view_model.dart';
 import '../widgets/payment_app_bar.dart';
@@ -72,7 +74,16 @@ class PaymentScreen extends StatelessWidget {
         context: context,
         message: 'Subscription Activated Successfully!',
         posActionName: 'Great!',
-        posAction: () => Navigator.pop(context),
+        posAction: () =>
+            navigatorKey.currentState?.pushReplacement(
+              MaterialPageRoute(
+                builder: (context) =>
+                    LoginScreen(
+                      initialEmail: userData['email']?.toString(),
+                      initialPassword: userData['password']?.toString(),
+                    ),
+              ),
+            ),
       );
     } else if (state is PaymentErrorState) {
       DialogUtils.hideLoading(context);
