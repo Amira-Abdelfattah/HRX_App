@@ -13,6 +13,21 @@ class AppValidator {
     return null;
   }
 
+  static String? validateEmailOrPhone(String? val) {
+    RegExp emailRegex = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
+    RegExp phoneRegex = RegExp(r'^[0-9]{11}$');
+
+    if (val == null || val.trim().isEmpty) {
+      return 'Email or phone number is required';
+    } else if (!emailRegex.hasMatch(val.trim()) &&
+        !phoneRegex.hasMatch(val.trim())) {
+      return 'Please enter a valid email or 11-digit phone number';
+    }
+    return null;
+  }
+
   static String? validatePassword(String? val) {
     if (val == null || val.isEmpty) {
       return 'Password is required';
