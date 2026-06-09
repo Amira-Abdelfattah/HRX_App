@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
-import '../../../../core/api/api_manager.dart';
+
 import '../../../../core/api/api_constants.dart';
+import '../../../../core/api/api_manager.dart';
 import '../../../../core/api/end_points.dart';
 import '../models/odoo_user_response.dart';
 
@@ -16,6 +17,10 @@ abstract class PaymentRemoteDataSource {
 
 @LazySingleton(as: PaymentRemoteDataSource)
 class PaymentRemoteDataSourceImpl implements PaymentRemoteDataSource {
+  final ApiManager apiManager;
+
+  PaymentRemoteDataSourceImpl(this.apiManager);
+
   @override
   Future<OdooUserResponse> addOdooUser({
     required String name,
@@ -24,7 +29,7 @@ class PaymentRemoteDataSourceImpl implements PaymentRemoteDataSource {
     required String role,
     required String companyName,
   }) async {
-    final response = await ApiManager.instance.postData(
+    final response = await apiManager.postData(
       baseUrl: ApiConstants.odooBaseUrl,
       endPoint: EndPoints.addUserEndPoint,
       body: {
