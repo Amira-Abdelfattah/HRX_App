@@ -28,6 +28,24 @@ class EmployeesRepositoryImpl implements EmployeesRepository {
         role: role,
         jobId: jobId,
       );
+
+      if (result.status == 'error' || result.status == 'failed') {
+        return Left(ServerError(
+            errorMessage: 'Failed to add employee: ${result.name ??
+                "Backend error"}'));
+      }
+
+      return Right(result);
+    } catch (e) {
+      return Left(ServerError(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<
+      Either<Failures, List<AddEmployeeResponseEntity>>> getEmployees() async {
+    try {
+      final result = await remoteDataSource.getEmployees();
       return Right(result);
     } catch (e) {
       return Left(ServerError(errorMessage: e.toString()));

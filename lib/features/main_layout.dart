@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hrx_app/features/payroll/payroll.dart';
+import 'package:hrx_app/features/performix_engin/presentation/screens/performix_engin.dart';
+import 'package:hrx_app/features/recruitment/recruitment.dart';
+import 'package:hrx_app/features/settings/settings_screen.dart';
+import 'package:hrx_app/features/widgets/custom_bottom_nav_bar.dart';
+import 'package:hrx_app/features/widgets/custom_drawer.dart';
+import 'package:hrx_app/features/widgets/custom_search_bar.dart';
 import 'package:provider/provider.dart';
 
+import '../core/providers/navigation_provider.dart';
 import '../core/providers/theme_provider.dart';
 import '../core/utils/app_colors.dart';
 import 'analytics/analytics_screen.dart';
 import 'attendance/attendance_screen.dart';
 import 'dashboard/dashboard.dart';
 import 'employees/employees.dart';
-import 'payroll/payroll.dart';
-import 'performix_engin/performix_engin.dart';
-import 'recruitment/recruitment.dart';
-import 'settings/settings_screen.dart';
-import 'widgets/custom_bottom_nav_bar.dart';
-import 'widgets/custom_drawer.dart';
-import 'widgets/custom_search_bar.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -24,8 +25,6 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  int _currentIndex = 0;
-
   final List<Widget> _pages = [
     const DashboardScreen(),
     const EmployeesScreen(),
@@ -40,12 +39,13 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final navProvider = Provider.of<NavigationProvider>(context);
 
     return Scaffold(
       drawer: CustomDrawer(
-        selectedIndex: _currentIndex,
+        selectedIndex: navProvider.currentIndex,
         onItemSelected: (index) {
-          setState(() => _currentIndex = index);
+          navProvider.setIndex(index);
           Navigator.pop(context);
         },
       ),
@@ -79,13 +79,13 @@ class _MainLayoutState extends State<MainLayout> {
           SizedBox(width: 16.w),
         ],
       ),
-      body: IndexedStack(index: _currentIndex, children: _pages),
+      body: IndexedStack(index: navProvider.currentIndex, children: _pages),
 
-      bottomNavigationBar: _currentIndex < 4
+      bottomNavigationBar: navProvider.currentIndex < 4
           ? CustomBottomNavBar(
-              currentIndex: _currentIndex,
+              currentIndex: navProvider.currentIndex,
               onTap: (index) {
-                setState(() => _currentIndex = index);
+                navProvider.setIndex(index);
               },
             )
           : null,

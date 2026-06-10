@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
+import '../presentation/manager/employees_view_model.dart';
 
 class EmployeesSearchFilter extends StatefulWidget {
   const EmployeesSearchFilter({super.key});
@@ -13,6 +15,7 @@ class EmployeesSearchFilter extends StatefulWidget {
 
 class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
   String selectedDepartment = 'All Departments';
+  final TextEditingController _searchController = TextEditingController();
   final List<String> departments = [
     'All Departments',
     'Engineering',
@@ -21,6 +24,19 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
     'Sales',
     'HR',
   ];
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _onChanged() {
+    context.read<EmployeesViewModel>().searchAndFilter(
+      query: _searchController.text,
+      department: selectedDepartment,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +59,8 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
               ),
             ),
             child: TextField(
+              controller: _searchController,
+              onChanged: (_) => _onChanged(),
               textAlignVertical: TextAlignVertical.center,
               style: AppStyles.regular14PrimaryDark(
                 color: isDark ? Colors.white : AppColors.primaryColor,
@@ -66,7 +84,10 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
         SizedBox(width: 12.w),
 
         PopupMenuButton<String>(
-          onSelected: (value) => setState(() => selectedDepartment = value),
+          onSelected: (value) {
+            setState(() => selectedDepartment = value);
+            _onChanged();
+          },
           child: Container(
             height: 50.h,
             padding: EdgeInsets.symmetric(horizontal: 12.w),
