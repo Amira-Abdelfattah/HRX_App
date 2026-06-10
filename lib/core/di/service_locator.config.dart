@@ -31,8 +31,12 @@ import '../../features/employees/domain/repositories/employees_repository.dart'
     as _i24;
 import '../../features/employees/domain/usecases/add_employee_use_case.dart'
     as _i811;
+import '../../features/employees/domain/usecases/get_employees_use_case.dart'
+    as _i229;
 import '../../features/employees/presentation/manager/add_employee_view_model.dart'
     as _i488;
+import '../../features/employees/presentation/manager/employees_view_model.dart'
+    as _i477;
 import '../../features/payment/data/datasources/payment_remote_data_source.dart'
     as _i811;
 import '../../features/payment/data/repositories/payment_repository_impl.dart'
@@ -87,6 +91,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i811.AddEmployeeUseCase>(
       () => _i811.AddEmployeeUseCase(gh<_i24.EmployeesRepository>()),
     );
+    gh.factory<_i229.GetEmployeesUseCase>(
+      () => _i229.GetEmployeesUseCase(gh<_i24.EmployeesRepository>()),
+    );
     gh.factory<_i781.RegisterViewModel>(
       () => _i781.RegisterViewModel(gh<_i97.RegisterUseCase>()),
     );
@@ -96,6 +103,9 @@ extension GetItInjectableX on _i174.GetIt {
         initialEmail: initialEmail,
         initialPassword: initialPassword,
       ),
+    );
+    gh.factory<_i477.EmployeesViewModel>(
+      () => _i477.EmployeesViewModel(gh<_i229.GetEmployeesUseCase>()),
     );
     gh.factory<_i488.AddEmployeeViewModel>(
       () => _i488.AddEmployeeViewModel(gh<_i811.AddEmployeeUseCase>()),

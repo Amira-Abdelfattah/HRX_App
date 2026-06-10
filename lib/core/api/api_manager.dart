@@ -13,12 +13,13 @@ class ApiManager {
 
   Future<Response> getData({
     required String endPoint,
+    String? baseUrl,
     Map<String, dynamic>? queryParameters,
     Options? options,
     Map<String, dynamic>? headers,
   }) {
     return dio.get(
-      ApiConstants.baseUrl + endPoint,
+      (baseUrl ?? ApiConstants.baseUrl) + endPoint,
       queryParameters: queryParameters,
       options: Options(validateStatus: (status) => true, headers: headers),
     );
@@ -42,12 +43,13 @@ class ApiManager {
 
   Future<Response> deleteData({
     required String endPoint,
+    String? baseUrl,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     Object? body,
   }) {
     return dio.delete(
-      ApiConstants.baseUrl + endPoint,
+      (baseUrl ?? ApiConstants.baseUrl) + endPoint,
       queryParameters: queryParameters,
       data: body,
       options: Options(headers: headers, validateStatus: (status) => true),
@@ -56,12 +58,13 @@ class ApiManager {
 
   Future<Response> updateData({
     required String endPoint,
+    String? baseUrl,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
     Object? body,
   }) {
     return dio.put(
-      ApiConstants.baseUrl + endPoint,
+      (baseUrl ?? ApiConstants.baseUrl) + endPoint,
       queryParameters: queryParameters,
       data: body,
       options: Options(headers: headers, validateStatus: (status) => true),

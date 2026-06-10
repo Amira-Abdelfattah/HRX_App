@@ -12,6 +12,7 @@ class EmployeeCard extends StatelessWidget {
   final String status;
   final Color statusColor;
   final String initials;
+  final VoidCallback? onTap;
 
   const EmployeeCard({
     super.key,
@@ -22,135 +23,179 @@ class EmployeeCard extends StatelessWidget {
     required this.status,
     required this.statusColor,
     required this.initials,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Container(
-      padding: EdgeInsets.all(12.w),
-      decoration: BoxDecoration(
-        color: isDark ? AppColors.darkSurfaceColor : AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(
-          color: isDark ? AppColors.darkBorderColor : AppColors
-              .borderLightColor,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.darkSurfaceColor : AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(24.r),
+          border: Border.all(
+            color: isDark
+                ? AppColors.darkBorderColor
+                : AppColors.borderLightColor,
+            width: 1,
+          ),
+          boxShadow: isDark
+              ? []
+              : [
+            BoxShadow(
+              color: AppColors.primaryColor.withOpacity(0.05),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+          ],
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Stack(
-                children: [
-                  CircleAvatar(
-                    radius: 22.r,
-                    backgroundColor: statusColor.withOpacity(0.1),
-                    child: Text(
-                      initials,
-                      style: AppStyles.semi16PrimaryMenu(color: statusColor),
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      width: 10.w,
-                      height: 10.w,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      width: 48.w,
+                      height: 48.w,
                       decoration: BoxDecoration(
-                        color: AppColors.successColor,
+                        gradient: LinearGradient(
+                          colors: [
+                            statusColor.withOpacity(0.2),
+                            statusColor.withOpacity(0.05),
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
                         shape: BoxShape.circle,
-                        border: Border.all(
-                          color: isDark ? AppColors.darkSurfaceColor : AppColors
-                              .whiteColor,
-                          width: 1.5,
+                      ),
+                      child: Center(
+                        child: Text(
+                          initials,
+                          style: AppStyles.semi16PrimaryMenu(
+                              color: statusColor),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.more_vert, color: AppColors.textMutedColor,
-                    size: 18.sp),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
-              ),
-            ],
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            name,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: AppStyles.bold20PrimaryDark(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ),
-          ),
-          Text(
-            role,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: AppStyles.medium12Grey(),
-          ),
-          SizedBox(height: 2.h),
-          Text(
-            department,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: AppStyles.regular12Grey(),
-          ),
-          const Spacer(),
-          Divider(color: isDark ? AppColors.darkBorderColor : AppColors
-              .borderLightColor),
-          SizedBox(height: 6.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('PERF.', style: AppStyles.regular10Grey()),
-                    Row(
-                      children: [
-                        Icon(Icons.trending_up, size: 12.sp,
-                            color: AppColors.textMutedColor),
-                        SizedBox(width: 4.w),
-                        Text(
-                          '$performance',
-                          style: AppStyles.semi14PrimaryDark(
-                            color: isDark ? Colors.white : AppColors
-                                .primaryColor,
+                    Positioned(
+                      right: 2,
+                      bottom: 2,
+                      child: Container(
+                        width: 12.w,
+                        height: 12.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.successColor,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: isDark
+                                ? AppColors.darkSurfaceColor
+                                : AppColors.whiteColor,
+                            width: 2,
                           ),
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
-                decoration: BoxDecoration(
-                  color: statusColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                child: Text(
-                  status,
-                  style: TextStyle(
-                    fontSize: 9.sp,
-                    fontWeight: FontWeight.bold,
-                    color: statusColor,
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 10.w, vertical: 5.h),
+                  decoration: BoxDecoration(
+                    color: statusColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(20.r),
+                  ),
+                  child: Text(
+                    status.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w900,
+                      color: statusColor,
+                      letterSpacing: 0.5,
+                    ),
                   ),
                 ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyles.bold20PrimaryDark(
+                color: isDark ? Colors.white : AppColors.primaryColor,
+              ).copyWith(fontSize: 18.sp),
+            ),
+            SizedBox(height: 2.h),
+            Text(
+              role,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyles.medium12Grey().copyWith(
+                color: isDark ? AppColors.darkTextMuted : AppColors
+                    .textMutedColor,
               ),
-            ],
-          ),
-        ],
+            ),
+            Text(
+              department,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyles.regular12Grey().copyWith(fontSize: 11.sp),
+            ),
+            const Spacer(),
+            Divider(
+              color: isDark ? AppColors.darkBorderColor : AppColors
+                  .borderLightColor,
+              height: 24.h,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'PERFORMANCE',
+                      style: AppStyles.regular10Grey().copyWith(
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.0,
+                      ),
+                    ),
+                    Text(
+                      '$performance%',
+                      style: AppStyles.semi14PrimaryDark(
+                        color: isDark ? Colors.white : AppColors.primaryColor,
+                      ).copyWith(fontSize: 12.sp),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8.h),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.r),
+                  child: LinearProgressIndicator(
+                    value: performance / 100,
+                    backgroundColor: isDark
+                        ? AppColors.darkBorderColor
+                        : AppColors.backgroundColor,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      performance > 80
+                          ? AppColors.successColor
+                          : performance > 50
+                          ? AppColors.warningColor
+                          : AppColors.dangerColor,
+                    ),
+                    minHeight: 6.h,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

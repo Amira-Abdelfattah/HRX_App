@@ -17,6 +17,8 @@ class AddEmployeeViewModel extends Cubit<AddEmployeeStates> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController jobPositionController = TextEditingController();
+  final TextEditingController companyController = TextEditingController(
+      text: 'race');
   final formKey = GlobalKey<FormState>();
 
   String selectedRole = 'employee';
@@ -48,20 +50,28 @@ class AddEmployeeViewModel extends Cubit<AddEmployeeStates> {
     result.fold(
       (failure) => emit(AddEmployeeErrorState(failure.errorMessage)),
       (employee) {
+        String? finalName = (employee.name != null && employee.name
+            .toString()
+            .isNotEmpty)
+            ? employee.name.toString()
+            : name;
+
+        String? finalEmail = (employee.email != null && employee.email
+            .toString()
+            .isNotEmpty)
+            ? employee.email.toString()
+            : email;
+
         final enrichedEmployee = AddEmployeeResponseEntity(
           status: employee.status,
           userId: employee.userId,
-          name: (employee.name != null && employee.name!.isNotEmpty)
-              ? employee.name
-              : name,
-          email: (employee.email != null && employee.email!.isNotEmpty)
-              ? employee.email
-              : email,
-          role: (employee.role != null && employee.role!.isNotEmpty)
-              ? employee.role
+          name: finalName,
+          email: finalEmail,
+          role: (employee.role != null)
+              ? employee.role.toString()
               : role,
           companyId: employee.companyId,
-          jobId: (employee.jobId != null && employee.jobId!.isNotEmpty)
+          jobId: (employee.jobId != null && employee.jobId != false)
               ? employee.jobId
               : jobId,
         );
@@ -76,6 +86,7 @@ class AddEmployeeViewModel extends Cubit<AddEmployeeStates> {
     emailController.dispose();
     passwordController.dispose();
     jobPositionController.dispose();
+    companyController.dispose();
     return super.close();
   }
 }

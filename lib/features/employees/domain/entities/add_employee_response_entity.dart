@@ -5,7 +5,7 @@ class AddEmployeeResponseEntity {
   final String? email;
   final String? role;
   final int? companyId;
-  final String? jobId;
+  final dynamic jobId;
 
   AddEmployeeResponseEntity({
     this.status,
