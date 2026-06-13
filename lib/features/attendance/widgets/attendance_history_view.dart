@@ -29,7 +29,7 @@ class AttendanceHistoryView extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(16.w),
               decoration: BoxDecoration(
-                color: AppColors.primaryColor.withOpacity(0.05),
+                color: AppColors.primaryColor.withValues(alpha: 0.05),
                 shape: BoxShape.circle,
               ),
               child: Icon(Icons.calendar_today_outlined, size: 32.sp, color: AppColors.primaryColor),

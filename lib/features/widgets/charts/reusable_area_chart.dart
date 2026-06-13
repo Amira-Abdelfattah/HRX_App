@@ -30,7 +30,7 @@ class ReusableAreaChart extends StatelessWidget {
         labelStyle: AppStyles.regular10Grey(),
         majorGridLines: MajorGridLines(
           width: 1,
-          color: AppColors.borderColor.withOpacity(0.1),
+          color: AppColors.borderColor.withValues(alpha: 0.1),
           dashArray: const <double>[5, 5],
         ),
       ),
@@ -39,11 +39,14 @@ class ReusableAreaChart extends StatelessWidget {
           dataSource: dataSource,
           xValueMapper: (ChartData data, _) => data.x,
           yValueMapper: (ChartData data, _) => data.y,
-          color: color.withOpacity(0.1),
+          color: color.withValues(alpha: 0.1),
           borderColor: color,
           borderWidth: 2,
           gradient: LinearGradient(
-            colors: [color.withOpacity(0.3), color.withOpacity(0.0)],
+            colors: [
+              color.withValues(alpha: 0.3),
+              color.withValues(alpha: 0.0)
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

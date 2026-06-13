@@ -32,7 +32,7 @@ class RolesPermissionsSection extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: AppColors.borderColor.withOpacity(0.3),
+            color: AppColors.borderColor.withValues(alpha: 0.3),
             width: 1,
           ),
         ),

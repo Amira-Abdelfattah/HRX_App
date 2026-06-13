@@ -23,6 +23,8 @@ import '../../features/auth/presentation/manager/login_view_model.dart'
     as _i608;
 import '../../features/auth/presentation/manager/register_view_model.dart'
     as _i781;
+import '../../features/employees/data/datasources/employees_local_data_source.dart'
+    as _i813;
 import '../../features/employees/data/datasources/employees_remote_data_source.dart'
     as _i345;
 import '../../features/employees/data/repositories/employees_repository_impl.dart'
@@ -57,6 +59,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.singleton<_i1047.ApiManager>(() => _i1047.ApiManager());
+    gh.factory<_i813.EmployeesLocalDataSource>(
+      () => _i813.EmployeesLocalDataSourceImpl(),
+    );
     gh.factory<_i107.AuthRemoteDataSource>(
       () => _i107.AuthRemoteDataSourceImpl(gh<_i1047.ApiManager>()),
     );
@@ -66,12 +71,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i345.EmployeesRemoteDataSource>(
       () => _i345.EmployeesRemoteDataSourceImpl(gh<_i1047.ApiManager>()),
     );
+    gh.factory<_i24.EmployeesRepository>(
+      () => _i599.EmployeesRepositoryImpl(
+        gh<_i345.EmployeesRemoteDataSource>(),
+        gh<_i813.EmployeesLocalDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i639.PaymentRepository>(
       () => _i265.PaymentRepositoryImpl(gh<_i811.PaymentRemoteDataSource>()),
     );
-    gh.factory<_i24.EmployeesRepository>(
-      () =>
-          _i599.EmployeesRepositoryImpl(gh<_i345.EmployeesRemoteDataSource>()),
+    gh.factory<_i811.AddEmployeeUseCase>(
+      () => _i811.AddEmployeeUseCase(gh<_i24.EmployeesRepository>()),
+    );
+    gh.factory<_i229.GetEmployeesUseCase>(
+      () => _i229.GetEmployeesUseCase(gh<_i24.EmployeesRepository>()),
     );
     gh.factory<_i787.AuthRepository>(
       () => _i153.AuthRepositoryImpl(gh<_i107.AuthRemoteDataSource>()),
@@ -82,17 +95,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i502.PaymentViewModel>(
       () => _i502.PaymentViewModel(gh<_i844.AddOdooUserUseCase>()),
     );
+    gh.factory<_i477.EmployeesViewModel>(
+      () => _i477.EmployeesViewModel(gh<_i229.GetEmployeesUseCase>()),
+    );
     gh.factory<_i37.LoginUseCase>(
       () => _i37.LoginUseCase(gh<_i787.AuthRepository>()),
     );
     gh.factory<_i97.RegisterUseCase>(
       () => _i97.RegisterUseCase(gh<_i787.AuthRepository>()),
     );
-    gh.factory<_i811.AddEmployeeUseCase>(
-      () => _i811.AddEmployeeUseCase(gh<_i24.EmployeesRepository>()),
-    );
-    gh.factory<_i229.GetEmployeesUseCase>(
-      () => _i229.GetEmployeesUseCase(gh<_i24.EmployeesRepository>()),
+    gh.factory<_i488.AddEmployeeViewModel>(
+      () => _i488.AddEmployeeViewModel(gh<_i811.AddEmployeeUseCase>()),
     );
     gh.factory<_i781.RegisterViewModel>(
       () => _i781.RegisterViewModel(gh<_i97.RegisterUseCase>()),
@@ -103,12 +116,6 @@ extension GetItInjectableX on _i174.GetIt {
         initialEmail: initialEmail,
         initialPassword: initialPassword,
       ),
-    );
-    gh.factory<_i477.EmployeesViewModel>(
-      () => _i477.EmployeesViewModel(gh<_i229.GetEmployeesUseCase>()),
-    );
-    gh.factory<_i488.AddEmployeeViewModel>(
-      () => _i488.AddEmployeeViewModel(gh<_i811.AddEmployeeUseCase>()),
     );
     return this;
   }

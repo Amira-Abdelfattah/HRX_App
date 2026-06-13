@@ -17,7 +17,7 @@ class FieldLabel extends StatelessWidget {
         style: AppStyles.semi16White.copyWith(
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
-          color: Colors.white.withOpacity(0.9),
+          color: Colors.white.withValues(alpha: 0.9),
         ),
       ),
     );
