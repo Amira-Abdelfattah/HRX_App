@@ -34,7 +34,7 @@ class RegisterForm extends StatelessWidget {
                   color: Colors.white,
                 ),
                 hintStyle: AppStyles.regular14Grey().copyWith(
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha: 0.3),
                 ),
               ),
               SizedBox(height: 10.h),
@@ -55,7 +55,7 @@ class RegisterForm extends StatelessWidget {
                             color: Colors.white,
                           ),
                           hintStyle: AppStyles.regular14Grey().copyWith(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),
                       ],
@@ -130,7 +130,7 @@ class RegisterForm extends StatelessWidget {
                   color: Colors.white,
                 ),
                 hintStyle: AppStyles.regular14Grey().copyWith(
-                  color: Colors.white.withOpacity(0.3),
+                  color: Colors.white.withValues(alpha: 0.3),
                 ),
               ),
               SizedBox(height: 10.h),
@@ -162,7 +162,7 @@ class RegisterForm extends StatelessWidget {
                             color: Colors.white,
                           ),
                           hintStyle: AppStyles.regular14Grey().copyWith(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),
                       ],
@@ -200,7 +200,7 @@ class RegisterForm extends StatelessWidget {
                             color: Colors.white,
                           ),
                           hintStyle: AppStyles.regular14Grey().copyWith(
-                            color: Colors.white.withOpacity(0.3),
+                            color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),
                       ],

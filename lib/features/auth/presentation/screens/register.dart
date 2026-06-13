@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/cache/shared_prefrence_utils.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -32,7 +33,18 @@ class RegisterScreen extends StatelessWidget {
             DialogUtils.hideLoading(context);
             DialogUtils.showMessage(context: context, message: state.message);
           } else if (state is RegisterSuccessState) {
+            DialogUtils.hideLoading(context);
             var vm = RegisterViewModel.get(context);
+
+            try {
+              SharedPreferenceUtils.saveData(
+                key: 'company_name',
+                value: vm.companyController.text,
+              );
+            } catch (e) {
+              debugPrint('Error saving company name: $e');
+            }
+
             final userData = {
               'name': vm.nameController.text,
               'email': vm.emailController.text,
@@ -40,11 +52,11 @@ class RegisterScreen extends StatelessWidget {
               'company': vm.companyController.text,
               'role': vm.selectedRole,
             };
-            DialogUtils.hideLoading(context);
+
             DialogUtils.showMessage(
               context: context,
-              message: 'Registered successfully',
-              posActionName: 'Ok',
+              message: 'Account initialized. Please proceed to payment to activate your workspace.',
+              posActionName: 'Proceed to Payment',
               posAction: () {
                 Future.delayed(const Duration(milliseconds: 120), () {
                   navigatorKey.currentState?.pushReplacement(

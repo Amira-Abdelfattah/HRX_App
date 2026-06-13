@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/cache/shared_prefrence_utils.dart';
 import '../../../../core/errors/failures.dart';
 import '../../domain/usecases/login_use_case.dart';
 import 'login_states.dart';
@@ -64,6 +65,18 @@ class LoginViewModel extends Cubit<LoginStates> {
         emit(LoginErrorState(message));
       },
       (entity) {
+        if (entity.name != null) {
+          SharedPreferenceUtils.saveData(key: 'user_name', value: entity.name!);
+        }
+        if (entity.role != null) {
+          SharedPreferenceUtils.saveData(key: 'user_role', value: entity.role!);
+        }
+        if (entity.companyName != null) {
+          SharedPreferenceUtils.saveData(
+            key: 'company_name',
+            value: entity.companyName!,
+          );
+        }
         emit(LoginSuccessState(entity));
       },
     );
