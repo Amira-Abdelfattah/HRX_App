@@ -50,7 +50,7 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
             decoration: BoxDecoration(
               color: isDark
                   ? AppColors.darkSurfaceLightColor
-                  : AppColors.surfaceColor.withOpacity(0.5),
+                  : AppColors.surfaceColor.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(12.r),
               border: Border.all(
                 color: isDark

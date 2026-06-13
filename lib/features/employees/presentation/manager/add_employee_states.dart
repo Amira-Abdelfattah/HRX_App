@@ -6,6 +6,8 @@ class AddEmployeeInitialState extends AddEmployeeStates {}
 
 class AddEmployeeLoadingState extends AddEmployeeStates {}
 
+class AddEmployeeUpdateState extends AddEmployeeStates {}
+
 class AddEmployeeSuccessState extends AddEmployeeStates {
   final AddEmployeeResponseEntity employee;
 

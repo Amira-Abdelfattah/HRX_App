@@ -47,7 +47,7 @@ class EmployeeCard extends StatelessWidget {
               ? []
               : [
             BoxShadow(
-              color: AppColors.primaryColor.withOpacity(0.05),
+              color: AppColors.primaryColor.withValues(alpha: 0.05),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -67,8 +67,8 @@ class EmployeeCard extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            statusColor.withOpacity(0.2),
-                            statusColor.withOpacity(0.05),
+                            statusColor.withValues(alpha: 0.2),
+                            statusColor.withValues(alpha: 0.05),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -107,7 +107,7 @@ class EmployeeCard extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: 10.w, vertical: 5.h),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.1),
+                    color: statusColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20.r),
                   ),
                   child: Text(
