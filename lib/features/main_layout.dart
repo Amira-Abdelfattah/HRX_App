@@ -17,37 +17,52 @@ import '../core/providers/navigation_provider.dart';
 import '../core/providers/theme_provider.dart';
 import '../core/utils/app_colors.dart';
 import 'analytics/analytics_screen.dart';
-import 'attendance/attendance_screen.dart';
+import 'attendance/presentation/attendance_screen.dart';
 import 'dashboard/dashboard.dart';
 import 'employees/employees.dart';
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  final String? userName;
+  final String? userRole;
+
+  const MainLayout({super.key, this.userName, this.userRole});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  String _getUserInitials() {
-    final name =
-        SharedPreferenceUtils.getData(key: 'user_name') as String? ?? '';
-    if (name.isEmpty) return 'JD';
+  late String currentUserName;
+  late String currentUserRole;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  void _loadUserData() {
+    currentUserName =
+        widget.userName ??
+        SharedPreferenceUtils.getData(key: 'user_name') as String? ??
+        'User';
+    currentUserRole =
+        widget.userRole ??
+        SharedPreferenceUtils.getData(key: 'user_role') as String? ??
+        'HR Manager';
+  }
+
+  String _getUserInitials(String? name) {
+    if (name == null || name.isEmpty || name == 'User Name') return 'JD';
 
     final parts = name.trim().split(' ');
-    if (parts.length >= 2) {
+    if (parts.length >= 2 && parts[0].isNotEmpty && parts[1].isNotEmpty) {
       return (parts[0][0] + parts[1][0]).toUpperCase();
     }
     return name.substring(0, name.length >= 2 ? 2 : 1).toUpperCase();
   }
 
-  void _showUserMenu(BuildContext context) {
-    final userName =
-        SharedPreferenceUtils.getData(key: 'user_name') as String? ??
-        'User Name';
-    final userRole =
-        SharedPreferenceUtils.getData(key: 'user_role') as String? ??
-        'HR Manager';
+  void _showUserMenu(BuildContext context, String userName, String userRole) {
     final navProvider = Provider.of<NavigationProvider>(context, listen: false);
 
     showDialog(
@@ -184,6 +199,11 @@ class _MainLayoutState extends State<MainLayout> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final navProvider = Provider.of<NavigationProvider>(context);
 
+    // Refresh data to ensure it's always current
+    _loadUserData();
+
+    debugPrint('MainLayout Building with: $currentUserName');
+
     return Scaffold(
       drawer: CustomDrawer(
         selectedIndex: navProvider.currentIndex,
@@ -191,6 +211,8 @@ class _MainLayoutState extends State<MainLayout> {
           navProvider.setIndex(index);
           Navigator.pop(context);
         },
+        userName: currentUserName,
+        userRole: currentUserRole,
       ),
       appBar: AppBar(
         toolbarHeight: 80.h,
@@ -212,12 +234,13 @@ class _MainLayoutState extends State<MainLayout> {
             onPressed: () {},
           ),
           GestureDetector(
-            onTap: () => _showUserMenu(context),
+            onTap: () =>
+                _showUserMenu(context, currentUserName, currentUserRole),
             child: CircleAvatar(
               radius: 18,
               backgroundColor: AppColors.accentColor,
               child: Text(
-                _getUserInitials(),
+                _getUserInitials(currentUserName),
                 style: const TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),

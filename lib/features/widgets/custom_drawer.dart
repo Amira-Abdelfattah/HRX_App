@@ -9,11 +9,15 @@ import 'hrx_logo.dart';
 class CustomDrawer extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemSelected;
+  final String userName;
+  final String userRole;
 
   const CustomDrawer({
     super.key,
     required this.selectedIndex,
     required this.onItemSelected,
+    required this.userName,
+    required this.userRole,
   });
 
   @override
@@ -92,7 +96,10 @@ class CustomDrawer extends StatelessWidget {
               ],
             ),
           ),
-          const DrawerUserSection(),
+          DrawerUserSection(
+            userName: userName,
+            userRole: userRole,
+          ),
         ],
       ),
     );
