@@ -57,26 +57,59 @@ class LoginViewModel extends Cubit<LoginStates> {
       password: passwordController.text.trim(),
     );
 
-    result.fold(
-      (failure) {
+    await result.fold(
+          (failure) async {
         final message = failure is ServerError
             ? failure.errorMessage
             : 'Login failed. Please try again.';
         emit(LoginErrorState(message));
       },
-      (entity) {
-        if (entity.name != null) {
-          SharedPreferenceUtils.saveData(key: 'user_name', value: entity.name!);
+          (entity) async {
+        debugPrint(
+            'Login Success API Response: Name=${entity.name}, Role=${entity
+                .role}');
+
+        if (entity.userId != null) {
+          await SharedPreferenceUtils.saveData(
+              key: 'user_id', value: entity.userId!);
         }
-        if (entity.role != null) {
-          SharedPreferenceUtils.saveData(key: 'user_role', value: entity.role!);
+
+        // 1. Determine Display Name (Handle Odoo "false" strings and nulls)
+        String displayName = '';
+        if (entity.name != null && entity.name != "false" && entity.name!
+            .toString()
+            .trim()
+            .isNotEmpty) {
+          displayName = entity.name!;
+        } else if (emailController.text.isNotEmpty) {
+          displayName = emailController.text.split('@')[0];
+        } else {
+          displayName = "User";
         }
-        if (entity.companyName != null) {
-          SharedPreferenceUtils.saveData(
-            key: 'company_name',
-            value: entity.companyName!,
-          );
+
+        // 2. Determine Role
+        String displayRole = "Employee";
+        if (entity.role != null && entity.role != "false" && entity.role!
+            .toString()
+            .trim()
+            .isNotEmpty) {
+          displayRole = entity.role!;
         }
+
+        // 3. Force Wait for saving
+        await SharedPreferenceUtils.saveData(
+            key: 'user_name', value: displayName);
+        await SharedPreferenceUtils.saveData(
+            key: 'user_role', value: displayRole);
+
+        if (entity.companyName != null && entity.companyName != "false") {
+          await SharedPreferenceUtils.saveData(
+              key: 'company_name', value: entity.companyName!);
+        }
+
+        debugPrint('LocalStorage Verified: Saved Name -> ${SharedPreferenceUtils
+            .getData(key: 'user_name')}');
+
         emit(LoginSuccessState(entity));
       },
     );
