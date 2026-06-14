@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_styles.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
 import 'leave_request_card.dart';
 
 class LeaveRequestsView extends StatelessWidget {
@@ -51,8 +52,9 @@ class LeaveRequestsView extends StatelessWidget {
     ];
 
     return ListView.separated(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.only(bottom: 20.h),
-      physics: const BouncingScrollPhysics(),
       itemCount: leaveRequests.length + 1,
       separatorBuilder: (context, index) => SizedBox(height: 16.h),
       itemBuilder: (context, index) {
