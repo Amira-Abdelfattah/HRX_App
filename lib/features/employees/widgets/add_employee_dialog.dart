@@ -241,6 +241,34 @@ class AddEmployeeDialog extends StatelessWidget {
                                 ),
                               ],
                             ),
+
+                            if (state is AddEmployeeErrorState) ...[
+                              SizedBox(height: 16.h),
+                              Container(
+                                padding: EdgeInsets.all(10.w),
+                                decoration: BoxDecoration(
+                                  color: Colors.red.shade50,
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  border: Border.all(
+                                      color: Colors.red.shade200),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.error_outline, color: Colors.red,
+                                        size: 16.sp),
+                                    SizedBox(width: 8.w),
+                                    Expanded(
+                                      child: Text(
+                                        state.message,
+                                        style: TextStyle(
+                                            color: Colors.red, fontSize: 12.sp),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+
                             SizedBox(height: 32.h),
 
                             Row(

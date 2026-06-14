@@ -39,16 +39,35 @@ class EmployeesRemoteDataSourceImpl implements EmployeesRemoteDataSource {
       },
     );
 
-    if (response.data['error'] != null) {
-      throw Exception(
-          response.data['error']['message'] ?? "Odoo Backend Error");
+    final data = response.data;
+
+    // Handle case where Odoo returns a direct List instead of JSON-RPC Map
+    if (data is List) {
+      return data.map((item) {
+        if (item is Map<String, dynamic>) {
+          return AddEmployeeResponseModel.fromJson(item);
+        }
+        return AddEmployeeResponseModel();
+      }).toList();
     }
-    final result = response.data['result'];
-    if (result != null && result is List) {
-      return result
-          .map((item) => AddEmployeeResponseModel.fromJson(item))
-          .toList();
+
+    // Standard JSON-RPC handling
+    if (data is Map<String, dynamic>) {
+      if (data['error'] != null) {
+        throw Exception(
+            data['error']['message'] ?? "Odoo Backend Error");
+      }
+      final result = data['result'];
+      if (result != null && result is List) {
+        return result.map((item) {
+          if (item is Map<String, dynamic>) {
+            return AddEmployeeResponseModel.fromJson(item);
+          }
+          return AddEmployeeResponseModel();
+        }).toList();
+      }
     }
+
     return [];
   }
 
@@ -91,12 +110,13 @@ class EmployeesRemoteDataSourceImpl implements EmployeesRemoteDataSource {
       },
     );
 
-    if (response.data['error'] != null) {
+    final data = response.data;
+    if (data is Map<String, dynamic> && data['error'] != null) {
       throw Exception(
-          response.data['error']['message'] ?? "Failed to add employee");
+          data['error']['message'] ?? "Failed to add employee");
     }
 
-    final result = response.data['result'];
+    final result = data is Map<String, dynamic> ? data['result'] : data;
     if (result == null || result == false ||
         (result is Map && result['status'] == 'error')) {
       throw Exception(result is Map
