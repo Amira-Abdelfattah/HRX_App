@@ -12,6 +12,14 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/attendance/data/datasources/attendance_remote_data_source.dart'
+    as _i680;
+import '../../features/attendance/data/repositories/attendance_repository_impl.dart'
+    as _i719;
+import '../../features/attendance/domain/repositories/attendance_repository.dart'
+    as _i477;
+import '../../features/attendance/presentation/manager/attendance_cubit.dart'
+    as _i86;
 import '../../features/auth/data/datasources/auth_remote_data_source.dart'
     as _i107;
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
@@ -68,13 +76,27 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i811.PaymentRemoteDataSource>(
       () => _i811.PaymentRemoteDataSourceImpl(gh<_i1047.ApiManager>()),
     );
+    gh.factory<_i680.AttendanceRemoteDataSource>(
+      () => _i680.AttendanceRemoteDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
     gh.factory<_i345.EmployeesRemoteDataSource>(
       () => _i345.EmployeesRemoteDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
+    gh.factory<_i477.AttendanceRepository>(
+      () => _i719.AttendanceRepositoryImpl(
+        gh<_i680.AttendanceRemoteDataSource>(),
+      ),
     );
     gh.factory<_i24.EmployeesRepository>(
       () => _i599.EmployeesRepositoryImpl(
         gh<_i345.EmployeesRemoteDataSource>(),
         gh<_i813.EmployeesLocalDataSource>(),
+      ),
+    );
+    gh.factory<_i86.AttendanceCubit>(
+      () => _i86.AttendanceCubit(
+        gh<_i477.AttendanceRepository>(),
+        gh<_i24.EmployeesRepository>(),
       ),
     );
     gh.lazySingleton<_i639.PaymentRepository>(
