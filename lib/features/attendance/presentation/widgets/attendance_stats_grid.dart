@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../widgets/summary_card.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../../../widgets/summary_card.dart';
 
 class AttendanceStatsGrid extends StatelessWidget {
   const AttendanceStatsGrid({super.key});
