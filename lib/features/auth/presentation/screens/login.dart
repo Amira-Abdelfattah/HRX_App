@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/cache/shared_prefrence_utils.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -45,9 +46,24 @@ class LoginScreen extends StatelessWidget {
             );
           } else if (state is LoginSuccessState) {
             DialogUtils.hideLoading(context);
+            final vm = LoginViewModel.get(context);
+
+            // Extract the name we just saved (or the fallback)
+            final String savedName = SharedPreferenceUtils.getData(
+                key: 'user_name') as String? ?? state.response.name ?? 'User';
+            final String savedRole = SharedPreferenceUtils.getData(
+                key: 'user_role') as String? ?? state.response.role ??
+                'Employee';
+
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const MainLayout()),
+              MaterialPageRoute(
+                builder: (context) =>
+                    MainLayout(
+                      userName: savedName,
+                      userRole: savedRole,
+                    ),
+              ),
             );
           }
         },

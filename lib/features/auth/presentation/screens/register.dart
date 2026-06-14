@@ -36,21 +36,24 @@ class RegisterScreen extends StatelessWidget {
             DialogUtils.hideLoading(context);
             var vm = RegisterViewModel.get(context);
 
-            try {
+            final userName = vm.nameController.text;
+            final userRole = vm.selectedRole;
+            final companyName = vm.companyController.text;
+
+            // Save data to SharedPreferences and wait for it
+            Future.wait([
+              SharedPreferenceUtils.saveData(key: 'user_name', value: userName),
+              SharedPreferenceUtils.saveData(key: 'user_role', value: userRole),
               SharedPreferenceUtils.saveData(
                 key: 'company_name',
-                value: vm.companyController.text,
-              );
-            } catch (e) {
-              debugPrint('Error saving company name: $e');
-            }
-
-            final userData = {
-              'name': vm.nameController.text,
+                value: companyName,
+              ),
+            ])final userData = {
+              'name': userName,
               'email': vm.emailController.text,
               'password': vm.passwordController.text,
-              'company': vm.companyController.text,
-              'role': vm.selectedRole,
+              'company': companyName,
+              'role': userRole,
             };
 
             DialogUtils.showMessage(
