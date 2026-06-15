@@ -48,7 +48,8 @@ class RegisterScreen extends StatelessWidget {
                 key: 'company_name',
                 value: companyName,
               ),
-            ])final userData = {
+            ]);
+            final userData = {
               'name': userName,
               'email': vm.emailController.text,
               'password': vm.passwordController.text,
