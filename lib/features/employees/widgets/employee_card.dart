@@ -36,50 +36,57 @@ class EmployeeCard extends StatelessWidget {
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkSurfaceColor : AppColors.whiteColor,
-          borderRadius: BorderRadius.circular(24.r),
+          borderRadius: BorderRadius.circular(AppColors.radiusXl.r),
           border: Border.all(
             color: isDark
                 ? AppColors.darkBorderColor
-                : AppColors.borderLightColor,
-            width: 1,
+                : AppColors.borderColor.withOpacity(0.5),
+            width: 1.5,
           ),
-          boxShadow: isDark
-              ? []
-              : [
-            BoxShadow(
-              color: AppColors.primaryColor.withOpacity(0.05),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
-          ],
+          boxShadow: isDark ? [] : AppColors.shadowMd,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
                     Container(
-                      width: 48.w,
-                      height: 48.w,
+                      width: 52.w,
+                      height: 52.w,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [
-                            statusColor.withOpacity(0.2),
-                            statusColor.withOpacity(0.05),
-                          ],
+                          colors: isDark
+                              ? [
+                                  AppColors.accentColor.withOpacity(0.2),
+                                  AppColors.accentColor.withOpacity(0.05),
+                                ]
+                              : [
+                                  AppColors.primaryColor.withOpacity(0.1),
+                                  AppColors.primaryColor.withOpacity(0.02),
+                                ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         shape: BoxShape.circle,
+                        border: Border.all(
+                          color: isDark
+                              ? AppColors.accentColor.withOpacity(0.2)
+                              : AppColors.primaryColor.withOpacity(0.1),
+                          width: 1,
+                        ),
                       ),
                       child: Center(
                         child: Text(
                           initials,
-                          style: AppStyles.semi16PrimaryMenu(
-                              color: statusColor),
+                          style: AppStyles.semi18PrimaryDark(
+                            color: isDark
+                                ? AppColors.accentColor
+                                : AppColors.primaryColor,
+                          ),
                         ),
                       ),
                     ),
@@ -87,8 +94,8 @@ class EmployeeCard extends StatelessWidget {
                       right: 2,
                       bottom: 2,
                       child: Container(
-                        width: 12.w,
-                        height: 12.w,
+                        width: 14.w,
+                        height: 14.w,
                         decoration: BoxDecoration(
                           color: AppColors.successColor,
                           shape: BoxShape.circle,
@@ -96,7 +103,7 @@ class EmployeeCard extends StatelessWidget {
                             color: isDark
                                 ? AppColors.darkSurfaceColor
                                 : AppColors.whiteColor,
-                            width: 2,
+                            width: 2.5,
                           ),
                         ),
                       ),
@@ -104,20 +111,20 @@ class EmployeeCard extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 10.w, vertical: 5.h),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                   decoration: BoxDecoration(
                     color: statusColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(20.r),
+                    borderRadius: BorderRadius.circular(AppColors.radiusSm.r),
+                    border: Border.all(
+                      color: statusColor.withOpacity(0.2),
+                      width: 1,
+                    ),
                   ),
                   child: Text(
                     status.toUpperCase(),
-                    style: TextStyle(
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w900,
+                    style: AppStyles.bold10Grey(
                       color: statusColor,
-                      letterSpacing: 0.5,
-                    ),
+                    ).copyWith(letterSpacing: 0.5),
                   ),
                 ),
               ],
@@ -127,69 +134,96 @@ class EmployeeCard extends StatelessWidget {
               name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: AppStyles.bold20PrimaryDark(
-                color: isDark ? Colors.white : AppColors.primaryColor,
-              ).copyWith(fontSize: 18.sp),
+              style: AppStyles.semi18PrimaryDark(
+                color: isDark ? AppColors.whiteColor : AppColors.primaryColor,
+              ),
             ),
-            SizedBox(height: 2.h),
+            SizedBox(height: 4.h),
             Text(
               role,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppStyles.medium12Grey().copyWith(
-                color: isDark ? AppColors.darkTextMuted : AppColors
-                    .textMutedColor,
+                color: isDark
+                    ? AppColors.darkTextBody
+                    : AppColors.textMutedColor,
               ),
             ),
-            Text(
-              department,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: AppStyles.regular12Grey().copyWith(fontSize: 11.sp),
+            SizedBox(height: 2.h),
+            Row(
+              children: [
+                Icon(
+                  Icons.business_center_outlined,
+                  size: 12.sp,
+                  color: AppColors.textSubtleColor,
+                ),
+                SizedBox(width: 4.w),
+                Expanded(
+                  child: Text(
+                    department,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppStyles.regular11Grey(),
+                  ),
+                ),
+              ],
             ),
             const Spacer(),
             Divider(
-              color: isDark ? AppColors.darkBorderColor : AppColors
-                  .borderLightColor,
+              color: isDark
+                  ? AppColors.darkBorderColor
+                  : AppColors.borderColor.withOpacity(0.5),
               height: 24.h,
+              thickness: 1,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'PERFORMANCE',
-                      style: AppStyles.regular10Grey().copyWith(
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1.0,
-                      ),
-                    ),
-                    Text(
-                      '$performance%',
-                      style: AppStyles.semi14PrimaryDark(
-                        color: isDark ? Colors.white : AppColors.primaryColor,
-                      ).copyWith(fontSize: 12.sp),
-                    ),
-                  ],
+                Text(
+                  'PERFORMANCE',
+                  style: AppStyles.bold10Grey().copyWith(letterSpacing: 0.5),
+                )),
+                Text(
+                  '$performance%',
+                  style: AppStyles.semi12PrimaryDark(
+                    color: isDark ? AppColors.accentColor : AppColors
+                        .primaryColor,
+                  ),
                 ),
-                SizedBox(height: 8.h),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10.r),
-                  child: LinearProgressIndicator(
-                    value: performance / 100,
-                    backgroundColor: isDark
+              ],
+            ),
+            SizedBox(height: 8.h),
+            Stack(
+              children: [
+                Container(
+                  height: 6.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: isDark
                         ? AppColors.darkBorderColor
-                        : AppColors.backgroundColor,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      performance > 80
-                          ? AppColors.successColor
-                          : performance > 50
-                          ? AppColors.warningColor
-                          : AppColors.dangerColor,
+                        : AppColors.surfaceLightColor,
+                    borderRadius: BorderRadius.circular(3.r),
+                  ),
+                ),
+                Container(
+                  height: 6.h,
+                  width: (performance / 100) * 150.w, // Approximate width
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        _getPerformanceColor(performance),
+                        _getPerformanceColor(performance).withOpacity(0.6),
+                      ],
                     ),
-                    minHeight: 6.h,
+                    borderRadius: BorderRadius.circular(3.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: _getPerformanceColor(performance).withOpacity(
+                            0.3),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -198,5 +232,11 @@ class EmployeeCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color _getPerformanceColor(int performance) {
+    if (performance >= 80) return AppColors.successColor;
+    if (performance >= 50) return AppColors.warningColor;
+    return AppColors.dangerColor;
   }
 }

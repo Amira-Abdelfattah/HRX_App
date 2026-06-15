@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'app_colors.dart';
 import 'navigator_key.dart';
 
@@ -390,9 +391,21 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
+  static TextStyle semi12PrimaryDark({Color? color}) => GoogleFonts.poppins(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
+    color: color ?? _adaptivePrimaryDark,
+  );
+
   static TextStyle regular10Grey({Color? color}) => GoogleFonts.poppins(
     fontSize: 10.sp,
     fontWeight: FontWeight.w400,
+    color: color ?? AppColors.textMutedColor,
+  );
+
+  static TextStyle bold10Grey({Color? color}) => GoogleFonts.poppins(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w700,
     color: color ?? AppColors.textMutedColor,
   );
 

@@ -32,6 +32,7 @@ class RegisterScreen extends StatelessWidget {
             DialogUtils.hideLoading(context);
             DialogUtils.showMessage(context: context, message: state.message);
           } else if (state is RegisterSuccessState) {
+            DialogUtils.hideLoading(context);
             var vm = RegisterViewModel.get(context);
             final userData = {
               'name': vm.nameController.text,
