@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_styles.dart';
-import '../../widgets/status_badge.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../widgets/status_badge.dart';
 
 class AttendanceLogTable extends StatelessWidget {
   final List<Map<String, dynamic>> data;
@@ -51,7 +51,8 @@ class AttendanceLogTable extends StatelessWidget {
                                 height: 1,
                                 color: isDark
                                     ? AppColors.darkBorderColor
-                                    : AppColors.borderColor.withOpacity(0.5),
+                                    : AppColors.borderColor.withValues(
+                                    alpha: 0.5),
                               ),
                           ],
                         );
@@ -70,7 +71,7 @@ class AttendanceLogTable extends StatelessWidget {
   Widget _buildHeader(bool isDark) {
     return Container(
       color: isDark ? AppColors.darkBackgroundColor : AppColors.backgroundColor
-          .withOpacity(0.5),
+          .withValues(alpha: 0.5),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       child: Row(
         children: [

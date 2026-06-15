@@ -10,6 +10,7 @@ abstract class EmployeesRepository {
     required String password,
     required String role,
     required String jobId,
+    required String companyName,
   });
 
   Future<Either<Failures, List<AddEmployeeResponseEntity>>> getEmployees();

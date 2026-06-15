@@ -17,6 +17,7 @@ class AddEmployeeUseCase {
     required String password,
     required String role,
     required String jobId,
+    required String companyName,
   }) {
     return repository.addEmployee(
       name: name,
@@ -24,6 +25,7 @@ class AddEmployeeUseCase {
       password: password,
       role: role,
       jobId: jobId,
+      companyName: companyName,
     );
   }
 }

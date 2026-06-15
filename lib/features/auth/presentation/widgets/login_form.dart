@@ -28,13 +28,13 @@ class LoginForm extends StatelessWidget {
             controller: vm.emailController,
             validator: AppValidator.validateEmail,
             hintText: 'admin@gmail.com',
-            filledColor: Colors.white.withOpacity(0.1),
+            filledColor: Colors.white.withValues(alpha: 0.1),
             borderColor: Colors.transparent,
             style: AppStyles.medium14Category().copyWith(
               color: AppColors.accentColor,
             ),
             hintStyle: AppStyles.regular14Grey().copyWith(
-              color: AppColors.accentColor.withOpacity(0.4),
+              color: AppColors.accentColor.withValues(alpha: 0.4),
             ),
           ),
           SizedBox(height: 20.h),
@@ -44,7 +44,7 @@ class LoginForm extends StatelessWidget {
             validator: AppValidator.validatePassword,
             hintText: '******',
             obSecureText: !vm.isPasswordVisible,
-            filledColor: Colors.white.withOpacity(0.1),
+            filledColor: Colors.white.withValues(alpha: 0.1),
             borderColor: Colors.transparent,
             suffixIcon: IconButton(
               icon: Icon(
@@ -60,7 +60,7 @@ class LoginForm extends StatelessWidget {
               color: AppColors.accentColor,
             ),
             hintStyle: AppStyles.regular14Grey().copyWith(
-              color: AppColors.accentColor.withOpacity(0.4),
+              color: AppColors.accentColor.withValues(alpha: 0.4),
             ),
           ),
           SizedBox(height: 10.h),

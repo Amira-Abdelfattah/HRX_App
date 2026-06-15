@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/cache/shared_prefrence_utils.dart';
 import '../../../../core/di/service_locator.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -34,18 +35,31 @@ class RegisterScreen extends StatelessWidget {
           } else if (state is RegisterSuccessState) {
             DialogUtils.hideLoading(context);
             var vm = RegisterViewModel.get(context);
-            final userData = {
-              'name': vm.nameController.text,
+
+            final userName = vm.nameController.text;
+            final userRole = vm.selectedRole;
+            final companyName = vm.companyController.text;
+
+            // Save data to SharedPreferences and wait for it
+            Future.wait([
+              SharedPreferenceUtils.saveData(key: 'user_name', value: userName),
+              SharedPreferenceUtils.saveData(key: 'user_role', value: userRole),
+              SharedPreferenceUtils.saveData(
+                key: 'company_name',
+                value: companyName,
+              ),
+            ])final userData = {
+              'name': userName,
               'email': vm.emailController.text,
               'password': vm.passwordController.text,
-              'company': vm.companyController.text,
-              'role': vm.selectedRole,
+              'company': companyName,
+              'role': userRole,
             };
-            DialogUtils.hideLoading(context);
+
             DialogUtils.showMessage(
               context: context,
-              message: 'Registered successfully',
-              posActionName: 'Ok',
+              message: 'Account initialized. Please proceed to payment to activate your workspace.',
+              posActionName: 'Proceed to Payment',
               posAction: () {
                 Future.delayed(const Duration(milliseconds: 120), () {
                   navigatorKey.currentState?.pushReplacement(

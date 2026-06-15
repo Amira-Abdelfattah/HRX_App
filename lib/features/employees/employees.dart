@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hrx_app/features/employees/presentation/manager/employees_states.dart';
+import 'package:hrx_app/features/employees/presentation/manager/employees_view_model.dart';
 
 import '../../core/di/service_locator.dart';
 import '../../core/utils/app_colors.dart';
@@ -21,43 +23,28 @@ class EmployeesScreen extends StatefulWidget {
 }
 
 class _EmployeesScreenState extends State<EmployeesScreen> {
-  final List<AddEmployeeResponseEntity> dummyEmployees = [
-    AddEmployeeResponseEntity(
-      name: 'Amira Ahmed',
-      role: 'Senior Flutter Developer',
-      email: 'amira@example.com',
-      jobId: [1, 'Mobile Development'],
-    ),
-    AddEmployeeResponseEntity(
-      name: 'Ahmed Mohamed',
-      role: 'UI/UX Designer',
-      email: 'ahmed@example.com',
-      jobId: [2, 'Design Team'],
-    ),
-    AddEmployeeResponseEntity(
-      name: 'Sara Youssef',
-      role: 'Backend Developer',
-      email: 'sara@example.com',
-      jobId: [3, 'Engineering'],
-    ),
-    AddEmployeeResponseEntity(
-      name: 'Omar Khalid',
-      role: 'Project Manager',
-      email: 'omar@example.com',
-      jobId: [4, 'Management'],
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AddEmployeeViewModel>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) =>
+        getIt<EmployeesViewModel>()
+          ..getEmployees()),
+        BlocProvider(create: (context) => getIt<AddEmployeeViewModel>()),
+      ],
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Builder(
-          builder: (context) {
-            return _buildBody(context, dummyEmployees);
-          }
+        body: BlocBuilder<EmployeesViewModel, EmployeesStates>(
+          builder: (context, state) {
+            if (state is EmployeesLoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is EmployeesErrorState) {
+              return Center(child: Text(state.errorMessage));
+            } else if (state is EmployeesSuccessState) {
+              return _buildBody(context, state.employees);
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
     );
@@ -75,20 +62,25 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
             subtitle: 'Manage your team members',
             actionLabel: 'Add Employee',
             onActionPressed: () async {
-              final newEmployee = await showDialog<AddEmployeeResponseEntity>(
+              final addViewModel = BlocProvider.of<AddEmployeeViewModel>(
+                  context);
+              final employeesViewModel = BlocProvider.of<EmployeesViewModel>(
+                  context);
+              addViewModel.resetState();
+
+              final result = await showDialog(
                 context: context,
-                barrierColor: Colors.black.withValues(alpha: 0.2),
+                barrierColor: Colors.black.withOpacity(0.5),
                 builder: (dialogContext) =>
                     BlocProvider.value(
-                      value: BlocProvider.of<AddEmployeeViewModel>(context),
+                      value: addViewModel,
                       child: const AddEmployeeDialog(),
                     ),
               );
 
-              if (newEmployee != null) {
-                setState(() {
-                  dummyEmployees.insert(0, newEmployee);
-                });
+              // Refresh list after dialog closes if addition was successful
+              if (result != null) {
+                employeesViewModel.getEmployees();
               }
             },
           ),
@@ -97,7 +89,12 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
           SizedBox(height: 24.h),
           const EmployeesSearchFilter(),
           SizedBox(height: 24.h),
-          GridView.builder(
+          employees.isEmpty
+              ? Padding(
+            padding: EdgeInsets.only(top: 50.h),
+            child: const Text("No employees found"),
+          )
+              : GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -111,10 +108,17 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
               final emp = employees[index];
 
               String displayJob = 'General';
-              if (emp.jobId is List && (emp.jobId as List).length > 1) {
-                displayJob = (emp.jobId as List)[1].toString();
-              } else if (emp.jobId is String) {
-                displayJob = emp.jobId as String;
+              try {
+                if (emp.jobId is List && (emp.jobId as List).isNotEmpty) {
+                  // Odoo returns [id, "name"]
+                  displayJob = (emp.jobId as List).length > 1
+                      ? (emp.jobId as List)[1].toString()
+                      : (emp.jobId as List)[0].toString();
+                } else if (emp.jobId != null && emp.jobId != false) {
+                  displayJob = emp.jobId.toString();
+                }
+              } catch (e) {
+                displayJob = 'Employee';
               }
 
               String name = emp.name ?? 'Unknown';
@@ -155,8 +159,8 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
                     ),
                   );
                 },
-              );
-            },
+                  );
+                },
           ),
         ],
       ),

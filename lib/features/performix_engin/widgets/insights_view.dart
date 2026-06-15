@@ -68,9 +68,9 @@ class InsightsView extends StatelessWidget {
         SizedBox(height: 24.h),
         Text(
           'Department Performance',
-          style: AppStyles.semi18PrimaryDark(
+          style: AppStyles.bold20PrimaryDark(
             color: isDark ? Colors.white : AppColors.primaryColor,
-          ),
+          ).copyWith(fontSize: 18.sp),
         ),
         SizedBox(height: 16.h),
 
@@ -160,7 +160,7 @@ class InsightsView extends StatelessWidget {
                   sub,
                   style: TextStyle(
                     fontSize: 9.sp,
-                    color: textColor.withOpacity(0.8),
+                    color: textColor.withValues(alpha: 0.8),
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -256,9 +256,9 @@ class InsightsView extends StatelessWidget {
               SizedBox(width: 8.w),
               Text(
                 'Performance Alerts',
-                style: AppStyles.semi18PrimaryDark(
+                style: AppStyles.bold20PrimaryDark(
                   color: isDark ? Colors.white : AppColors.primaryColor,
-                ),
+                ).copyWith(fontSize: 18.sp),
               ),
             ],
           ),
@@ -300,7 +300,7 @@ class InsightsView extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 12.h),
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.03),
+        color: color.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(12.r),
         border: Border(left: BorderSide(color: color, width: 4)),
       ),

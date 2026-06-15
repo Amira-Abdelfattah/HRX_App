@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_styles.dart';
-import '../../widgets/status_badge.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../widgets/status_badge.dart';
 
 class LeaveRequestCard extends StatelessWidget {
   final Map<String, dynamic> request;

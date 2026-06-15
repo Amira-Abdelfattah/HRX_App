@@ -19,7 +19,7 @@ class BillingToggle extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(4.w),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
@@ -31,7 +31,7 @@ class BillingToggle extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 12.h),
                 decoration: BoxDecoration(
                   color: !isAnnual
-                      ? AppColors.primaryLightColor.withOpacity(0.3)
+                      ? AppColors.primaryLightColor.withValues(alpha: 0.3)
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(8.r),
                 ),
@@ -72,7 +72,7 @@ class BillingToggle extends StatelessWidget {
                           vertical: 2.h,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.2),
+                          color: Colors.black.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(4.r),
                         ),
                         child: Text(

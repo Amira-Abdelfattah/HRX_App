@@ -61,18 +61,24 @@ class PaymentViewModel extends Cubit<PaymentStates> {
     if (formKey.currentState!.validate()) {
       emit(PaymentLoadingState());
 
-      final result = await addOdooUserUseCase.call(
-        name: name,
-        email: email,
-        password: password,
-        role: role,
-        companyName: companyName,
-      );
+      try {
+        final result = await addOdooUserUseCase.call(
+          name: name,
+          email: email,
+          password: password,
+          role: role,
+          companyName: companyName,
+        );
 
-      result.fold(
-        (failure) => emit(PaymentErrorState(failure.errorMessage)),
-        (entity) => emit(PaymentSuccessState()),
-      );
+        result.fold(
+              (failure) => emit(PaymentErrorState(failure.errorMessage)),
+              (entity) => emit(PaymentSuccessState()),
+        );
+      } catch (e) {
+        print("DEBUG: Unexpected error in processPayment: $e");
+        emit(PaymentErrorState(
+            "Something went wrong. Please check your connection."));
+      }
     } else {
       emit(PaymentErrorState('Please enter all required data first.'));
     }

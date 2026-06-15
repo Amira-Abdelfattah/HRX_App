@@ -32,13 +32,13 @@ class SettingSectionCard extends StatelessWidget {
         border: Border.all(
           color: isDark
               ? AppColors.darkBorderColor
-              : AppColors.borderColor.withOpacity(0.3),
+              : AppColors.borderColor.withValues(alpha: 0.3),
         ),
         boxShadow: isDark
             ? []
             : [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.02),
+                  color: Colors.black.withValues(alpha: 0.02),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -52,9 +52,8 @@ class SettingSectionCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8.w),
                 decoration: BoxDecoration(
-                  color: (iconColor ?? AppColors.primaryColor).withOpacity(
-                    0.1,
-                  ),
+                  color: (iconColor ?? AppColors.primaryColor).withValues(
+                      alpha: 0.1),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Icon(

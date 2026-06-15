@@ -72,7 +72,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
                 radius: 30.r,
                 backgroundColor:
                     (employee['color'] as Color? ?? AppColors.primaryColor)
-                        .withOpacity(0.1),
+                        .withValues(alpha: 0.1),
                 child: Text(
                   employee['init'] ?? 'U',
                   style: AppStyles.semi24White.copyWith(
@@ -90,7 +90,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
                       employee['name'] ?? 'Unknown',
                       style: AppStyles.bold20PrimaryDark(
                         color: isDark ? Colors.white : AppColors.primaryColor,
-                      ),
+                      ).copyWith(fontSize: 18.sp),
                     ),
                     Text(
                       '${employee['role'] ?? 'Employee'} • ${employee['dept'] ?? 'General'}',
@@ -102,7 +102,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                 decoration: BoxDecoration(
-                  color: AppColors.successColor.withOpacity(0.1),
+                  color: AppColors.successColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Text(
@@ -168,7 +168,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           borderRadius: BorderRadius.circular(10.r),
           child: LinearProgressIndicator(
             value: value,
-            backgroundColor: color.withOpacity(0.1),
+            backgroundColor: color.withValues(alpha: 0.1),
             valueColor: AlwaysStoppedAnimation<Color>(color),
             minHeight: 8.h,
           ),
@@ -228,9 +228,9 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
       children: [
         Text(
           'Top Performers',
-          style: AppStyles.semi18PrimaryDark(
+          style: AppStyles.bold20PrimaryDark(
             color: isDark ? Colors.white : AppColors.primaryColor,
-          ),
+          ).copyWith(fontSize: 18.sp),
         ),
         SizedBox(height: 16.h),
         ListView.builder(
@@ -274,14 +274,14 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           Icon(
             Icons.trending_up,
             size: 40.sp,
-            color: AppColors.textMutedColor.withOpacity(0.5),
+            color: AppColors.textMutedColor.withValues(alpha: 0.5),
           ),
           SizedBox(height: 16.h),
           Text(
             'Select an Employee',
-            style: AppStyles.semi18PrimaryDark(
+            style: AppStyles.bold20PrimaryDark(
               color: isDark ? Colors.white : AppColors.primaryColor,
-            ),
+            ).copyWith(fontSize: 18.sp),
           ),
           SizedBox(height: 8.h),
           Text(

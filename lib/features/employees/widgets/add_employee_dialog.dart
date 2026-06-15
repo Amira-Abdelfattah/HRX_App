@@ -23,6 +23,11 @@ class AddEmployeeDialog extends StatelessWidget {
         listener: (context, state) {
           if (state is AddEmployeeSuccessState) {
             Navigator.pop(context, state.employee);
+          } else if (state is AddEmployeeErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  content: Text(state.message), backgroundColor: Colors.red),
+            );
           }
         },
         builder: (context, state) {
@@ -117,6 +122,8 @@ class AddEmployeeDialog extends StatelessWidget {
                             CustomTextField(
                               controller: viewModel.nameController,
                               hintText: 'jon',
+                              style: AppStyles.semi20Primary().copyWith(
+                                  fontSize: 16.sp),
                               filledColor: const Color(0xFFF8FAFC),
                               validator: (value) =>
                               (value == null || value.isEmpty)
@@ -131,6 +138,8 @@ class AddEmployeeDialog extends StatelessWidget {
                             CustomTextField(
                               controller: viewModel.emailController,
                               hintText: 'jon@gmail.com',
+                              style: AppStyles.semi20Primary().copyWith(
+                                  fontSize: 16.sp),
                               filledColor: const Color(0xFFF8FAFC),
                               validator: (value) {
                                 if (value == null || value.isEmpty)
@@ -161,7 +170,11 @@ class AddEmployeeDialog extends StatelessWidget {
                             CustomTextField(
                               controller: viewModel.companyController,
                               readOnly: true,
-                              hintText: 'race',
+                              hintText: 'Company Name',
+                              style: AppStyles.semi20Primary().copyWith(
+                                fontSize: 16.sp,
+                                color: const Color(0xFF1E3A8A),
+                              ),
                               filledColor: const Color(0xFFF1F5F9),
                               prefixIcon: Icon(
                                   Icons.business_outlined, size: 20.sp,
@@ -173,6 +186,8 @@ class AddEmployeeDialog extends StatelessWidget {
                               controller: viewModel.passwordController,
                               hintText: '...',
                               obSecureText: true,
+                              style: AppStyles.semi20Primary().copyWith(
+                                  fontSize: 16.sp),
                               filledColor: const Color(0xFFEFF6FF),
                               validator: (value) =>
                               (value == null || value.isEmpty)
@@ -186,6 +201,8 @@ class AddEmployeeDialog extends StatelessWidget {
                             CustomTextField(
                               controller: viewModel.jobPositionController,
                               hintText: 'developer',
+                              style: AppStyles.semi20Primary().copyWith(
+                                  fontSize: 16.sp),
                               borderColor: const Color(0xFF6366F1),
                               validator: (value) =>
                               (value == null || value.isEmpty)
@@ -218,12 +235,40 @@ class AddEmployeeDialog extends StatelessWidget {
                                 _buildRoleItem(
                                   viewModel,
                                   'Employee',
-                                  'employee',
+                                  'user',
                                   Icons.person_outline,
                                   const Color(0xFF6366F1),
                                 ),
                               ],
                             ),
+
+                            if (state is AddEmployeeErrorState) ...[
+                              SizedBox(height: 16.h),
+                              Container(
+                                padding: EdgeInsets.all(10.w),
+                                decoration: BoxDecoration(
+                                  color: Colors.red.shade50,
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  border: Border.all(
+                                      color: Colors.red.shade200),
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.error_outline, color: Colors.red,
+                                        size: 16.sp),
+                                    SizedBox(width: 8.w),
+                                    Expanded(
+                                      child: Text(
+                                        state.message,
+                                        style: TextStyle(
+                                            color: Colors.red, fontSize: 12.sp),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+
                             SizedBox(height: 32.h),
 
                             Row(
@@ -244,13 +289,17 @@ class AddEmployeeDialog extends StatelessWidget {
                                 Expanded(
                                   flex: 3,
                                   child: CustomElevatedButton(
-                                    text: 'SAVE EMPLOYEE',
+                                    text: state is AddEmployeeLoadingState
+                                        ? 'SAVING...'
+                                        : 'SAVE EMPLOYEE',
                                     backgroundColor: const Color(0xFF1E3A8A),
                                     textStyle: AppStyles.semi16White.copyWith(
                                       fontSize: 14.sp,
                                       letterSpacing: 0.5,
                                     ),
-                                    onButtonClicked: () {
+                                    onButtonClicked: state is AddEmployeeLoadingState
+                                        ? () {}
+                                        : () {
                                       if (viewModel.formKey.currentState!
                                           .validate()) {
                                         viewModel.addEmployee();

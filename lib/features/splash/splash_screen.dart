@@ -2,11 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hrx_app/core/utils/app_colors.dart';
 import 'package:hrx_app/core/utils/app_styles.dart';
 import 'package:hrx_app/features/onboarding/onboarding_screen.dart';
 
-import '../widgets/hrx_gradient_bg.dart';
 import '../widgets/hrx_logo.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     _initAnimation();
     _navigateToOnboarding();
     super.initState();
@@ -66,7 +63,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _animationController.dispose();
     super.dispose();
   }
@@ -74,7 +70,15 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HrxGradientBackground(
+      body: Container(
+        width: 1.sw,
+        height: 1.sh,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/splash.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: FadeTransition(
             opacity: _fadeAnimation,
@@ -87,11 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
                   SizedBox(height: 12.h),
                   Text(
                     "Future-Proof HR Management",
-                    style: AppStyles.regular12Grey().copyWith(
-                      fontSize: 16.sp,
-                      letterSpacing: 1.2.w,
-                      color: AppColors.accentLightColor,
-                    ),
+                      style: AppStyles.semi16PrimaryMenu()
                   ),
                 ],
               ),

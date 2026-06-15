@@ -36,17 +36,18 @@ class EmployeeCard extends StatelessWidget {
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkSurfaceColor : AppColors.whiteColor,
-          borderRadius: BorderRadius.circular(AppColors.radiusXl.r),
+          borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
             color: isDark
                 ? AppColors.darkBorderColor
-                : AppColors.borderColor.withOpacity(0.5),
-            width: 1.5,
+                : AppColors.borderLightColor,
+            width: 1,
           ),
           boxShadow: isDark ? [] : AppColors.shadowMd,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,13 +62,13 @@ class EmployeeCard extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: isDark
                               ? [
-                                  AppColors.accentColor.withOpacity(0.2),
-                                  AppColors.accentColor.withOpacity(0.05),
-                                ]
+                            AppColors.accentColor.withOpacity(0.2),
+                            AppColors.accentColor.withOpacity(0.05),
+                          ]
                               : [
-                                  AppColors.primaryColor.withOpacity(0.1),
-                                  AppColors.primaryColor.withOpacity(0.02),
-                                ],
+                            AppColors.primaryColor.withOpacity(0.1),
+                            AppColors.primaryColor.withOpacity(0.02),
+                          ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -103,7 +104,7 @@ class EmployeeCard extends StatelessWidget {
                             color: isDark
                                 ? AppColors.darkSurfaceColor
                                 : AppColors.whiteColor,
-                            width: 2.5,
+                            width: 2,
                           ),
                         ),
                       ),
@@ -168,7 +169,7 @@ class EmployeeCard extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer(),
+            SizedBox(height: 12.h),
             Divider(
               color: isDark
                   ? AppColors.darkBorderColor
@@ -182,12 +183,11 @@ class EmployeeCard extends StatelessWidget {
                 Text(
                   'PERFORMANCE',
                   style: AppStyles.bold10Grey().copyWith(letterSpacing: 0.5),
-                )),
+                ),
                 Text(
                   '$performance%',
                   style: AppStyles.semi12PrimaryDark(
-                    color: isDark ? AppColors.accentColor : AppColors
-                        .primaryColor,
+                    color: isDark ? AppColors.accentColor : AppColors.primaryColor,
                   ),
                 ),
               ],
@@ -207,7 +207,7 @@ class EmployeeCard extends StatelessWidget {
                 ),
                 Container(
                   height: 6.h,
-                  width: (performance / 100) * 150.w, // Approximate width
+                  width: (performance / 100) * 150.w,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -218,8 +218,7 @@ class EmployeeCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(3.r),
                     boxShadow: [
                       BoxShadow(
-                        color: _getPerformanceColor(performance).withOpacity(
-                            0.3),
+                        color: _getPerformanceColor(performance).withOpacity(0.3),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),

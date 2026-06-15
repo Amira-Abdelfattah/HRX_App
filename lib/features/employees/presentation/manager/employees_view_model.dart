@@ -41,10 +41,16 @@ class EmployeesViewModel extends Cubit<EmployeesStates> {
     if (department != null && department != 'All Departments') {
       filtered = filtered.where((emp) {
         String displayJob = 'General';
-        if (emp.jobId is List && (emp.jobId as List).length > 1) {
-          displayJob = (emp.jobId as List)[1].toString();
-        } else if (emp.jobId != null && emp.jobId != false) {
-          displayJob = emp.jobId.toString();
+        try {
+          if (emp.jobId is List && (emp.jobId as List).isNotEmpty) {
+            displayJob = (emp.jobId as List).length > 1
+                ? (emp.jobId as List)[1].toString()
+                : (emp.jobId as List)[0].toString();
+          } else if (emp.jobId != null && emp.jobId != false) {
+            displayJob = emp.jobId.toString();
+          }
+        } catch (e) {
+          displayJob = 'Employee';
         }
         return displayJob.toLowerCase() == department.toLowerCase();
       }).toList();

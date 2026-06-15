@@ -8,7 +8,23 @@ class ApiManager {
   late Dio dio;
 
   ApiManager() {
-    dio = Dio();
+    dio = Dio(
+      BaseOptions(
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+        validateStatus: (status) => true,
+      ),
+    );
+  }
+
+  void resetDio() {
+    dio = Dio(
+      BaseOptions(
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+        validateStatus: (status) => true,
+      ),
+    );
   }
 
   Future<Response> getData({

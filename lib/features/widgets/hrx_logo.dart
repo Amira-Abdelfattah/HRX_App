@@ -19,25 +19,6 @@ class HrxLogo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          "Performix",
-          style: AppStyles.bold32PrimaryDark().copyWith(
-            fontSize: fontSize.sp,
-            fontWeight: FontWeight.w500,
-            letterSpacing: -0.5,
-            color: primaryAccent,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: (fontSize * .33).w),
-          child: Text(
-            "|",
-            style: AppStyles.light18HintText().copyWith(
-              color: primaryAccent.withOpacity(0.3),
-              fontSize: (fontSize * .88).sp,
-            ),
-          ),
-        ),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -45,7 +26,6 @@ class HrxLogo extends StatelessWidget {
               "HR",
               style: AppStyles.bold32PrimaryDark().copyWith(
                 fontSize: fontSize.sp,
-                color: primaryAccent,
               ),
             ),
             Text(
