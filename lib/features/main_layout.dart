@@ -121,7 +121,7 @@ class _MainLayoutState extends State<MainLayout> {
                         title: 'Setting',
                         onTap: () {
                           Navigator.pop(context);
-                          navProvider.setIndex(8); // Settings index
+                          navProvider.setIndex(7); // Settings index is now 7
                         },
                       ),
                       const Divider(height: 1),
