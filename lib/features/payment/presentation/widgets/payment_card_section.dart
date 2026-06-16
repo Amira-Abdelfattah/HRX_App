@@ -1,5 +1,6 @@
 import 'package:animated_payment_card/animated_payment_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -57,6 +58,11 @@ class PaymentCardSection extends StatelessWidget {
           '4000 1234 5678 9010',
           Icons.credit_card,
           keyboardType: TextInputType.number,
+          inputFormatters: [
+            FilteringTextInputFormatter.digitsOnly,
+            LengthLimitingTextInputFormatter(16),
+            _CardNumberFormatter(),
+          ],
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return 'Card number is required';
@@ -80,14 +86,31 @@ class PaymentCardSection extends StatelessWidget {
                     'MM/YY',
                     Icons.calendar_today_outlined,
                     keyboardType: TextInputType.datetime,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4),
+                      _ExpiryDateFormatter(),
+                    ],
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Required';
                       }
-                      if (!RegExp(
-                        r'^(0[1-9]|1[0-2])\/?([0-9]{2})$',
-                      ).hasMatch(value)) {
-                        return 'Invalid format';
+                      final regex = RegExp(r'^(0[1-9]|1[0-2])\/([0-9]{2})$');
+                      if (!regex.hasMatch(value)) {
+                        return 'Invalid format (MM/YY)';
+                      }
+
+                      final parts = value.split('/');
+                      final month = int.parse(parts[0]);
+                      final year = int.parse('20${parts[1]}');
+
+                      final now = DateTime.now();
+                      final currentYear = now.year;
+                      final currentMonth = now.month;
+
+                      if (year < currentYear ||
+                          (year == currentYear && month < currentMonth)) {
+                        return 'Card has expired';
                       }
                       return null;
                     },
@@ -107,6 +130,10 @@ class PaymentCardSection extends StatelessWidget {
                     Icons.lock_outline,
                     keyboardType: TextInputType.number,
                     focusNode: vm.cvvFocusNode,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(3),
+                    ],
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Required';
@@ -202,6 +229,7 @@ class PaymentCardSection extends StatelessWidget {
     TextInputType? keyboardType,
     FocusNode? focusNode,
     String? Function(String?)? validator,
+        List<TextInputFormatter>? inputFormatters,
   }) {
     return CustomTextField(
       controller: controller,
@@ -214,6 +242,45 @@ class PaymentCardSection extends StatelessWidget {
       keyboardType: keyboardType,
       focusNode: focusNode,
       validator: validator,
+      inputFormatters: inputFormatters,
+    );
+  }
+}
+
+class _CardNumberFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
+      TextEditingValue newValue) {
+    var text = newValue.text.replaceAll(' ', '');
+    var newString = '';
+    for (var i = 0; i < text.length; i++) {
+      newString += text[i];
+      if ((i + 1) % 4 == 0 && i != text.length - 1) {
+        newString += ' ';
+      }
+    }
+    return newValue.copyWith(
+      text: newString,
+      selection: TextSelection.collapsed(offset: newString.length),
+    );
+  }
+}
+
+class _ExpiryDateFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
+      TextEditingValue newValue) {
+    var text = newValue.text.replaceAll('/', '');
+    var newString = '';
+    for (var i = 0; i < text.length; i++) {
+      newString += text[i];
+      if (i == 1 && text.length > 2) {
+        newString += '/';
+      }
+    }
+    return newValue.copyWith(
+      text: newString,
+      selection: TextSelection.collapsed(offset: newString.length),
     );
   }
 }

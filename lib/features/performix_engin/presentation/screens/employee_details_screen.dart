@@ -29,9 +29,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
         ),
         title: Text(
           'Back to Employees',
-          style: AppStyles.regular14Grey().copyWith(
-            color: isDark ? Colors.white70 : Colors.grey[600],
-          ),
+          style: AppStyles.regular14Grey(),
         ),
         titleSpacing: 0,
       ),
@@ -150,9 +148,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           // Name and Role
           Text(
             employee['name'] ?? 'Unknown',
-            style: AppStyles.bold32PrimaryDark(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ).copyWith(fontSize: 24.sp),
+            style: AppStyles.bold32PrimaryDark().copyWith(fontSize: 24.sp),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 4.h),
@@ -296,9 +292,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
                 ),
                 Text(
                   value,
-                  style: AppStyles.medium14Grey(
-                    color: isDark ? Colors.white : Colors.black87,
-                  ).copyWith(fontSize: 12.sp),
+                  style: AppStyles.medium14Grey().copyWith(fontSize: 12.sp),
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
@@ -359,9 +353,8 @@ class EmployeeDetailsScreen extends StatelessWidget {
             fit: BoxFit.scaleDown,
             child: Text(
               value,
-              style: AppStyles.bold32PrimaryDark(
-                color: isDark ? Colors.white : AppColors.primaryColor,
-              ).copyWith(fontSize: compact ? 22.sp : 28.sp),
+              style: AppStyles.bold32PrimaryDark()
+                  .copyWith(fontSize: compact ? 22.sp : 28.sp),
             ),
           ),
           SizedBox(height: 4.h),
@@ -393,9 +386,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
         children: [
           Text(
             'Employee Details',
-            style: AppStyles.bold20PrimaryDark(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ).copyWith(fontSize: 18.sp),
+            style: AppStyles.bold20PrimaryDark().copyWith(fontSize: 18.sp),
           ),
           SizedBox(height: 16.h),
           _buildDetailRow('Employee ID', 'EMP-61', isDark),
@@ -427,9 +418,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
               ),
               Text(
                 value,
-                style: AppStyles.medium14Grey(
-                  color: isDark ? Colors.white70 : Colors.black87,
-                ).copyWith(fontSize: 13.sp),
+                style: AppStyles.medium14Grey().copyWith(fontSize: 13.sp),
               ),
             ],
           ),
@@ -447,9 +436,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 4.w, bottom: 12.h),
           child: Text(
             'Quick Stats',
-            style: AppStyles.bold20PrimaryDark(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ),
+            style: AppStyles.bold20PrimaryDark(),
           ),
         ),
         _buildQuickStatItem(

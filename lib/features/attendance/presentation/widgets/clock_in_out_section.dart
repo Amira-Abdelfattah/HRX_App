@@ -99,11 +99,14 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
           ],
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Expanded(
                   child: Column(
+
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -217,29 +220,27 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
               height: 30.h,
               color: isDark ? AppColors.darkBorderColor : AppColors.borderColor,
             ),
-            Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: _buildTimeInfo(
-                    "LAST CHECK IN",
-                    lastCheckIn ?? "Not Yet",
-                    isDark,
-                  ),
+                _buildTimeInfo(
+                  "LAST CHECK IN",
+                  lastCheckIn ?? "Not Yet",
+                  isDark,
                 ),
-                Expanded(
-                  child: _buildTimeInfo(
-                    "LAST CHECK OUT",
-                    lastCheckOut ??
-                        (isCheckedIn ? "Active Session" : "Not Yet"),
-                    isDark,
-                  ),
+                SizedBox(height: 12.h),
+                _buildTimeInfo(
+                  "LAST CHECK OUT",
+                  lastCheckOut ??
+                      (isCheckedIn ? "Active Session" : "Not Yet"),
+                  isDark,
                 ),
-                Expanded(
-                  child: _buildTimeInfo(
-                    "HOURS WORKED",
-                    "${workedHours.toStringAsFixed(2)} hrs",
-                    isDark,
-                  ),
+                SizedBox(height: 12.h),
+                _buildTimeInfo(
+                  "HOURS WORKED",
+                  "${workedHours.toStringAsFixed(2)} hrs",
+                  isDark,
                 ),
               ],
             ),
@@ -253,18 +254,16 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(label, style: AppStyles.regular10Grey()),
+        Text(
+          label,
+          style: AppStyles.bold10Grey(context: context),
         ),
-        SizedBox(height: 4.h),
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            value,
-            style: AppStyles.semi14PrimaryDark(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ),
+        SizedBox(height: 2.h),
+        Text(
+          value,
+          style: AppStyles.semi14PrimaryDark(
+            context: context,
+            color: isDark ? Colors.white : AppColors.primaryColor,
           ),
         ),
       ],

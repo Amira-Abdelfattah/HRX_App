@@ -62,6 +62,8 @@ class PaymentViewModel extends Cubit<PaymentStates> {
       emit(PaymentLoadingState());
 
       try {
+        await Future.delayed(const Duration(seconds: 2));
+
         final result = await addOdooUserUseCase.call(
           name: name,
           email: email,

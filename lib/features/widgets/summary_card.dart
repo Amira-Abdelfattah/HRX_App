@@ -54,7 +54,7 @@ class SummaryCard extends StatelessWidget {
           ],
           Text(
             title,
-            style: AppStyles.semi14White.copyWith(color: AppColors.blackColor),
+            style: AppStyles.regular14Grey(),
           ),
           SizedBox(height: 8.h),
           Text(value, style: AppStyles.bold28PrimaryDarkNumber(color: color)),

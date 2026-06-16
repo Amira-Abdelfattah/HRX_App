@@ -94,22 +94,22 @@ class AttendanceLogTable extends StatelessWidget {
             flex: 3,
             child: Text(
               item['name'],
-              style: AppStyles.medium14PrimaryDark(color: isDark ? Colors.white : AppColors.primaryColor),
+              style: AppStyles.medium14PrimaryDark(),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
           ),
           Expanded(
             flex: 2,
-            child: Text(item['in'], style: AppStyles.regular13Black(color: isDark ? Colors.white70 : AppColors.blackColor)),
+            child: Text(item['in'], style: AppStyles.regular13Black()),
           ),
           Expanded(
             flex: 2,
-            child: Text(item['out'], style: AppStyles.regular13Black(color: isDark ? Colors.white70 : AppColors.blackColor)),
+            child: Text(item['out'], style: AppStyles.regular13Black()),
           ),
           Expanded(
             flex: 2,
-            child: Text(item['hours'], style: AppStyles.regular13Black(color: isDark ? Colors.white70 : AppColors.blackColor)),
+            child: Text(item['hours'], style: AppStyles.regular13Black()),
           ),
           Expanded(
             flex: 2,
