@@ -57,6 +57,18 @@ import '../../features/payment/domain/usecases/add_odoo_user_usecase.dart'
     as _i844;
 import '../../features/payment/presentation/manager/payment_view_model.dart'
     as _i502;
+import '../../features/time_off/data/datasources/time_off_remote_data_source.dart'
+    as _i373;
+import '../../features/time_off/data/repositories/time_off_repository_impl.dart'
+    as _i1068;
+import '../../features/time_off/domain/repositories/time_off_repository.dart'
+    as _i679;
+import '../../features/time_off/domain/usecases/get_time_off_types_use_case.dart'
+    as _i1025;
+import '../../features/time_off/domain/usecases/request_time_off_use_case.dart'
+    as _i110;
+import '../../features/time_off/presentation/manager/time_off_cubit.dart'
+    as _i902;
 import '../api/api_manager.dart' as _i1047;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -87,6 +99,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i680.AttendanceRemoteDataSource>(),
       ),
     );
+    gh.factory<_i373.TimeOffRemoteDataSource>(
+      () => _i373.TimeOffRemoteDataSourceImpl(gh<_i1047.ApiManager>()),
+    );
     gh.factory<_i24.EmployeesRepository>(
       () => _i599.EmployeesRepositoryImpl(
         gh<_i345.EmployeesRemoteDataSource>(),
@@ -99,6 +114,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i24.EmployeesRepository>(),
       ),
     );
+    gh.factory<_i679.TimeOffRepository>(
+      () => _i1068.TimeOffRepositoryImpl(gh<_i373.TimeOffRemoteDataSource>()),
+    );
     gh.lazySingleton<_i639.PaymentRepository>(
       () => _i265.PaymentRepositoryImpl(gh<_i811.PaymentRemoteDataSource>()),
     );
@@ -107,6 +125,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i229.GetEmployeesUseCase>(
       () => _i229.GetEmployeesUseCase(gh<_i24.EmployeesRepository>()),
+    );
+    gh.factory<_i1025.GetTimeOffTypesUseCase>(
+      () => _i1025.GetTimeOffTypesUseCase(gh<_i679.TimeOffRepository>()),
+    );
+    gh.factory<_i110.RequestTimeOffUseCase>(
+      () => _i110.RequestTimeOffUseCase(gh<_i679.TimeOffRepository>()),
     );
     gh.factory<_i787.AuthRepository>(
       () => _i153.AuthRepositoryImpl(gh<_i107.AuthRemoteDataSource>()),
@@ -128,6 +152,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i488.AddEmployeeViewModel>(
       () => _i488.AddEmployeeViewModel(gh<_i811.AddEmployeeUseCase>()),
+    );
+    gh.factory<_i902.TimeOffCubit>(
+      () => _i902.TimeOffCubit(
+        gh<_i1025.GetTimeOffTypesUseCase>(),
+        gh<_i229.GetEmployeesUseCase>(),
+        gh<_i110.RequestTimeOffUseCase>(),
+      ),
     );
     gh.factory<_i781.RegisterViewModel>(
       () => _i781.RegisterViewModel(gh<_i97.RegisterUseCase>()),
