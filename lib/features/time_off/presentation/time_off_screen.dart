@@ -97,16 +97,29 @@ class _TimeOffScreenContentState extends State<TimeOffScreenContent>
                           SizedBox(width: 16.w),
                       itemBuilder: (context, index) {
                         final type = state.types[index];
+
+                        double usedDays = 0;
+                        for (var request in state.myRequests) {
+                          if (request.typeName == type.displayName) {
+                            final parts = request.duration.split(' ');
+                            if (parts.isNotEmpty) {
+                              usedDays += double.tryParse(parts[0]) ?? 0;
+                            }
+                          }
+                        }
+                        final total = type.virtualRemainingLeaves;
+                        final left = total - usedDays;
+
                         return TimeOffSummaryCard(
                           title: type.displayName,
-                          total: type.virtualRemainingLeaves.toInt().toString(),
-                          used: '0',
-                          // Odoo does not provide 'used' directly in this call, or we can calculate it
-                          left: '${type.virtualRemainingLeaves.toInt()}d',
+                          total: total.toInt().toString(),
+                          used: usedDays.toInt().toString(),
+                          left: '${left.toInt()}d',
                           color: _getTypeColor(index),
                           icon: _getTypeIcon(index),
                         );
                       },
+
                     ),
                   ),
 
@@ -214,7 +227,7 @@ class _TimeOffScreenContentState extends State<TimeOffScreenContent>
           requests: state.myRequests,
         );
       case 2:
-        return const PendingApprovalsTab();
+        return PendingApprovalsTab(requests: state.myRequests,);
       case 3:
         return TeamScheduleTab(employees: state.employees);
       default:
