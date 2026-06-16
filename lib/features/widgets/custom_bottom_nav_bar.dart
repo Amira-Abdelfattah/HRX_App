@@ -28,7 +28,7 @@ class CustomBottomNavBar extends StatelessWidget {
         ],
       ),
       child: BottomNavigationBar(
-        currentIndex: currentIndex < 4 ? currentIndex : 0,
+        currentIndex: currentIndex < 5 ? currentIndex : 0,
         onTap: onTap,
         type: BottomNavigationBarType.fixed,
         backgroundColor: isDark ? AppColors.darkSurfaceColor : AppColors
@@ -46,6 +46,8 @@ class CustomBottomNavBar extends StatelessWidget {
               icon: Icon(Icons.people_outline), label: 'Employees'),
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month_outlined), label: 'Attendance'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.timer_outlined), label: 'Time Off'),
           BottomNavigationBarItem(
               icon: Icon(Icons.monetization_on_outlined), label: 'Payroll'),
         ],

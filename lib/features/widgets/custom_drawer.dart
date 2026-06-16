@@ -38,7 +38,7 @@ class CustomDrawer extends StatelessWidget {
                   ? AppColors.darkSurfaceColor
                   : AppColors.primaryColor,
             ),
-            child: const HrxLogo(fontSize: 24),
+            child: const HrxLogo(fontSize: 24, color: AppColors.accentColor),
           ),
           Expanded(
             child: ListView(
@@ -63,35 +63,41 @@ class CustomDrawer extends StatelessWidget {
                   onTap: () => onItemSelected(2),
                 ),
                 DrawerMenuItem(
-                  icon: Icons.monetization_on_outlined,
-                  title: 'Payroll',
+                  icon: Icons.timer_outlined,
+                  title: 'Time Off',
                   isSelected: selectedIndex == 3,
                   onTap: () => onItemSelected(3),
+                ),
+                DrawerMenuItem(
+                  icon: Icons.monetization_on_outlined,
+                  title: 'Payroll',
+                  isSelected: selectedIndex == 4,
+                  onTap: () => onItemSelected(4),
                 ),
                 const Divider(),
                 DrawerMenuItem(
                   icon: Icons.bolt,
                   title: 'Performix Engine',
-                  isSelected: selectedIndex == 4,
-                  onTap: () => onItemSelected(4),
-                ),
-                DrawerMenuItem(
-                  icon: Icons.person_add_alt_1_outlined,
-                  title: 'Recruitment',
                   isSelected: selectedIndex == 5,
                   onTap: () => onItemSelected(5),
                 ),
                 DrawerMenuItem(
-                  icon: Icons.bar_chart_rounded,
-                  title: 'Analytics',
+                  icon: Icons.person_add_alt_1_outlined,
+                  title: 'Recruitment',
                   isSelected: selectedIndex == 6,
                   onTap: () => onItemSelected(6),
                 ),
                 DrawerMenuItem(
-                  icon: Icons.settings_outlined,
-                  title: 'Settings',
+                  icon: Icons.bar_chart_rounded,
+                  title: 'Analytics',
                   isSelected: selectedIndex == 7,
                   onTap: () => onItemSelected(7),
+                ),
+                DrawerMenuItem(
+                  icon: Icons.settings_outlined,
+                  title: 'Settings',
+                  isSelected: selectedIndex == 8,
+                  onTap: () => onItemSelected(8),
                 ),
               ],
             ),

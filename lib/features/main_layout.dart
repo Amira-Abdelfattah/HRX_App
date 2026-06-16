@@ -5,6 +5,7 @@ import 'package:hrx_app/features/payroll/payroll.dart';
 import 'package:hrx_app/features/performix_engin/presentation/screens/performix_engin.dart';
 import 'package:hrx_app/features/recruitment/recruitment.dart';
 import 'package:hrx_app/features/settings/settings_screen.dart';
+import 'package:hrx_app/features/time_off/presentation/time_off_screen.dart';
 import 'package:hrx_app/features/widgets/custom_bottom_nav_bar.dart';
 import 'package:hrx_app/features/widgets/custom_drawer.dart';
 import 'package:hrx_app/features/widgets/custom_search_bar.dart';
@@ -121,7 +122,7 @@ class _MainLayoutState extends State<MainLayout> {
                         title: 'Setting',
                         onTap: () {
                           Navigator.pop(context);
-                          navProvider.setIndex(7); // Settings index
+                          navProvider.setIndex(8); // Settings index
                         },
                       ),
                       const Divider(height: 1),
@@ -187,6 +188,7 @@ class _MainLayoutState extends State<MainLayout> {
     const DashboardScreen(),
     const EmployeesScreen(),
     const AttendanceScreen(),
+    const TimeOffScreen(),
     const PayrollScreen(),
     const PerformixEngineScreen(),
     const RecruitmentScreen(),
@@ -199,7 +201,6 @@ class _MainLayoutState extends State<MainLayout> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final navProvider = Provider.of<NavigationProvider>(context);
 
-    // Refresh data to ensure it's always current
     _loadUserData();
 
     debugPrint('MainLayout Building with: $currentUserName');
@@ -250,7 +251,7 @@ class _MainLayoutState extends State<MainLayout> {
       ),
       body: IndexedStack(index: navProvider.currentIndex, children: _pages),
 
-      bottomNavigationBar: navProvider.currentIndex < 4
+      bottomNavigationBar: navProvider.currentIndex < 5
           ? CustomBottomNavBar(
               currentIndex: navProvider.currentIndex,
               onTap: (index) {

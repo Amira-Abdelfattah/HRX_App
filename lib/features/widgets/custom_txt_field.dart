@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
@@ -24,6 +25,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextField({
     super.key,
@@ -44,6 +46,7 @@ class CustomTextField extends StatelessWidget {
     this.readOnly,
     this.onTap,
     this.focusNode,
+    this.inputFormatters,
   });
 
   @override
@@ -61,9 +64,11 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         controller: controller,
         focusNode: focusNode,
+        inputFormatters: inputFormatters,
         maxLines: maxLines ?? 1,
-        cursorColor: isDark ? AppColors.whiteColor : AppColors.blackColor,
-        style: style ?? AppStyles.semi20Primary(),
+        cursorColor: isDark ? AppColors.whiteColor : AppColors.primaryColor,
+        style: style ??
+            AppStyles.medium14PrimaryDarkName(color: AppColors.primaryColor),
         obscureText: obSecureText,
         obscuringCharacter: '*',
         decoration: InputDecoration(
@@ -73,7 +78,8 @@ class CustomTextField extends StatelessWidget {
           hintText: hintText,
           labelText: labelText,
           labelStyle: labelStyle ?? AppStyles.regular14Grey(),
-          hintStyle: hintStyle ?? AppStyles.medium14LightPrimary(),
+          hintStyle: hintStyle ??
+              AppStyles.medium14Green(color: AppColors.whiteColor),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           enabledBorder: OutlineInputBorder(

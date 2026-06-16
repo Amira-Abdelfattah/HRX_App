@@ -7,38 +7,56 @@ import 'navigator_key.dart';
 
 class AppStyles {
   // Helper to get adaptive colors based on current theme
-  static Color get _adaptivePrimaryDark {
-    final context = navigatorKey.currentContext;
-    if (context != null && Theme.of(context).brightness == Brightness.dark) {
-      return AppColors.accentColor; // Navy becomes Gold in Dark Mode
+  static Color _adaptivePrimaryDark([BuildContext? context]) {
+    final effectiveContext = context ?? navigatorKey.currentContext;
+    if (effectiveContext != null) {
+      return Theme
+          .of(effectiveContext)
+          .brightness == Brightness.dark
+          ? AppColors.whiteColor
+          : AppColors.primaryDarkColor;
     }
-    return AppColors.primaryDarkColor; // Navy in Light Mode
+    return AppColors.primaryDarkColor;
   }
 
-  static Color get _adaptiveBlack {
-    final context = navigatorKey.currentContext;
-    if (context != null && Theme.of(context).brightness == Brightness.dark) {
-      return AppColors.whiteColor; // Black becomes White in Dark Mode
+  static Color _adaptiveBlack([BuildContext? context]) {
+    final effectiveContext = context ?? navigatorKey.currentContext;
+    if (effectiveContext != null) {
+      return Theme
+          .of(effectiveContext)
+          .brightness == Brightness.dark
+          ? AppColors.whiteColor
+          : AppColors.primaryDarkColor;
     }
-    return AppColors.blackColor; // Black in Light Mode
+    return AppColors.primaryDarkColor;
   }
 
-  static TextStyle regular12PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static Color _adaptiveGrey([BuildContext? context]) {
+    final effectiveContext = context ?? navigatorKey.currentContext;
+    if (effectiveContext != null) {
+      return Theme
+          .of(effectiveContext)
+          .brightness == Brightness.dark
+          ? AppColors.darkTextBody
+          : AppColors.textMutedColor;
+    }
+    return AppColors.textMutedColor;
+  }
+
+  static TextStyle regular12PrimaryDark(
+      {BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle regular11SalePrice({Color? color}) => GoogleFonts.poppins(
-    fontSize: 11.sp,
-    fontWeight: FontWeight.w400,
-    color: color ?? _adaptivePrimaryDark,
-  );
-
-  static TextStyle regular14PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular14PrimaryDark(
+      {BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
   static TextStyle regular18White = GoogleFonts.poppins(
@@ -47,52 +65,20 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
-  static TextStyle regular18Primary({Color? color}) => GoogleFonts.poppins(
-    fontSize: 18.sp,
-    fontWeight: FontWeight.w400,
-    color:
-        color ??
-        (navigatorKey.currentContext != null &&
-                Theme.of(navigatorKey.currentContext!).brightness ==
-                    Brightness.dark
-            ? AppColors.accentColor
-            : AppColors.primaryColor),
-  );
-
-  static TextStyle light16White = GoogleFonts.poppins(
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.whiteColor,
-  );
-
-  static TextStyle regular14SearchHint({Color? color}) => GoogleFonts.poppins(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w300,
-    color: color ?? AppColors.hintTextColor,
-  );
-
-  static TextStyle light18HintText({Color? color}) => GoogleFonts.poppins(
-    fontSize: 18.sp,
-    fontWeight: FontWeight.w300,
-    color: color ?? AppColors.hintTextColor,
-  );
-
   static TextStyle semi16TextWhite = GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,
   );
 
-  static TextStyle semi20Primary({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi20Primary({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
-    color:
-        color ??
-        (navigatorKey.currentContext != null &&
-                Theme.of(navigatorKey.currentContext!).brightness ==
-                    Brightness.dark
-            ? AppColors.accentColor
-            : AppColors.primaryColor),
+        color: color ?? ((context != null && Theme
+            .of(context)
+            .brightness == Brightness.dark) ? AppColors.whiteColor : AppColors
+            .primaryColor),
   );
 
   static TextStyle semi24White = GoogleFonts.poppins(
@@ -107,16 +93,18 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
-  static TextStyle medium18Black({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium18Black({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? _adaptiveBlack,
+        color: color ?? _adaptiveBlack(context),
   );
 
-  static TextStyle medium18PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium18PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
   static TextStyle medium20White = GoogleFonts.poppins(
@@ -125,138 +113,149 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
-  static TextStyle medium14Category({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium14Category({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle medium14LightPrimary({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium14PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? AppColors.textSubtleColor,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle medium14PrimaryDark({Color? color}) => GoogleFonts.poppins(
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    color: color ?? _adaptivePrimaryDark,
-  );
-
-  static TextStyle bold28Primary({Color? color}) => GoogleFonts.poppins(
+  static TextStyle bold28Primary({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 28.sp,
     fontWeight: FontWeight.w700,
-    color:
-        color ??
-        (navigatorKey.currentContext != null &&
-                Theme.of(navigatorKey.currentContext!).brightness ==
-                    Brightness.dark
-            ? AppColors.accentColor
-            : AppColors.primaryColor),
+        color: color ?? ((context != null && Theme
+            .of(context)
+            .brightness == Brightness.dark) ? AppColors.whiteColor : AppColors
+            .primaryColor),
   );
 
-  static TextStyle bold32PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle bold32PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 32.sp,
     fontWeight: FontWeight.w700,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle semi24PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi24PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle semi20PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi20PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle bold20PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle bold20PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 20.sp,
     fontWeight: FontWeight.w700,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle semi18PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi18PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle semi16PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi16PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle medium16PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium16PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle bold36PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle bold36PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 36.sp,
     fontWeight: FontWeight.w700,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle bold32PrimaryDarkNumber({Color? color}) =>
+  static TextStyle bold32PrimaryDarkNumber(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 32.sp,
         fontWeight: FontWeight.w700,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle bold28PrimaryDarkNumber({Color? color}) =>
+  static TextStyle bold28PrimaryDarkNumber(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 28.sp,
         fontWeight: FontWeight.w700,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle regular14Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular14Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
-  static TextStyle medium14Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium14Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
-  static TextStyle regular12Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular12Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
-  static TextStyle semi14PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi14PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle semi13PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi13PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 13.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle regular14Black({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular14Black({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? _adaptiveBlack,
+        color: color ?? _adaptiveBlack(context),
   );
 
-  static TextStyle regular13Black({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular13Black({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 13.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? _adaptiveBlack,
+        color: color ?? _adaptiveBlack(context),
   );
 
   static TextStyle medium14Green({Color? color}) => GoogleFonts.poppins(
@@ -289,63 +288,66 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
-  static TextStyle regular16PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular16PrimaryDark(
+      {BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle medium16PrimaryDarkText({Color? color}) =>
+  static TextStyle medium16PrimaryDarkText(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 16.sp,
         fontWeight: FontWeight.w500,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle semi16PrimaryMenu({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi16PrimaryMenu({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color:
-        color ??
-        (navigatorKey.currentContext != null &&
-                Theme.of(navigatorKey.currentContext!).brightness ==
-                    Brightness.dark
-            ? AppColors.accentColor
-            : AppColors.primaryColor),
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle medium14PrimaryDarkLabel({Color? color}) =>
+  static TextStyle medium14PrimaryDarkLabel(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle regular14PrimaryDarkLabel({Color? color}) =>
+  static TextStyle regular14PrimaryDarkLabel(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle regular16PrimaryDarkInput({Color? color}) =>
+  static TextStyle regular16PrimaryDarkInput(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle regular14PrimaryDarkInput({Color? color}) =>
+  static TextStyle regular14PrimaryDarkInput(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle light12Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle light12Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 12.sp,
     fontWeight: FontWeight.w300,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
   static TextStyle regular12GreyHint({Color? color}) => GoogleFonts.poppins(
@@ -354,23 +356,26 @@ class AppStyles {
     color: color ?? AppColors.hintTextColor,
   );
 
-  static TextStyle light14Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle light14Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w300,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
-  static TextStyle regular12PrimaryDarkSub({Color? color}) =>
+  static TextStyle regular12PrimaryDarkSub(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle medium12Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle medium12Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
   static TextStyle medium12Green({Color? color}) => GoogleFonts.poppins(
@@ -391,41 +396,54 @@ class AppStyles {
     color: AppColors.whiteColor,
   );
 
-  static TextStyle semi12PrimaryDark({Color? color}) => GoogleFonts.poppins(
+  static TextStyle semi12PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 12.sp,
     fontWeight: FontWeight.w600,
-    color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle regular10Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular10Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 10.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
+      );
+
+  static TextStyle bold14PrimaryDark({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
+        fontSize: 14.sp,
+        fontWeight: FontWeight.w700,
+        color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle bold10Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle bold10Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 10.sp,
     fontWeight: FontWeight.w700,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
-  static TextStyle regular11Grey({Color? color}) => GoogleFonts.poppins(
+  static TextStyle regular11Grey({BuildContext? context, Color? color}) =>
+      GoogleFonts.poppins(
     fontSize: 11.sp,
     fontWeight: FontWeight.w400,
-    color: color ?? AppColors.textMutedColor,
+        color: color ?? _adaptiveGrey(context),
   );
 
-  static TextStyle medium14PrimaryDarkName({Color? color}) =>
+  static TextStyle medium14PrimaryDarkName(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 
-  static TextStyle regular12PrimaryDarkRole({Color? color}) =>
+  static TextStyle regular12PrimaryDarkRole(
+      {BuildContext? context, Color? color}) =>
       GoogleFonts.poppins(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
-        color: color ?? _adaptivePrimaryDark,
+        color: color ?? _adaptivePrimaryDark(context),
       );
 }

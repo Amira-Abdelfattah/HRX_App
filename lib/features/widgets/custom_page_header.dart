@@ -31,11 +31,11 @@ class CustomPageHeader extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppStyles.bold32PrimaryDark(),
+                style: AppStyles.bold32PrimaryDark(context: context),
               ),
               Text(
                 subtitle,
-                style: AppStyles.regular12Grey(),
+                style: AppStyles.regular12Grey(context: context),
               ),
             ],
           ),
