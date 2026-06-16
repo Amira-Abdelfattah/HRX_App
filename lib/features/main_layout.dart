@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/features/auth/presentation/screens/login.dart';
 import 'package:hrx_app/features/payroll/payroll.dart';
 import 'package:hrx_app/features/performix_engin/presentation/screens/performix_engin.dart';
-import 'package:hrx_app/features/recruitment/recruitment.dart';
 import 'package:hrx_app/features/settings/settings_screen.dart';
 import 'package:hrx_app/features/time_off/presentation/time_off_screen.dart';
 import 'package:hrx_app/features/widgets/custom_bottom_nav_bar.dart';
@@ -191,7 +190,6 @@ class _MainLayoutState extends State<MainLayout> {
     const TimeOffScreen(),
     const PayrollScreen(),
     const PerformixEngineScreen(),
-    const RecruitmentScreen(),
     const AnalyticsScreen(),
     const SettingsScreen(),
   ];
