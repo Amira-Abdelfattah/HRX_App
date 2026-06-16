@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,16 +18,16 @@ class AnalyticsChartsSection extends StatelessWidget {
       children: [
         // Performance Trend
         ChartContainer(
-          title: 'Performance Trend',
-          subtitle: 'Company-wide average performance score',
+          title: 'performance_trend'.tr(),
+          subtitle: 'performance_trend_subtitle'.tr(),
           chart: ReusableAreaChart(
             dataSource: [
-              ChartData('Jan', 82),
-              ChartData('Feb', 84),
-              ChartData('Mar', 83),
-              ChartData('Apr', 86),
-              ChartData('May', 88),
-              ChartData('Jun', 90),
+              ChartData('Jan'.tr(), 82),
+              ChartData('Feb'.tr(), 84),
+              ChartData('Mar'.tr(), 83),
+              ChartData('Apr'.tr(), 86),
+              ChartData('May'.tr(), 88),
+              ChartData('Jun'.tr(), 90),
             ],
             color: const Color(0xFF0BC6B3),
           ),
@@ -35,28 +36,31 @@ class AnalyticsChartsSection extends StatelessWidget {
 
         // Attrition vs Hiring
         ChartContainer(
-          title: 'Attrition vs Hiring',
-          subtitle: 'Monthly comparison',
+          title: 'attrition_vs_hiring'.tr(),
+          subtitle: 'monthly_comparison'.tr(),
           chart: ReusableLineChart(
             dataSeries: [
               [
-                ChartData('Jan', 4),
-                ChartData('Feb', 5),
-                ChartData('Mar', 5),
-                ChartData('Apr', 4),
-                ChartData('May', 3),
-                ChartData('Jun', 4),
+                ChartData('Jan'.tr(), 4),
+                ChartData('Feb'.tr(), 5),
+                ChartData('Mar'.tr(), 5),
+                ChartData('Apr'.tr(), 4),
+                ChartData('May'.tr(), 3),
+                ChartData('Jun'.tr(), 4),
               ],
               [
-                ChartData('Jan', 9),
-                ChartData('Feb', 12),
-                ChartData('Mar', 15),
-                ChartData('Apr', 10),
-                ChartData('May', 14),
-                ChartData('Jun', 16),
+                ChartData('Jan'.tr(), 9),
+                ChartData('Feb'.tr(), 12),
+                ChartData('Mar'.tr(), 15),
+                ChartData('Apr'.tr(), 10),
+                ChartData('May'.tr(), 14),
+                ChartData('Jun'.tr(), 16),
               ],
             ],
-            seriesNames: const ['Attrition %', 'New Hires'],
+            seriesNames: [
+              'attrition_percent'.tr(),
+              'new_hires'.tr(),
+            ],
             colors: const [Colors.redAccent, Colors.green],
           ),
         ),
@@ -64,16 +68,16 @@ class AnalyticsChartsSection extends StatelessWidget {
 
         // Employee Distribution
         ChartContainer(
-          title: 'Employee Distribution',
-          subtitle: 'By department',
+          title: 'employee_distribution'.tr(),
+          subtitle: 'by_department'.tr(),
           chart: ReusablePieChart(
             dataSource: [
-              ChartData('Engineering', 35, Colors.blue),
-              ChartData('Sales', 20, Colors.orange),
-              ChartData('Marketing', 15, Colors.purple),
-              ChartData('HR', 10, Colors.red),
-              ChartData('Finance', 12, Colors.green),
-              ChartData('Product', 8, Colors.teal),
+              ChartData('engineering'.tr(), 35, Colors.blue),
+              ChartData('sales'.tr(), 20, Colors.orange),
+              ChartData('marketing'.tr(), 15, Colors.purple),
+              ChartData('hr'.tr(), 10, Colors.red),
+              ChartData('finance'.tr(), 12, Colors.green),
+              ChartData('product'.tr(), 8, Colors.teal),
             ],
           ),
         ),
@@ -81,15 +85,15 @@ class AnalyticsChartsSection extends StatelessWidget {
 
         // Attendance Rate
         ChartContainer(
-          title: 'Attendance Rate',
-          subtitle: 'Last 4 weeks',
+          title: 'attendance_rate'.tr(),
+          subtitle: 'last_4_weeks'.tr(),
           chart: ReusableBarChart(
             dataSeries: [
               [
-                ChartData('Week 1', 94),
-                ChartData('Week 2', 95),
-                ChartData('Week 3', 93),
-                ChartData('Week 4', 96),
+                ChartData('week_1'.tr(), 94),
+                ChartData('week_2'.tr(), 95),
+                ChartData('week_3'.tr(), 93),
+                ChartData('week_4'.tr(), 96),
               ],
             ],
             colors: const [Colors.indigo],

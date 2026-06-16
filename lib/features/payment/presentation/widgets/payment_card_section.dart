@@ -1,4 +1,5 @@
 import 'package:animated_payment_card/animated_payment_card.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,22 +41,22 @@ class PaymentCardSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 30.h),
-        _buildLabel('CARDHOLDER NAME'),
+        _buildLabel('cardholder_name_label'.tr()),
         _buildTextField(
           vm.nameController,
-          'Name on card',
+          'cardholder_name_hint'.tr(),
           Icons.person_outline,
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return 'Cardholder name is required';
+              return 'cardholder_name_required'.tr();
             }
             return null;
           },
         ),
-        _buildLabel('CARD NUMBER'),
+        _buildLabel('card_number_label'.tr()),
         _buildTextField(
           vm.cardNumberController,
-          '4000 1234 5678 9010',
+          'card_number_hint'.tr(),
           Icons.credit_card,
           keyboardType: TextInputType.number,
           inputFormatters: [
@@ -65,10 +66,10 @@ class PaymentCardSection extends StatelessWidget {
           ],
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
-              return 'Card number is required';
+              return 'card_number_required'.tr();
             }
             if (value.replaceAll(' ', '').length < 16) {
-              return 'Enter a valid 16-digit card number';
+              return 'valid_card_required'.tr();
             }
             return null;
           },
@@ -80,10 +81,10 @@ class PaymentCardSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildLabel('EXPIRATION DATE'),
+                  _buildLabel('expiration_date_label'.tr()),
                   _buildTextField(
                     vm.expiryController,
-                    'MM/YY',
+                    'expiration_date_hint'.tr(),
                     Icons.calendar_today_outlined,
                     keyboardType: TextInputType.datetime,
                     inputFormatters: [
@@ -93,11 +94,11 @@ class PaymentCardSection extends StatelessWidget {
                     ],
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Required';
+                        return 'required_field'.tr();
                       }
                       final regex = RegExp(r'^(0[1-9]|1[0-2])\/([0-9]{2})$');
                       if (!regex.hasMatch(value)) {
-                        return 'Invalid format (MM/YY)';
+                        return 'invalid_format_mmyy'.tr();
                       }
 
                       final parts = value.split('/');
@@ -110,7 +111,7 @@ class PaymentCardSection extends StatelessWidget {
 
                       if (year < currentYear ||
                           (year == currentYear && month < currentMonth)) {
-                        return 'Card has expired';
+                        return 'card_expired'.tr();
                       }
                       return null;
                     },
@@ -123,10 +124,10 @@ class PaymentCardSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildLabel('CVV / CODE'),
+                  _buildLabel('cvv_label'.tr()),
                   _buildTextField(
                     vm.cvvController,
-                    '***',
+                    'cvv_hint'.tr(),
                     Icons.lock_outline,
                     keyboardType: TextInputType.number,
                     focusNode: vm.cvvFocusNode,
@@ -136,10 +137,10 @@ class PaymentCardSection extends StatelessWidget {
                     ],
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Required';
+                        return 'required_field'.tr();
                       }
                       if (value.length < 3) {
-                        return 'Invalid';
+                        return 'invalid_cvv'.tr();
                       }
                       return null;
                     },
@@ -149,14 +150,14 @@ class PaymentCardSection extends StatelessWidget {
             ),
           ],
         ),
-        _buildLabel('PROMO COUPON'),
+        _buildLabel('promo_coupon_label'.tr()),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: _buildTextField(
                 TextEditingController(),
-                'Code (Try HRXPRO)',
+                'promo_hint'.tr(),
                 Icons.percent,
               ),
             ),
@@ -166,7 +167,7 @@ class PaymentCardSection extends StatelessWidget {
               child: TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Apply',
+                  'apply'.tr(),
                   style: AppStyles.bold20PrimaryDark(
                     color: Colors.white,
                   ).copyWith(fontSize: 14.sp),
@@ -185,8 +186,12 @@ class PaymentCardSection extends StatelessWidget {
           builder: (context, state) {
             return CustomElevatedButton(
               text: state is PaymentLoadingState
-                  ? 'Processing...'
-                  : 'Pay & Activate ${vm.selectedPlanIndex == 0 ? "Starter" : "Premium Suite"}',
+                  ? 'processing_btn'.tr()
+                  : 'pay_and_activate'.tr(namedArgs: {
+                'plan': vm.selectedPlanIndex == 0
+                    ? "starter".tr()
+                    : "premium_suite".tr()
+              }),
               backgroundColor: AppColors.accentColor,
               textStyle: AppStyles.bold20PrimaryDark(
                 color: AppColors.primaryColor,

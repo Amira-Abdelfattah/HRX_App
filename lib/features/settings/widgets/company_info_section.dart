@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,37 +11,36 @@ class CompanyInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SettingSectionCard(
-      title: 'Company Information',
-      subtitle: 'Update your company details',
+      title: 'company_information'.tr(),
+      subtitle: 'update_company_details'.tr(),
       icon: Icons.business_outlined,
       child: Column(
         children: [
-          const CustomTextField(
-            hintText: 'e.g. Acme Corporation',
-            labelText: 'Company Name',
+          CustomTextField(
+            hintText: 'company_name_hint'.tr(),
+            labelText: 'company_name'.tr(),
           ),
           Row(
             children: [
               Expanded(
-                child: const CustomTextField(
-                  hintText: 'Technology',
-                  labelText: 'Industry',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down),
+                child: CustomTextField(
+                  hintText: 'tech_hint'.tr(),
+                  labelText: 'industry'.tr(),
+                  suffixIcon: const Icon(Icons.keyboard_arrow_down),
                 ),
               ),
               SizedBox(width: 16.w),
               Expanded(
-                child: const CustomTextField(
-                  hintText: '100-500',
-                  labelText: 'Company Size',
-                  suffixIcon: Icon(Icons.keyboard_arrow_down),
+                child: CustomTextField(
+                  hintText: 'size_hint'.tr(),
+                  labelText: 'company_size'.tr(),
                 ),
               ),
             ],
           ),
-          const CustomTextField(
-            hintText: '123 Main St, San Francisco, CA 94105',
-            labelText: 'Address',
+          CustomTextField(
+            hintText: 'address_hint'.tr(),
+            labelText: 'address'.tr(),
             maxLines: 2,
           ),
         ],

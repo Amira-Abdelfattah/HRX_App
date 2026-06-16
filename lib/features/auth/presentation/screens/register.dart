@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
       child: BlocConsumer<RegisterViewModel, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterLoadingState) {
-            DialogUtils.showLoading(context: context, message: 'Loading...');
+            DialogUtils.showLoading(context: context, message: 'loading'.tr());
           } else if (state is RegisterErrorState) {
             DialogUtils.hideLoading(context);
             DialogUtils.showMessage(context: context, message: state.message);
@@ -59,8 +60,8 @@ class RegisterScreen extends StatelessWidget {
 
             DialogUtils.showMessage(
               context: context,
-              message: 'Account initialized. Please proceed to payment to activate your workspace.',
-              posActionName: 'Proceed to Payment',
+              message: 'account_initialized'.tr(),
+              posActionName: 'proceed_payment'.tr(),
               posAction: () {
                 Future.delayed(const Duration(milliseconds: 120), () {
                   navigatorKey.currentState?.pushReplacement(
@@ -85,15 +86,15 @@ class RegisterScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 20.h),
-                      const AuthHeader(
-                        title: 'Subscribe to HR Saas',
-                        subtitle: 'Enter details to create your account',
+                      AuthHeader(
+                        title: 'subscribe_title'.tr(),
+                        subtitle: 'enter_details'.tr(),
                       ),
                       SizedBox(height: 40.h),
                       const RegisterForm(),
                       SizedBox(height: 30.h),
                       CustomElevatedButton(
-                        text: 'Subscribe',
+                        text: 'subscribe_btn'.tr(),
                         backgroundColor: AppColors.accentColor,
                         textStyle: AppStyles.semi20Primary().copyWith(
                           color: AppColors.primaryColor,
@@ -105,8 +106,8 @@ class RegisterScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 24.h),
                       AuthFooter(
-                        text: 'Already have an account? ',
-                        linkText: 'Sign In',
+                        text: 'already_account'.tr(),
+                        linkText: 'sign_in'.tr(),
                         onTap: () {
                           Navigator.push(
                             context,

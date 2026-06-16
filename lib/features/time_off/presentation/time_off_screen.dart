@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,10 +75,10 @@ class _TimeOffScreenContentState extends State<TimeOffScreenContent>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomPageHeader(
-                    title: 'Time Off',
+                    title: 'time_off'.tr(),
                     subtitle:
-                        'Manage leave requests and track your time-off balances',
-                    actionLabel: 'Request Time Off',
+                    'manage_leave'.tr(),
+                    actionLabel: 'request_time_off_btn'.tr(),
                     actionIcon: Icons.add,
                     onActionPressed: () {
                       _showNewRequestDialog(context, state.types);
@@ -159,11 +160,11 @@ class _TimeOffScreenContentState extends State<TimeOffScreenContent>
                             context: context,
                           ),
                           padding: EdgeInsets.all(4.w),
-                          tabs: const [
-                            Tab(text: 'Overview'),
-                            Tab(text: 'My Requests'),
-                            Tab(text: 'Pending Approvals'),
-                            Tab(text: 'Team\'s Schedule'),
+                          tabs: [
+                            Tab(text: 'overview'.tr()),
+                            Tab(text: 'my_requests'.tr()),
+                            Tab(text: 'pending_approvals'.tr()),
+                            Tab(text: 'team_schedule'.tr()),
                           ],
                         ),
                       ),

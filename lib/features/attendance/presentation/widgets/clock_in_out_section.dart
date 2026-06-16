@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/cache/shared_prefrence_utils.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -52,13 +52,13 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
     return BlocListener<AttendanceCubit, AttendanceStates>(
       listener: (context, state) {
         if (state is AttendanceLoadingState) {
-          DialogUtils.showLoading(context: context, message: "Processing...");
+          DialogUtils.showLoading(context: context, message: "processing".tr());
         } else if (state is AttendanceErrorState) {
           DialogUtils.hideLoading(context);
           DialogUtils.showMessage(
             context: context,
             message: state.message,
-            title: "Error",
+            title: "error".tr(),
           );
         } else if (state is CheckInSuccessState) {
           DialogUtils.hideLoading(context);
@@ -66,7 +66,8 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
             isCheckedIn = true;
             lastCheckIn = state.response.checkIn;
           });
-          _showSuccessDialog(context, "Checked In!", state.response.message);
+          _showSuccessDialog(
+              context, "checked_in_success".tr(), state.response.message);
         } else if (state is CheckOutSuccessState) {
           DialogUtils.hideLoading(context);
           setState(() {
@@ -76,8 +77,9 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
           });
           _showSuccessDialog(
             context,
-            "Checked Out!",
-            "${state.response.message}. Worked hours: ${workedHours.toStringAsFixed(2)}h",
+            "checked_out_success".tr(),
+            "${state.response.message}. ${'worked_hours_info'.tr(
+                args: [workedHours.toStringAsFixed(2)])}",
           );
         }
       },
@@ -112,6 +114,7 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                       Text(
                         DateFormat(
                           'EEEE, MMMM dd, yyyy',
+                            context.locale.languageCode
                         ).format(_now).toUpperCase(),
                         style: AppStyles.medium12Grey().copyWith(
                           color: AppColors.warningColor,
@@ -122,7 +125,8 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                         fit: BoxFit.scaleDown,
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          DateFormat('hh:mm:ss a').format(_now),
+                          DateFormat('hh:mm:ss a', context.locale.languageCode)
+                              .format(_now),
                           style: AppStyles.semi24PrimaryDark(
                             color: isDark
                                 ? Colors.white
@@ -143,7 +147,9 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                           SizedBox(width: 8.w),
                           Flexible(
                             child: Text(
-                              "Status: ${isCheckedIn ? 'Checked In' : 'Checked Out'}",
+                              "${'status_label'.tr()}: ${isCheckedIn
+                                  ? 'checked_in'.tr()
+                                  : 'checked_out'.tr()}",
                               style: AppStyles.medium14Grey(),
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -173,7 +179,7 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                       color: Colors.white,
                     ),
                     label: Text(
-                      isCheckedIn ? "Clock Out" : "Clock In",
+                      isCheckedIn ? "clock_out".tr() : "clock_in".tr(),
                       style: AppStyles.semi14White,
                     ),
                     style: ElevatedButton.styleFrom(
@@ -205,7 +211,7 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                     SizedBox(width: 4.w),
                     Flexible(
                       child: Text(
-                        "GPS location will be captured securely",
+                        "gps_location_info".tr(),
                         style: AppStyles.regular10Grey().copyWith(
                           fontSize: 11.sp,
                         ),
@@ -225,21 +231,22 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildTimeInfo(
-                  "LAST CHECK IN",
-                  lastCheckIn ?? "Not Yet",
+                  "last_check_in_caps".tr(),
+                  lastCheckIn ?? "not_yet".tr(),
                   isDark,
                 ),
                 SizedBox(height: 12.h),
                 _buildTimeInfo(
-                  "LAST CHECK OUT",
+                  "last_check_out_caps".tr(),
                   lastCheckOut ??
-                      (isCheckedIn ? "Active Session" : "Not Yet"),
+                      (isCheckedIn ? "active_session".tr() : "not_yet".tr()),
                   isDark,
                 ),
                 SizedBox(height: 12.h),
                 _buildTimeInfo(
-                  "HOURS WORKED",
-                  "${workedHours.toStringAsFixed(2)} hrs",
+                  "hours_worked_caps".tr(),
+                  'worked_hours_value'.tr(
+                      args: [workedHours.toStringAsFixed(2)]),
                   isDark,
                 ),
               ],

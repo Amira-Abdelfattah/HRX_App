@@ -39,7 +39,7 @@ class DrawerMenuItem extends StatelessWidget {
               ),
       ),
       selected: isSelected,
-      selectedTileColor: AppColors.accentColor.withOpacity(0.1),
+      selectedTileColor: AppColors.accentColor.withValues(alpha: 0.1),
       onTap: onTap,
     );
   }

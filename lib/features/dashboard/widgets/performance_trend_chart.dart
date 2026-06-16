@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/charts/chart_container.dart';
@@ -10,16 +11,16 @@ class PerformanceTrendChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChartContainer(
-      title: 'Performance Trend',
-      subtitle: 'Average employee performance over time',
+      title: 'performance_trend'.tr(),
+      subtitle: 'performance_trend_subtitle'.tr(),
       chart: ReusableAreaChart(
         dataSource: [
-          ChartData('Jan', 72),
-          ChartData('Feb', 75),
-          ChartData('Mar', 80),
-          ChartData('Apr', 83),
-          ChartData('May', 87),
-          ChartData('Jun', 91),
+          ChartData('Jan'.tr(), 72),
+          ChartData('Feb'.tr(), 75),
+          ChartData('Mar'.tr(), 80),
+          ChartData('Apr'.tr(), 83),
+          ChartData('May'.tr(), 87),
+          ChartData('Jun'.tr(), 91),
         ],
       ),
     );

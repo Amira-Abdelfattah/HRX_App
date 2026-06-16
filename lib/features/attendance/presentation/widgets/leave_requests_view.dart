@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,38 +16,38 @@ class LeaveRequestsView extends StatelessWidget {
     final List<Map<String, dynamic>> leaveRequests = [
       {
         'name': 'Sarah Johnson',
-        'type': 'Vacation',
+        'type': 'vacation'.tr(),
         'fromDate': 'Apr 20, 2023',
         'toDate': 'Apr 22, 2023',
-        'reason': 'Family vacation',
-        'status': 'Pending',
+        'reason': 'family_vacation'.tr(),
+        'status': 'pending'.tr(),
         'statusColor': AppColors.warningColor,
       },
       {
         'name': 'Michael Chen',
-        'type': 'Sick Leave',
+        'type': 'sick_leave'.tr(),
         'fromDate': 'Apr 15, 2023',
         'toDate': 'Apr 15, 2023',
-        'reason': 'Medical appointment',
-        'status': 'Approved',
+        'reason': 'medical_appointment'.tr(),
+        'status': 'approved'.tr(),
         'statusColor': AppColors.successColor,
       },
       {
         'name': 'Emma Williams',
-        'type': 'Personal',
+        'type': 'personal'.tr(),
         'fromDate': 'Apr 25, 2023',
         'toDate': 'Apr 28, 2023',
-        'reason': 'Personal matter',
-        'status': 'Pending',
+        'reason': 'personal_matter'.tr(),
+        'status': 'pending'.tr(),
         'statusColor': AppColors.warningColor,
       },
       {
         'name': 'James Brown',
-        'type': 'Vacation',
+        'type': 'vacation'.tr(),
         'fromDate': 'May 1, 2023',
         'toDate': 'May 5, 2023',
-        'reason': 'Conflict with project deadline',
-        'status': 'Rejected',
+        'reason': 'conflict_deadline'.tr(),
+        'status': 'rejected'.tr(),
         'statusColor': AppColors.dangerColor,
       },
     ];
@@ -62,7 +63,7 @@ class LeaveRequestsView extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h),
             child: Text(
-              "Leave Requests",
+              "leave_requests".tr(),
               style: AppStyles.bold20PrimaryDark(color: isDark ? Colors.white : AppColors.primaryColor),
             ),
           );

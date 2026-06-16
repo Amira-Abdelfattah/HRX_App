@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,7 @@ import 'domain/entities/add_employee_response_entity.dart';
 import 'presentation/manager/add_employee_view_model.dart';
 import 'widgets/add_employee_dialog.dart';
 import 'widgets/employee_card.dart';
+
 import 'widgets/employees_search_filter.dart';
 
 class EmployeesScreen extends StatefulWidget {
@@ -58,9 +60,9 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
       child: Column(
         children: [
           CustomPageHeader(
-            title: 'Employees',
-            subtitle: 'Manage your team members',
-            actionLabel: 'Add Employee',
+            title: 'employees'.tr(),
+            subtitle: 'manage_team'.tr(),
+            actionLabel: 'add_employee'.tr(),
             onActionPressed: () async {
               final addViewModel = BlocProvider.of<AddEmployeeViewModel>(
                   context);
@@ -70,7 +72,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
 
               final result = await showDialog(
                 context: context,
-                barrierColor: Colors.black.withOpacity(0.5),
+                barrierColor: Colors.black.withValues(alpha: 0.5),
                 builder: (dialogContext) =>
                     BlocProvider.value(
                       value: addViewModel,
@@ -92,7 +94,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
           employees.isEmpty
               ? Padding(
             padding: EdgeInsets.only(top: 50.h),
-            child: const Text("No employees found"),
+            child: Text("no_employees_found".tr()),
           )
               : GridView.builder(
             shrinkWrap: true,
@@ -135,10 +137,10 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
 
               return EmployeeCard(
                 name: name,
-                role: emp.role ?? 'Employee',
+                role: emp.role ?? 'employee'.tr(),
                 department: displayJob,
                 performance: 100,
-                status: 'Active',
+                status: 'active'.tr(),
                 statusColor: AppColors.successColor,
                 initials: initials,
                 onTap: () {
@@ -174,9 +176,9 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
           children: [
             Expanded(
               child: SummaryCard(
-                title: 'Total',
+                title: 'total'.tr(),
                 value: totalCount.toString(),
-                subtitle: 'Employees',
+                subtitle: 'employees'.tr(),
                 icon: Icons.people_alt_rounded,
                 color: AppColors.primaryColor,
               ),
@@ -184,9 +186,9 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
             SizedBox(width: 12.w),
             Expanded(
               child: SummaryCard(
-                title: 'Active',
+                title: 'active'.tr(),
                 value: totalCount.toString(),
-                subtitle: 'At work',
+                subtitle: 'at_work'.tr(),
                 icon: Icons.check_circle_rounded,
                 color: AppColors.successColor,
               ),
@@ -197,3 +199,4 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
     );
   }
 }
+

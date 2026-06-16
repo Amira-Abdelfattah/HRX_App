@@ -29,10 +29,10 @@ class TimeOffSummaryCard extends StatelessWidget {
       width: 140.w,
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: color.withOpacity(isDark ? 0.15 : 0.05),
+        color: color.withValues(alpha: isDark ? 0.15 : 0.05),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: color.withOpacity(isDark ? 0.3 : 0.2),
+          color: color.withValues(alpha: isDark ? 0.3 : 0.2),
           width: 1,
         ),
       ),
@@ -45,7 +45,7 @@ class TimeOffSummaryCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(6.w),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(icon, color: color, size: 16.sp),
@@ -118,3 +118,4 @@ class TimeOffSummaryCard extends StatelessWidget {
     );
   }
 }
+

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,11 +15,11 @@ class PaymentHeader extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
           decoration: BoxDecoration(
-            color: AppColors.accentColor.withOpacity(0.2),
+            color: AppColors.accentColor.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(20.r),
           ),
           child: Text(
-            'STEP 2 OF 2: BILLING',
+            'step_2_of_2'.tr(),
             style: AppStyles.bold20PrimaryDark(
               color: AppColors.accentColor,
             ).copyWith(fontSize: 10.sp, letterSpacing: 1.2),
@@ -26,7 +27,7 @@ class PaymentHeader extends StatelessWidget {
         ),
         SizedBox(height: 12.h),
         Text(
-          'Complete Subscription',
+          'complete_subscription'.tr(),
           style: AppStyles.semi24White.copyWith(
             fontSize: 28.sp,
             fontWeight: FontWeight.bold,
@@ -34,7 +35,7 @@ class PaymentHeader extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         Text(
-          'Welcome, amira! Select your billing preference and enter card information to launch your SaaS platform workspace.',
+          'payment_welcome'.tr(),
           textAlign: TextAlign.center,
           style: AppStyles.regular14Grey(color: Colors.white70),
         ),
@@ -42,3 +43,4 @@ class PaymentHeader extends StatelessWidget {
     );
   }
 }
+

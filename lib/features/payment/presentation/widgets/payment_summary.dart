@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,25 +21,25 @@ class PaymentSummary extends StatelessWidget {
         ? (isAnnual ? 288.0 : 29.0)
         : (isAnnual ? 588.0 : 59.0);
     String label = isAnnual
-        ? 'Base Subscription (annual)'
-        : 'Base Subscription (monthly)';
+        ? 'base_subscription_annual'.tr()
+        : 'base_subscription_monthly'.tr();
     double vat = basePrice * 0.05;
     double total = basePrice + vat;
 
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.02),
+        color: Colors.white.withValues(alpha: 0.02),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Column(
         children: [
           _summaryRow(label, '\$${basePrice.toStringAsFixed(2)}'),
-          _summaryRow('Subtotal', '\$${basePrice.toStringAsFixed(2)}'),
-          _summaryRow('VAT (5%)', '\$${vat.toStringAsFixed(2)}'),
+          _summaryRow('subtotal'.tr(), '\$${basePrice.toStringAsFixed(2)}'),
+          _summaryRow('vat'.tr(), '\$${vat.toStringAsFixed(2)}'),
           const Divider(color: Colors.white12),
           _summaryRow(
-            'Total Amount Billed',
+            'total_amount_billed'.tr(),
             '\$${total.toStringAsFixed(2)}',
             isTotal: true,
           ),
@@ -74,3 +75,4 @@ class PaymentSummary extends StatelessWidget {
     );
   }
 }
+

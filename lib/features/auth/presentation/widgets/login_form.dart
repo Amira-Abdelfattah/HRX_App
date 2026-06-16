@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/core/utils/app_validator.dart';
@@ -23,11 +24,11 @@ class LoginForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const FieldLabel(label: 'Email Address'),
+          FieldLabel(label: 'email_address'.tr()),
           CustomTextField(
             controller: vm.emailController,
             validator: AppValidator.validateEmail,
-            hintText: 'admin@gmail.com',
+            hintText: 'email_hint_login'.tr(),
             filledColor: Colors.white.withValues(alpha: 0.1),
             borderColor: Colors.transparent,
             style: AppStyles.medium14Category().copyWith(
@@ -38,7 +39,7 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20.h),
-          const FieldLabel(label: 'Password'),
+          FieldLabel(label: 'password'.tr()),
           CustomTextField(
             controller: vm.passwordController,
             validator: AppValidator.validatePassword,
@@ -86,7 +87,7 @@ class LoginForm extends StatelessWidget {
                   ),
                   SizedBox(width: 8.w),
                   Text(
-                    'Remember me',
+                    'remember_me'.tr(),
                     style: AppStyles.regular14Grey().copyWith(
                       color: Colors.white70,
                       fontSize: 14.sp,
@@ -97,7 +98,7 @@ class LoginForm extends StatelessWidget {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Forgot password?',
+                  'forgot_password'.tr(),
                   style: AppStyles.semi14PrimaryDark().copyWith(
                     color: AppColors.accentColor,
                     fontWeight: FontWeight.bold,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,9 +20,9 @@ class AnalyticsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 1. Header
-              const CustomPageHeader(
-                title: 'Analytics & Reports',
-                subtitle: 'Comprehensive HR insights and data visualization',
+              CustomPageHeader(
+                title: 'analytics_reports'.tr(),
+                subtitle: 'hr_insights'.tr(),
               ),
               SizedBox(height: 24.h),
 

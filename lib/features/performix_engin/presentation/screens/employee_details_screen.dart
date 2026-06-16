@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +29,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Back to Employees',
+          'back_to_employees'.tr(),
           style: AppStyles.regular14Grey(),
         ),
         titleSpacing: 0,
@@ -43,9 +44,9 @@ class EmployeeDetailsScreen extends StatelessWidget {
 
             // Main Performance Stat
             _buildStatCard(
-              'Performance Score',
+              'performance_score'.tr(),
               '${employee['perf'] ?? 86}/100',
-              '↑ 5% from last month',
+              'from_last_month'.tr(args: ['↑ 5%']),
               Icons.trending_up,
               Colors.blue,
               isDark,
@@ -57,9 +58,9 @@ class EmployeeDetailsScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: _buildStatCard(
-                    'Attendance',
+                    'attendance'.tr(),
                     '97%',
-                    '↑ 2% from last month',
+                    'from_last_month'.tr(args: ['↑ 2%']),
                     Icons.calendar_today,
                     Colors.green,
                     isDark,
@@ -69,9 +70,9 @@ class EmployeeDetailsScreen extends StatelessWidget {
                 SizedBox(width: 16.w),
                 Expanded(
                   child: _buildStatCard(
-                    'Join Date',
+                    'join_date'.tr(),
                     '-',
-                    'Reporting to M. Chen',
+                    'reporting_to'.tr(args: ['M. Chen']),
                     Icons.military_tech_outlined,
                     Colors.orange,
                     isDark,
@@ -164,7 +165,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildBadge('Active', const Color(0xFF22C55E)),
+              _buildBadge('active'.tr(), const Color(0xFF22C55E)),
               SizedBox(width: 8.w),
               _buildIdBadge('EMP-61'),
             ],
@@ -177,7 +178,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           // Contact Info
           _buildInfoChip(
             Icons.email_outlined,
-            'EMAIL',
+            'email_address_caps'.tr(),
             employee['email'] ?? 'jon@gmail.com',
             isDark,
           ),
@@ -187,7 +188,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
               Expanded(
                 child: _buildInfoChip(
                   Icons.phone_outlined,
-                  'PHONE',
+                  'phone_caps'.tr(),
                   '-',
                   isDark,
                 ),
@@ -196,7 +197,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
               Expanded(
                 child: _buildInfoChip(
                   Icons.location_on_outlined,
-                  'LOCATION',
+                  'location_caps'.tr(),
                   'Cairo',
                   isDark,
                 ),
@@ -361,7 +362,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           Text(
             sub,
             style: TextStyle(
-              color: sub.startsWith('↑') ? Colors.green : Colors.grey[500],
+              color: sub.contains('↑') ? Colors.green : Colors.grey[500],
               fontSize: 10.sp,
               fontWeight: FontWeight.w500,
             ),
@@ -385,15 +386,15 @@ class EmployeeDetailsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Employee Details',
+            'employee_details'.tr(),
             style: AppStyles.bold20PrimaryDark().copyWith(fontSize: 18.sp),
           ),
           SizedBox(height: 16.h),
-          _buildDetailRow('Employee ID', 'EMP-61', isDark),
-          _buildDetailRow('Department', employee['dept'] ?? '-', isDark),
-          _buildDetailRow('Position', employee['role'] ?? '-', isDark),
-          _buildDetailRow('Manager', 'Michael Chen', isDark),
-          _buildDetailRow('Join Date', '-', isDark, showDivider: false),
+          _buildDetailRow('employee_id'.tr(), 'EMP-61', isDark),
+          _buildDetailRow('department'.tr(), employee['dept'] ?? '-', isDark),
+          _buildDetailRow('position'.tr(), employee['role'] ?? '-', isDark),
+          _buildDetailRow('manager'.tr(), 'Michael Chen', isDark),
+          _buildDetailRow('join_date'.tr(), '-', isDark, showDivider: false),
         ],
       ),
     );
@@ -435,12 +436,12 @@ class EmployeeDetailsScreen extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 4.w, bottom: 12.h),
           child: Text(
-            'Quick Stats',
+            'quick_stats'.tr(),
             style: AppStyles.bold20PrimaryDark(),
           ),
         ),
         _buildQuickStatItem(
-          'Tasks Completed',
+          'tasks_completed'.tr(),
           '24/30',
           const Color(0xFFDCFCE7),
           const Color(0xFF16A34A),
@@ -448,7 +449,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
         ),
         SizedBox(height: 12.h),
         _buildQuickStatItem(
-          'Pending Reviews',
+          'activity_pending_reviews_title'.tr(),
           '3',
           const Color(0xFFFEF9C3),
           const Color(0xFFCA8A04),

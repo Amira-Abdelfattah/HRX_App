@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,8 +19,8 @@ class InsightsView extends StatelessWidget {
           children: [
             Expanded(
               child: _buildInfoCard(
-                'Top Department This Month',
-                'Engineering team achieved 92% score',
+                'top_dept_month'.tr(),
+                'eng_team_achieved'.tr(),
                 const Color(0xFFDCFCE7),
                 const Color(0xFF166534),
                 Icons.emoji_events_outlined,
@@ -28,8 +29,8 @@ class InsightsView extends StatelessWidget {
             SizedBox(width: 12.w),
             Expanded(
               child: _buildInfoCard(
-                'Performance Drop Alert',
-                '3 employees showing declining trend',
+                'performance_drop_alert'.tr(),
+                'three_employees_declining'.tr(),
                 const Color(0xFFFEF9C3),
                 const Color(0xFF854D0E),
                 Icons.warning_amber_rounded,
@@ -43,8 +44,8 @@ class InsightsView extends StatelessWidget {
           children: [
             Expanded(
               child: _buildInfoCard(
-                'Q2 Goal Progress',
-                'Company-wide target: 75% achieved',
+                'q2_goal_progress'.tr(),
+                'company_wide_target'.tr(),
                 isDark
                     ? AppColors.darkSurfaceLightColor
                     : const Color(0xFFF1F5F9),
@@ -67,7 +68,7 @@ class InsightsView extends StatelessWidget {
 
         SizedBox(height: 24.h),
         Text(
-          'Department Performance',
+          'department_performance'.tr(),
           style: AppStyles.bold20PrimaryDark(
             color: isDark ? Colors.white : AppColors.primaryColor,
           ).copyWith(fontSize: 18.sp),
@@ -84,34 +85,34 @@ class InsightsView extends StatelessWidget {
           children: [
             _buildDeptCard(
               isDark,
-              'Engineering',
+              'engineering'.tr(),
               '90',
-              '45 employees',
-              'Top: Sarah Johnson',
+              'employees_count'.tr(args: ['45']),
+              'top_employee'.tr(namedArgs: {'name': 'Sarah Johnson'}),
               true,
             ),
             _buildDeptCard(
               isDark,
-              'Product',
+              'product'.tr(),
               '87',
-              '28 employees',
-              'Top: Michael Chen',
+              'employees_count'.tr(args: ['28']),
+              'top_employee'.tr(namedArgs: {'name': 'Michael Chen'}),
               true,
             ),
             _buildDeptCard(
               isDark,
-              'Design',
+              'design'.tr(),
               '88',
-              '22 employees',
-              'Top: Emma Williams',
+              'employees_count'.tr(args: ['22']),
+              'top_employee'.tr(namedArgs: {'name': 'Emma Williams'}),
               false,
             ),
             _buildDeptCard(
               isDark,
-              'Sales',
+              'sales'.tr(),
               '84',
-              '38 employees',
-              'Top: David Lee',
+              'employees_count'.tr(args: ['38']),
+              'top_employee'.tr(namedArgs: {'name': 'David Lee'}),
               false,
             ),
           ],
@@ -219,7 +220,7 @@ class InsightsView extends StatelessWidget {
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
-          Text('Average Score', style: AppStyles.regular10Grey()),
+          Text('avg_score'.tr(), style: AppStyles.regular10Grey()),
           SizedBox(height: 6.h),
           Text(employees, style: AppStyles.regular10Grey()),
           Text(
@@ -255,7 +256,7 @@ class InsightsView extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
               Text(
-                'Performance Alerts',
+                'performance_alerts'.tr(),
                 style: AppStyles.bold20PrimaryDark(
                   color: isDark ? Colors.white : AppColors.primaryColor,
                 ).copyWith(fontSize: 18.sp),
@@ -265,24 +266,24 @@ class InsightsView extends StatelessWidget {
           SizedBox(height: 20.h),
           _buildDetailedAlertTile(
             'James Brown',
-            'Performance score dropped 8% in last 30 days',
-            'Suggested Action: Schedule 1-on-1 meeting',
+            'james_brown_issue'.tr(),
+            'james_brown_action'.tr(),
             Colors.red,
-            'HIGH',
+            'high'.tr(),
           ),
           _buildDetailedAlertTile(
             'Lisa Anderson',
-            'Attendance rate below target (85%)',
-            'Suggested Action: Review attendance policy',
+            'lisa_anderson_issue'.tr(),
+            'lisa_anderson_action'.tr(),
             Colors.orange,
-            'MEDIUM',
+            'medium'.tr(),
           ),
           _buildDetailedAlertTile(
             'Alex Thompson',
-            'Multiple missed deadlines (4 in last month)',
-            'Suggested Action: Assess workload distribution',
+            'alex_thompson_issue'.tr(),
+            'alex_thompson_action'.tr(),
             Colors.red,
-            'HIGH',
+            'high'.tr(),
           ),
         ],
       ),

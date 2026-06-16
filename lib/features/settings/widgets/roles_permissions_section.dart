@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,16 +12,16 @@ class RolesPermissionsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SettingSectionCard(
-      title: 'Roles & Permissions',
-      subtitle: 'Manage user access levels',
+      title: 'roles_permissions'.tr(),
+      subtitle: 'manage_user_access'.tr(),
       icon: Icons.shield_outlined,
       iconColor: Colors.indigo,
       child: Column(
         children: [
-          _buildRoleItem('Admin'),
-          _buildRoleItem('HR Manager'),
-          _buildRoleItem('Manager'),
-          _buildRoleItem('Employee'),
+          _buildRoleItem('admin'.tr()),
+          _buildRoleItem('hr_manager'.tr()),
+          _buildRoleItem('manager'.tr()),
+          _buildRoleItem('employee'.tr()),
         ],
       ),
     );
@@ -51,7 +52,7 @@ class RolesPermissionsSection extends StatelessWidget {
           TextButton(
             onPressed: () {},
             child: Text(
-              'Edit',
+              'edit'.tr(),
               style: AppStyles.medium14PrimaryDark(
                 color: AppColors.secondaryColor,
               ),

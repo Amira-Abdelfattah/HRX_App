@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/features/auth/presentation/screens/login.dart';
+import 'package:hrx_app/features/dashboard/dashboard.dart';
+import 'package:hrx_app/features/employees/employees.dart';
 import 'package:hrx_app/features/payroll/payroll.dart';
 import 'package:hrx_app/features/performix_engin/presentation/screens/performix_engin.dart';
 import 'package:hrx_app/features/settings/settings_screen.dart';
@@ -18,8 +21,6 @@ import '../core/providers/theme_provider.dart';
 import '../core/utils/app_colors.dart';
 import 'analytics/analytics_screen.dart';
 import 'attendance/presentation/attendance_screen.dart';
-import 'dashboard/dashboard.dart';
-import 'employees/employees.dart';
 
 class MainLayout extends StatefulWidget {
   final String? userName;
@@ -83,7 +84,7 @@ class _MainLayoutState extends State<MainLayout> {
                     borderRadius: BorderRadius.circular(16.r),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         blurRadius: 10,
                         offset: const Offset(0, 5),
                       ),
@@ -118,7 +119,7 @@ class _MainLayoutState extends State<MainLayout> {
                       _buildMenuItem(
                         context,
                         icon: Icons.settings_outlined,
-                        title: 'Setting',
+                        title: 'settings'.tr(),
                         onTap: () {
                           Navigator.pop(context);
                           navProvider.setIndex(7); // Settings index is now 7
@@ -128,7 +129,7 @@ class _MainLayoutState extends State<MainLayout> {
                       _buildMenuItem(
                         context,
                         icon: Icons.logout,
-                        title: 'Logout',
+                        title: 'logout'.tr(),
                         color: Colors.red,
                         onTap: () {
                           // Clear Local Cache
@@ -215,7 +216,7 @@ class _MainLayoutState extends State<MainLayout> {
       ),
       appBar: AppBar(
         toolbarHeight: 80.h,
-        title: const CustomSearchBar(),
+        title: CustomSearchBar(hintText: 'search_hint'.tr()),
         actions: [
           IconButton(
             icon: Icon(

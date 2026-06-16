@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,7 +78,7 @@ class AddEmployeeDialog extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Add Employee',
+                                  'add_employee'.tr(),
                                   style: AppStyles.semi24White.copyWith(
                                     fontSize: 22.sp,
                                     fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class AddEmployeeDialog extends StatelessWidget {
                             ),
                             SizedBox(height: 6.h),
                             Text(
-                              'Create a new employee profile and link them to a job position.',
+                              'add_employee_desc'.tr(),
                               style: AppStyles.regular12Grey(
                                 color: Colors.white.withValues(alpha: 0.8),
                               ),
@@ -118,35 +119,35 @@ class AddEmployeeDialog extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildLabel('EMPLOYEE NAME'),
+                            _buildLabel('employee_name_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.nameController,
-                              hintText: 'jon',
+                              hintText: 'jon_hint'.tr(),
                               style: AppStyles.semi20Primary().copyWith(
                                   fontSize: 16.sp),
                               filledColor: const Color(0xFFF8FAFC),
                               validator: (value) =>
                               (value == null || value.isEmpty)
-                                  ? 'Name is required'
+                                  ? 'name_required'.tr()
                                   : null,
                               prefixIcon: Icon(
                                   Icons.person_outline, size: 20.sp,
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('EMAIL ADDRESS'),
+                            _buildLabel('email_address_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.emailController,
-                              hintText: 'jon@gmail.com',
+                              hintText: 'email_hint'.tr(),
                               style: AppStyles.semi20Primary().copyWith(
                                   fontSize: 16.sp),
                               filledColor: const Color(0xFFF8FAFC),
                               validator: (value) {
                                 if (value == null || value.isEmpty)
-                                  return 'Email is required';
+                                  return 'email_required'.tr();
                                 if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                                     .hasMatch(value))
-                                  return 'Enter valid email';
+                                  return 'valid_email_required'.tr();
                                 return null;
                               },
                               prefixIcon: Icon(
@@ -156,10 +157,10 @@ class AddEmployeeDialog extends StatelessWidget {
                             SizedBox(height: 4.h),
                             Row(
                               children: [
-                                _buildLabel('COMPANY NAME'),
+                                _buildLabel('company_name_caps'.tr()),
                                 SizedBox(width: 4.w),
                                 Text(
-                                  'AUTO',
+                                  'auto_caps'.tr(),
                                   style: AppStyles.medium12Grey().copyWith(
                                     fontSize: 10.sp,
                                     color: Colors.grey.shade400,
@@ -170,7 +171,7 @@ class AddEmployeeDialog extends StatelessWidget {
                             CustomTextField(
                               controller: viewModel.companyController,
                               readOnly: true,
-                              hintText: 'Company Name',
+                              hintText: 'company'.tr(),
                               style: AppStyles.semi20Primary().copyWith(
                                 fontSize: 16.sp,
                                 color: const Color(0xFF1E3A8A),
@@ -181,7 +182,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('PASSWORD'),
+                            _buildLabel('password_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.passwordController,
                               hintText: '...',
@@ -191,34 +192,34 @@ class AddEmployeeDialog extends StatelessWidget {
                               filledColor: const Color(0xFFEFF6FF),
                               validator: (value) =>
                               (value == null || value.isEmpty)
-                                  ? 'Password is required'
+                                  ? 'password_required'.tr()
                                   : null,
                               prefixIcon: Icon(Icons.lock_outline, size: 20.sp,
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('JOB POSITION'),
+                            _buildLabel('job_position_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.jobPositionController,
-                              hintText: 'developer',
+                              hintText: 'job_hint'.tr(),
                               style: AppStyles.semi20Primary().copyWith(
                                   fontSize: 16.sp),
                               borderColor: const Color(0xFF6366F1),
                               validator: (value) =>
                               (value == null || value.isEmpty)
-                                  ? 'Job position is required'
+                                  ? 'job_required'.tr()
                                   : null,
                               prefixIcon: Icon(Icons.work_outline, size: 20.sp,
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('SYSTEM ROLE'),
+                            _buildLabel('system_role_caps'.tr()),
                             SizedBox(height: 8.h),
                             Row(
                               children: [
                                 _buildRoleItem(
                                   viewModel,
-                                  'HR Manager',
+                                  'hr_manager'.tr(),
                                   'hr_manager',
                                   Icons.verified_user_outlined,
                                   const Color(0xFF3B82F6),
@@ -226,7 +227,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                 SizedBox(width: 10.w),
                                 _buildRoleItem(
                                   viewModel,
-                                  'Manager',
+                                  'manager'.tr(),
                                   'manager',
                                   Icons.business_center_outlined,
                                   const Color(0xFF92400E),
@@ -234,7 +235,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                 SizedBox(width: 10.w),
                                 _buildRoleItem(
                                   viewModel,
-                                  'Employee',
+                                  'employee'.tr(),
                                   'user',
                                   Icons.person_outline,
                                   const Color(0xFF6366F1),
@@ -278,7 +279,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                   child: TextButton(
                                     onPressed: () => Navigator.pop(context),
                                     child: Text(
-                                      'CANCEL',
+                                      'cancel_caps'.tr(),
                                       style: AppStyles.semi14PrimaryDark(
                                         color: Colors.grey.shade600,
                                       ).copyWith(fontWeight: FontWeight.bold),
@@ -290,8 +291,8 @@ class AddEmployeeDialog extends StatelessWidget {
                                   flex: 3,
                                   child: CustomElevatedButton(
                                     text: state is AddEmployeeLoadingState
-                                        ? 'SAVING...'
-                                        : 'SAVE EMPLOYEE',
+                                        ? 'saving_caps'.tr()
+                                        : 'save_employee_caps'.tr(),
                                     backgroundColor: const Color(0xFF1E3A8A),
                                     textStyle: AppStyles.semi16White.copyWith(
                                       fontSize: 14.sp,

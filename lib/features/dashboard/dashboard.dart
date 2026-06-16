@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/features/dashboard/widgets/attendance_productivity_chart.dart';
@@ -23,13 +24,13 @@ class DashboardScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Dashboard Overview',
+            'dashboard_overview'.tr(),
             style: AppStyles.bold32PrimaryDark(
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
           Text(
-            'Welcome back! Here\'s the heartbeat of your organization.',
+            'welcome_back_dashboard'.tr(),
             style: AppStyles.regular14Grey(),
           ),
           SizedBox(height: 24.h),
@@ -42,7 +43,7 @@ class DashboardScreen extends StatelessWidget {
             childAspectRatio: 1.1,
             children: [
               StatCard(
-                title: 'Total Employees',
+                title: 'total_employees'.tr(),
                 value: '1,247',
                 trend: '12%',
                 isPositive: true,
@@ -50,7 +51,7 @@ class DashboardScreen extends StatelessWidget {
                 color: Colors.blue.shade700,
               ),
               StatCard(
-                title: 'Active Projects',
+                title: 'active_projects'.tr(),
                 value: '64',
                 trend: '8%',
                 isPositive: true,
@@ -58,7 +59,7 @@ class DashboardScreen extends StatelessWidget {
                 color: Colors.purple.shade600,
               ),
               StatCard(
-                title: 'Attendance Rate',
+                title: 'attendance_rate'.tr(),
                 value: '93.5%',
                 trend: '2%',
                 isPositive: false,
@@ -66,7 +67,7 @@ class DashboardScreen extends StatelessWidget {
                 color: Colors.green.shade600,
               ),
               StatCard(
-                title: 'Avg Performance',
+                title: 'avg_performance'.tr(),
                 value: '87/100',
                 trend: '5%',
                 isPositive: true,

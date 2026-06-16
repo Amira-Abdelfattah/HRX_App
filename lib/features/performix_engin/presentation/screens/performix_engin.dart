@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/features/performix_engin/widgets/insights_view.dart';
@@ -106,7 +107,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Text(
-                  'Score: ${employee['perf'] ?? 0}',
+                  'score'.tr(args: [employee['perf']?.toString() ?? '0']),
                   style: TextStyle(
                     color: AppColors.successColor,
                     fontWeight: FontWeight.bold,
@@ -118,17 +119,17 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           ),
           SizedBox(height: 24.h),
           Text(
-            'Performance Breakdown',
+            'performance_breakdown'.tr(),
             style: AppStyles.semi16PrimaryMenu(
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
           SizedBox(height: 16.h),
-          _buildMetricRow('Efficiency', 0.85, Colors.blue),
+          _buildMetricRow('efficiency'.tr(), 0.85, Colors.blue),
           SizedBox(height: 12.h),
-          _buildMetricRow('Quality', 0.92, Colors.green),
+          _buildMetricRow('quality'.tr(), 0.92, Colors.green),
           SizedBox(height: 12.h),
-          _buildMetricRow('Timeliness', 0.78, Colors.orange),
+          _buildMetricRow('timeliness'.tr(), 0.78, Colors.orange),
           SizedBox(height: 24.h),
           Center(
             child: TextButton(
@@ -142,7 +143,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
                 ); // Reset to leaderboard or handle differently
               },
               child: Text(
-                'View Full Leaderboard',
+                'view_full_leaderboard'.tr(),
                 style: AppStyles.semi14PrimaryDark(),
               ),
             ),
@@ -227,7 +228,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Top Performers',
+          'top_performers'.tr(),
           style: AppStyles.bold20PrimaryDark(
             color: isDark ? Colors.white : AppColors.primaryColor,
           ).copyWith(fontSize: 18.sp),
@@ -278,14 +279,14 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           ),
           SizedBox(height: 16.h),
           Text(
-            'Select an Employee',
+            'select_employee'.tr(),
             style: AppStyles.bold20PrimaryDark(
               color: isDark ? Colors.white : AppColors.primaryColor,
             ).copyWith(fontSize: 18.sp),
           ),
           SizedBox(height: 8.h),
           Text(
-            'Click on any employee to view their detailed performance breakdown',
+            'select_employee_desc'.tr(),
             textAlign: TextAlign.center,
             style: AppStyles.regular12Grey(),
           ),

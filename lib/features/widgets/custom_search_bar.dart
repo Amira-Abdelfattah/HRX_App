@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
+
 import '../../core/utils/app_styles.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -31,7 +32,7 @@ class CustomSearchBar extends StatelessWidget {
             ? []
             : [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.03),
+                  color: Colors.black.withValues(alpha: 0.03),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),

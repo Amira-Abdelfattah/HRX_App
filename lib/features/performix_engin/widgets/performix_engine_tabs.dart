@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,8 +31,8 @@ class PerformixEngineTabs extends StatelessWidget {
       ),
       child: Row(
         children: [
-          _buildTab(0, 'Performance Leaderboard'),
-          _buildTab(1, 'Insights & Alerts'),
+          _buildTab(0, 'performance_leaderboard'.tr()),
+          _buildTab(1, 'insights_alerts'.tr()),
         ],
       ),
     );

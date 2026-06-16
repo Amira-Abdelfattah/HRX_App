@@ -1,8 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../core/providers/theme_provider.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import 'setting_section_card.dart';
@@ -18,54 +17,84 @@ class LanguageSettingsSection extends StatefulWidget {
 class _LanguageSettingsSectionState extends State<LanguageSettingsSection> {
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final themeProvider = context.watch<ThemeProvider>();
-    final selectedLanguage = themeProvider.language;
+    final currentLocale = context.locale.languageCode;
 
     return SettingSectionCard(
-      title: 'Language',
-      subtitle: 'Select your language',
+      title: 'language'.tr(),
+      subtitle: 'select_language'.tr(),
       icon: Icons.language_outlined,
       iconColor: Colors.teal,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
-            decoration: BoxDecoration(
-              color: isDark
-                  ? AppColors.darkSurfaceLightColor
-                  : AppColors.backgroundColor,
-              borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(
-                color: AppColors.borderColor.withValues(alpha: 0.3),
-              ),
-            ),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: selectedLanguage,
-                isExpanded: true,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                dropdownColor: isDark
-                    ? AppColors.darkSurfaceColor
-                    : AppColors.whiteColor,
-                items: ['English (US)', 'Arabic', 'French', 'Spanish'].map((
-                  String value,
-                ) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value, style: AppStyles.medium14PrimaryDark()),
-                  );
-                }).toList(),
-                onChanged: (newValue) {
-                  if (newValue != null) {
-                    context.read<ThemeProvider>().setLanguage(newValue);
-                  }
-                },
-              ),
-            ),
+          _buildLanguageOption(
+            context,
+            localeCode: 'en',
+            title: 'english'.tr(),
+            isSelected: currentLocale == 'en',
+            flag: '🇺🇸',
+          ),
+          SizedBox(height: 12.h),
+          _buildLanguageOption(
+            context,
+            localeCode: 'ar',
+            title: 'arabic'.tr(),
+            isSelected: currentLocale == 'ar',
+            flag: '🇪🇬',
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildLanguageOption(BuildContext context, {
+    required String localeCode,
+    required String title,
+    required bool isSelected,
+    required String flag,
+  }) {
+    final isDark = Theme
+        .of(context)
+        .brightness == Brightness.dark;
+
+    return GestureDetector(
+      onTap: () {
+        if (!isSelected) {
+          context.setLocale(Locale(localeCode));
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: isDark
+              ? AppColors.darkSurfaceLightColor
+              : AppColors.backgroundColor,
+          borderRadius: BorderRadius.circular(12.r),
+          border: Border.all(
+            color: isSelected ? AppColors.primaryColor : Colors.transparent,
+            width: 2,
+          ),
+        ),
+        child: Row(
+          children: [
+            Text(
+              flag,
+              style: TextStyle(fontSize: 20.sp),
+            ),
+            SizedBox(width: 16.w),
+            Expanded(
+              child: Text(
+                title,
+                style: AppStyles.medium14PrimaryDark(context: context),
+              ),
+            ),
+            if (isSelected)
+              Icon(
+                Icons.check_circle,
+                color: AppColors.primaryColor,
+                size: 20.sp,
+              ),
+          ],
+        ),
       ),
     );
   }

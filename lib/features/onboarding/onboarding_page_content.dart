@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
+
 import 'onboarding_model.dart';
 
 class OnboardingPageContent extends StatelessWidget {
@@ -25,7 +26,7 @@ class OnboardingPageContent extends StatelessWidget {
               borderRadius: BorderRadius.circular(24.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 20.r,
                   offset: Offset(0, 10.h),
                 ),
@@ -67,3 +68,4 @@ class OnboardingPageContent extends StatelessWidget {
     );
   }
 }
+

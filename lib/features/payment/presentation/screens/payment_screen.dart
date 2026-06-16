@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -66,14 +67,14 @@ class PaymentScreen extends StatelessWidget {
     if (state is PaymentLoadingState) {
       DialogUtils.showLoading(
         context: context,
-        message: 'Processing Payment...',
+        message: 'processing_payment'.tr(),
       );
     } else if (state is PaymentSuccessState) {
       DialogUtils.hideLoading(context);
       DialogUtils.showMessage(
         context: context,
-        message: 'Subscription Activated Successfully!',
-        posActionName: 'Great!',
+        message: 'subscription_activated'.tr(),
+        posActionName: 'great'.tr(),
         posAction: () =>
             navigatorKey.currentState?.pushReplacement(
               MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +23,7 @@ class ThisYearStats extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('THIS YEAR', style: AppStyles.bold10Grey()),
+          Text('this_year'.tr(), style: AppStyles.bold10Grey()),
           SizedBox(height: 16.h),
           GridView.count(
             shrinkWrap: true,
@@ -32,10 +33,10 @@ class ThisYearStats extends StatelessWidget {
             crossAxisSpacing: 12.w,
             childAspectRatio: 1.5,
             children: [
-              _buildStatBox(context, '7', 'Total Taken', Colors.green),
-              _buildStatBox(context, '1', 'Pending', Colors.orange),
-              _buildStatBox(context, '1', 'Rejected', Colors.red),
-              _buildStatBox(context, '2', 'Approved', Colors.blue),
+              _buildStatBox(context, '7', 'total_taken'.tr(), Colors.green),
+              _buildStatBox(context, '1', 'pending'.tr(), Colors.orange),
+              _buildStatBox(context, '1', 'rejected'.tr(), Colors.red),
+              _buildStatBox(context, '2', 'approved'.tr(), Colors.blue),
             ],
           ),
         ],

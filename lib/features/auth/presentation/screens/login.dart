@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,8 @@ class LoginScreen extends StatelessWidget {
       child: BlocConsumer<LoginViewModel, LoginStates>(
         listener: (context, state) {
           if (state is LoginLoadingState) {
-            DialogUtils.showLoading(context: context, message: 'Signing in...');
+            DialogUtils.showLoading(
+                context: context, message: 'signing_in'.tr());
           } else if (state is LoginErrorState) {
             DialogUtils.hideLoading(context);
             ScaffoldMessenger.of(context).showSnackBar(
@@ -46,9 +48,7 @@ class LoginScreen extends StatelessWidget {
             );
           } else if (state is LoginSuccessState) {
             DialogUtils.hideLoading(context);
-            final vm = LoginViewModel.get(context);
 
-            // Extract the name we just saved (or the fallback)
             final String savedName = SharedPreferenceUtils.getData(
                 key: 'user_name') as String? ?? state.response.name ?? 'User';
             final String savedRole = SharedPreferenceUtils.getData(
@@ -78,16 +78,16 @@ class LoginScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 40.h),
-                      const AuthHeader(
-                        title: 'Sign in to HR Saas',
-                        subtitle: 'Welcome back! Please enter your details.',
+                      AuthHeader(
+                        title: 'sign_in_title'.tr(),
+                        subtitle: 'welcome_back'.tr(),
                         showLogo: false,
                       ),
                       SizedBox(height: 40.h),
                       LoginForm(vm: vm),
                       SizedBox(height: 30.h),
                       CustomElevatedButton(
-                        text: 'Sign in',
+                        text: 'sign_in_btn'.tr(),
                         backgroundColor: AppColors.accentColor,
                         textStyle: AppStyles.semi20Primary().copyWith(
                           color: AppColors.primaryColor,
@@ -97,8 +97,8 @@ class LoginScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 24.h),
                       AuthFooter(
-                        text: "Don't have an account? ",
-                        linkText: 'Sign up',
+                        text: "no_account".tr(),
+                        linkText: 'sign_up'.tr(),
                         onTap: () {
                           Navigator.pushReplacement(
                             context,

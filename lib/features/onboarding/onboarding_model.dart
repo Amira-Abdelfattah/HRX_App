@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class OnboardingModel {
   final String imagePath;
   final String title;
@@ -10,23 +12,20 @@ class OnboardingModel {
   });
 }
 
-const List<OnboardingModel> onboardingPages = [
+List<OnboardingModel> get onboardingPages => [
   OnboardingModel(
     imagePath: 'assets/images/onboarding1.png',
-    title: 'Manage your team efficiently.',
-    description:
-        'Keep track of attendance, payroll, and performance seamlessly in one place.',
+    title: 'onboarding_title_1'.tr(),
+    description: 'onboarding_desc_1'.tr(),
   ),
   OnboardingModel(
     imagePath: 'assets/images/onboarding2.png',
-    title: 'Smart HR Solutions for you.',
-    description:
-        'Leverage AI-driven insights to make informed decisions for your organization\'s growth and operational excellence.',
+    title: 'onboarding_title_2'.tr(),
+    description: 'onboarding_desc_2'.tr(),
   ),
   OnboardingModel(
     imagePath: 'assets/images/onboarding3.png',
-    title: 'Unified Management',
-    description:
-        'Connect recruitment, payroll, and analytics into a single, powerful mobile experience designed for speed and clarity.',
+    title: 'onboarding_title_3'.tr(),
+    description: 'onboarding_desc_3'.tr(),
   ),
 ];

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class TodayAttendanceLog extends StatelessWidget {
         'in': '08:55 AM',
         'out': '05:30 PM',
         'hours': '9h 15m',
-        'status': 'Present',
+        'status': 'present'.tr(),
         'color': AppColors.successColor,
       },
       {
@@ -29,7 +30,7 @@ class TodayAttendanceLog extends StatelessWidget {
         'in': '09:00 AM',
         'out': '06:00 PM',
         'hours': '9h 0m',
-        'status': 'Present',
+        'status': 'present'.tr(),
         'color': AppColors.successColor,
       },
     ];
@@ -49,7 +50,7 @@ class TodayAttendanceLog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Today's Attendance Log",
+                  "todays_attendance".tr(),
                   style: AppStyles.bold20PrimaryDark(
                     color: isDark ? Colors.white : AppColors.primaryColor,
                   ),
@@ -57,7 +58,7 @@ class TodayAttendanceLog extends StatelessWidget {
                 OutlinedButton.icon(
                   onPressed: () {},
                   icon: Icon(Icons.filter_list_rounded, size: 18.sp),
-                  label: Text("Filter", style: AppStyles.medium14Grey()),
+                  label: Text("filter".tr(), style: AppStyles.medium14Grey()),
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
                       color: isDark

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,10 +26,10 @@ class PaymentBillingSection extends StatelessWidget {
           children: [
             Expanded(
               child: PlanCard(
-                title: 'Starter',
-                description: 'Great for growing organizations',
+                title: 'starter'.tr(),
+                description: 'starter_desc'.tr(),
                 price: vm.isAnnual ? '\$24' : '\$29',
-                period: '/ mo',
+                period: 'per_month'.tr(),
                 isSelected: vm.selectedPlanIndex == 0,
                 onTap: () => vm.selectPlan(0),
               ),
@@ -36,10 +37,10 @@ class PaymentBillingSection extends StatelessWidget {
             SizedBox(width: 16.w),
             Expanded(
               child: PlanCard(
-                title: 'Premium Suite',
-                description: 'All features, unlimited scale',
+                title: 'premium_suite'.tr(),
+                description: 'premium_suite_desc'.tr(),
                 price: vm.isAnnual ? '\$49' : '\$59',
-                period: '/ mo',
+                period: 'per_month'.tr(),
                 isSelected: vm.selectedPlanIndex == 1,
                 isPopular: true,
                 onTap: () => vm.selectPlan(1),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,11 +24,11 @@ class RegisterForm extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const FieldLabel(label: 'Your name'),
+              FieldLabel(label: 'your_name'.tr()),
               CustomTextField(
                 controller: viewModel.nameController,
                 validator: AppValidator.validateFullName,
-                hintText: 'Hussain Ahmed',
+                hintText: 'name_hint_register'.tr(),
                 filledColor: const Color(0xff1E3A73),
                 borderColor: Colors.transparent,
                 style: AppStyles.medium14Category().copyWith(
@@ -44,11 +45,11 @@ class RegisterForm extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const FieldLabel(label: 'Company'),
+                        FieldLabel(label: 'company'.tr()),
                         CustomTextField(
                           controller: viewModel.companyController,
                           validator: AppValidator.validateCompanyName,
-                          hintText: 'Acme Corp',
+                          hintText: 'company_hint_register'.tr(),
                           filledColor: const Color(0xff1E3A73),
                           borderColor: Colors.transparent,
                           style: AppStyles.medium14Category().copyWith(
@@ -66,7 +67,7 @@ class RegisterForm extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const FieldLabel(label: 'Role'),
+                        FieldLabel(label: 'role'.tr()),
                         DropdownButtonFormField<String>(
                           value: viewModel.selectedRole,
                           dropdownColor: const Color(0xff1E3A73),
@@ -99,13 +100,16 @@ class RegisterForm extends StatelessWidget {
                               ),
                             ),
                           ),
-                          items: ['HR Manager', 'Manager', 'Employee']
-                              .map((role) =>
-                              DropdownMenuItem(
-                                value: role,
-                                child: Text(role),
-                              ))
-                              .toList(),
+                          items: [
+                            DropdownMenuItem(
+                                value: 'HR Manager',
+                                child: Text('hr_manager'.tr())),
+                            DropdownMenuItem(
+                                value: 'Manager', child: Text('manager'.tr())),
+                            DropdownMenuItem(
+                                value: 'Employee',
+                                child: Text('employee'.tr())),
+                          ],
                           onChanged: (value) {
                             if (value != null) {
                               viewModel.changeRole(value);
@@ -119,11 +123,11 @@ class RegisterForm extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 10.h),
-              const FieldLabel(label: 'Your E-mail or Phone Number'),
+              FieldLabel(label: 'email_phone'.tr()),
               CustomTextField(
                 controller: viewModel.emailController,
                 validator: AppValidator.validateEmailOrPhone,
-                hintText: 'yourmale0123@gmail.com or 01012345678',
+                hintText: 'email_phone_hint_register'.tr(),
                 filledColor: const Color(0xff1E3A73),
                 borderColor: Colors.transparent,
                 style: AppStyles.medium14Category().copyWith(
@@ -140,7 +144,7 @@ class RegisterForm extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const FieldLabel(label: 'Password'),
+                        FieldLabel(label: 'password'.tr()),
                         CustomTextField(
                           controller: viewModel.passwordController,
                           validator: AppValidator.validatePassword,
@@ -173,7 +177,7 @@ class RegisterForm extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const FieldLabel(label: 'Confirm Password'),
+                        FieldLabel(label: 'confirm_password'.tr()),
                         CustomTextField(
                           controller: viewModel.confirmPasswordController,
                           validator: (val) =>

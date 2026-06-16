@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,30 +12,30 @@ class AttendanceStatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> stats = [
       {
-        'title': 'Present Today',
+        'title': 'present_today'.tr(),
         'value': '1,189',
-        'subtitle': '93.2% attendance rate',
+        'subtitle': 'attendance_rate_stat'.tr(args: ['93.2%']),
         'icon': Icons.check_circle_outline_rounded,
         'color': AppColors.successColor,
       },
       {
-        'title': 'Late Arrivals',
+        'title': 'late_arrivals'.tr(),
         'value': '23',
-        'subtitle': '1.8% of total',
+        'subtitle': 'of_total_stat'.tr(args: ['1.8%']),
         'icon': Icons.access_time_rounded,
         'color': AppColors.warningColor,
       },
       {
-        'title': 'Absent',
+        'title': 'absent'.tr(),
         'value': '35',
-        'subtitle': '2.8% of total',
+        'subtitle': 'of_total_stat'.tr(args: ['2.8%']),
         'icon': Icons.highlight_off_rounded,
         'color': AppColors.dangerColor,
       },
       {
-        'title': 'On Leave',
+        'title': 'on_leave'.tr(),
         'value': '12',
-        'subtitle': 'Approved leaves',
+        'subtitle': 'approved_leaves'.tr(),
         'icon': Icons.calendar_today_rounded,
         'color': AppColors.secondaryColor,
       },

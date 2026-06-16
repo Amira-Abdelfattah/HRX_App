@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +38,7 @@ class BillingToggle extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Monthly Plan',
+                    'monthly_plan'.tr(),
                     style: AppStyles.medium14Category(color: Colors.white),
                   ),
                 ),
@@ -58,7 +59,7 @@ class BillingToggle extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Annual Plan',
+                        'annual_plan'.tr(),
                         style: AppStyles.medium14Category(
                           color: isAnnual
                               ? AppColors.primaryColor
@@ -76,7 +77,7 @@ class BillingToggle extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4.r),
                         ),
                         child: Text(
-                          'SAVE 15%',
+                          'save_15'.tr(),
                           style: TextStyle(
                             fontSize: 8.sp,
                             color: Colors.white,

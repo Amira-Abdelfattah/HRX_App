@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -62,12 +63,12 @@ class EmployeeCard extends StatelessWidget {
                         gradient: LinearGradient(
                           colors: isDark
                               ? [
-                            AppColors.accentColor.withOpacity(0.2),
-                            AppColors.accentColor.withOpacity(0.05),
+                            AppColors.accentColor.withValues(alpha: 0.2),
+                            AppColors.accentColor.withValues(alpha: 0.05),
                           ]
                               : [
-                            AppColors.primaryColor.withOpacity(0.1),
-                            AppColors.primaryColor.withOpacity(0.02),
+                            AppColors.primaryColor.withValues(alpha: 0.1),
+                            AppColors.primaryColor.withValues(alpha: 0.02),
                           ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
@@ -75,8 +76,8 @@ class EmployeeCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         border: Border.all(
                           color: isDark
-                              ? AppColors.accentColor.withOpacity(0.2)
-                              : AppColors.primaryColor.withOpacity(0.1),
+                              ? AppColors.accentColor.withValues(alpha: 0.2)
+                              : AppColors.primaryColor.withValues(alpha: 0.1),
                           width: 1,
                         ),
                       ),
@@ -114,10 +115,10 @@ class EmployeeCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                   decoration: BoxDecoration(
-                    color: statusColor.withOpacity(0.1),
+                    color: statusColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(AppColors.radiusSm.r),
                     border: Border.all(
-                      color: statusColor.withOpacity(0.2),
+                      color: statusColor.withValues(alpha: 0.2),
                       width: 1,
                     ),
                   ),
@@ -173,7 +174,7 @@ class EmployeeCard extends StatelessWidget {
             Divider(
               color: isDark
                   ? AppColors.darkBorderColor
-                  : AppColors.borderColor.withOpacity(0.5),
+                  : AppColors.borderColor.withValues(alpha: 0.5),
               height: 24.h,
               thickness: 1,
             ),
@@ -181,7 +182,7 @@ class EmployeeCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'PERFORMANCE',
+                  'performance_caps'.tr(),
                   style: AppStyles.bold10Grey().copyWith(letterSpacing: 0.5),
                 ),
                 Text(
@@ -212,13 +213,15 @@ class EmployeeCard extends StatelessWidget {
                     gradient: LinearGradient(
                       colors: [
                         _getPerformanceColor(performance),
-                        _getPerformanceColor(performance).withOpacity(0.6),
+                        _getPerformanceColor(performance).withValues(
+                            alpha: 0.6),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(3.r),
                     boxShadow: [
                       BoxShadow(
-                        color: _getPerformanceColor(performance).withOpacity(0.3),
+                        color: _getPerformanceColor(performance).withValues(
+                            alpha: 0.3),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
                       ),

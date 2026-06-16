@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,26 +19,23 @@ class AnalyticsInsightsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Key Insights',
+            'key_insights'.tr(),
             style: AppStyles.semi18PrimaryDark(color: Colors.white),
           ),
           SizedBox(height: 20.h),
           _buildInsightItem(
-            title: 'Retention Improving',
-            description:
-                'Attrition rate has decreased by 0.5% this quarter, indicating improved employee satisfaction.',
+            title: 'retention_improving'.tr(),
+            description: 'retention_desc'.tr(),
           ),
           SizedBox(height: 12.h),
           _buildInsightItem(
-            title: 'Hiring Momentum',
-            description:
-                'Strong hiring in Q2 with 67 new employees, primarily in Engineering and Sales departments.',
+            title: 'hiring_momentum'.tr(),
+            description: 'hiring_desc'.tr(),
           ),
           SizedBox(height: 12.h),
           _buildInsightItem(
-            title: 'Performance Growth',
-            description:
-                'Company-wide performance score increased from 82 to 90 over the last 6 months.',
+            title: 'performance_growth'.tr(),
+            description: 'performance_growth_desc'.tr(),
           ),
         ],
       ),

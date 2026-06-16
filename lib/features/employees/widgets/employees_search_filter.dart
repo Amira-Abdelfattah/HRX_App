@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,15 +15,15 @@ class EmployeesSearchFilter extends StatefulWidget {
 }
 
 class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
-  String selectedDepartment = 'All Departments';
+  String selectedDepartmentKey = 'all_departments';
   final TextEditingController _searchController = TextEditingController();
-  final List<String> departments = [
-    'All Departments',
-    'Engineering',
-    'Product',
-    'Design',
-    'Sales',
-    'HR',
+  final List<String> departmentsKeys = [
+    'all_departments',
+    'engineering',
+    'product',
+    'design',
+    'sales',
+    'hr',
   ];
 
   @override
@@ -34,7 +35,7 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
   void _onChanged() {
     context.read<EmployeesViewModel>().searchAndFilter(
       query: _searchController.text,
-      department: selectedDepartment,
+      department: selectedDepartmentKey.tr(),
     );
   }
 
@@ -66,7 +67,7 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
                 color: isDark ? Colors.white : AppColors.primaryColor,
               ),
               decoration: InputDecoration(
-                hintText: 'Search employees...',
+                hintText: 'search_employees_hint'.tr(),
                 hintStyle: AppStyles.regular14Grey(),
                 prefixIcon: Icon(
                   Icons.search,
@@ -85,7 +86,7 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
 
         PopupMenuButton<String>(
           onSelected: (value) {
-            setState(() => selectedDepartment = value);
+            setState(() => selectedDepartmentKey = value);
             _onChanged();
           },
           child: Container(
@@ -110,7 +111,7 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
                 ),
                 SizedBox(width: 8.w),
                 Text(
-                  selectedDepartment,
+                  selectedDepartmentKey.tr(),
                   style: AppStyles.medium14Grey(
                     color: isDark ? Colors.white : AppColors.textPrimaryColor,
                   ),
@@ -124,11 +125,14 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
               ],
             ),
           ),
-          itemBuilder: (context) => departments
+          itemBuilder: (context) =>
+              departmentsKeys
               .map(
-                (dept) => PopupMenuItem(
-                  value: dept,
-                  child: Text(dept, style: AppStyles.regular14PrimaryDark()),
+                    (deptKey) =>
+                    PopupMenuItem(
+                      value: deptKey,
+                      child: Text(deptKey.tr(),
+                          style: AppStyles.regular14PrimaryDark()),
                 ),
               )
               .toList(),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,12 +11,12 @@ class BenefitsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final benefits = [
-      'Full Payroll & Geolocation Attendance',
-      'Self-Service employee dashboard',
-      'Customizable KPI Performance Eval',
-      'Applicant Tracking System (HRMS)',
-      'Secure group roles & full reporting',
-      '24/7 Premium customer assistance',
+      'benefit_payroll'.tr(),
+      'benefit_self_service'.tr(),
+      'benefit_kpi'.tr(),
+      'benefit_ats'.tr(),
+      'benefit_reporting'.tr(),
+      'benefit_support'.tr(),
     ];
 
     return Container(
@@ -28,7 +29,7 @@ class BenefitsList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'INCLUDED BENEFITS:',
+            'included_benefits'.tr(),
             style: AppStyles.bold20PrimaryDark(
               color: Colors.white,
             ).copyWith(fontSize: 12.sp),

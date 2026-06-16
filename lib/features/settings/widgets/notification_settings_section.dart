@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -15,15 +16,15 @@ class NotificationSettingsSection extends StatelessWidget {
     final themeProvider = context.watch<ThemeProvider>();
 
     return SettingSectionCard(
-      title: 'Notification Settings',
-      subtitle: 'Choose what alerts you receive',
+      title: 'notification_settings'.tr(),
+      subtitle: 'choose_alerts'.tr(),
       icon: Icons.notifications_none_outlined,
       iconColor: Colors.orange,
       child: Column(
         children: [
           _buildSwitchItem(
-            'Email',
-            'Receive notifications via email',
+            'email'.tr(),
+            'receive_email_notifications'.tr(),
             themeProvider.emailNotifications,
             (val) => themeProvider.updateNotificationSetting(
               ThemeProvider.emailKey,
@@ -31,8 +32,8 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
-            'Push',
-            'Receive push notifications',
+            'push'.tr(),
+            'receive_push_notifications'.tr(),
             themeProvider.pushNotifications,
             (val) => themeProvider.updateNotificationSetting(
               ThemeProvider.pushKey,
@@ -40,8 +41,8 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
-            'Performance Alerts',
-            'Get alerted about performance changes',
+            'performance_alerts'.tr(),
+            'get_performance_alerts'.tr(),
             themeProvider.performanceAlerts,
             (val) => themeProvider.updateNotificationSetting(
               ThemeProvider.perfKey,
@@ -49,8 +50,8 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
-            'Leave Requests',
-            'Notifications for leave approvals',
+            'leave_requests_notifications'.tr(),
+            'get_leave_notifications'.tr(),
             themeProvider.leaveRequests,
             (val) => themeProvider.updateNotificationSetting(
               ThemeProvider.leaveKey,
@@ -58,8 +59,8 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
-            'New Hires',
-            'Get notified when new employees join',
+            'new_hires_notifications'.tr(),
+            'get_hire_notifications'.tr(),
             themeProvider.newHires,
             (val) => themeProvider.updateNotificationSetting(
               ThemeProvider.hiresKey,
@@ -94,7 +95,7 @@ class NotificationSettingsSection extends StatelessWidget {
             value: value,
             onChanged: onChanged,
             activeThumbColor: AppColors.primaryColor,
-            activeTrackColor: AppColors.primaryColor.withOpacity(0.5),
+            activeTrackColor: AppColors.primaryColor.withValues(alpha: 0.5),
           ),
         ],
       ),

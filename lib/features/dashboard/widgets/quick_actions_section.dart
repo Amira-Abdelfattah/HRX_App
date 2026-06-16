@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,14 +29,14 @@ class QuickActionsSection extends StatelessWidget {
               Icon(Icons.bolt, color: AppColors.accentColor, size: 24.sp),
               SizedBox(width: 8.w),
               Text(
-                'Quick Actions',
+                'quick_actions'.tr(),
                 style: AppStyles.semi20Primary(color: Colors.white),
               ),
             ],
           ),
           SizedBox(height: 8.h),
           Text(
-            'Streamline your HR workflows instantly.',
+            'quick_actions_desc'.tr(),
             style: AppStyles.regular14Grey(color: Colors.white70),
           ),
           SizedBox(height: 20.h),
@@ -45,19 +46,19 @@ class QuickActionsSection extends StatelessWidget {
             children: [
               QuickActionButton(
                 icon: Icons.person_add_alt_1,
-                label: 'Add New Employee',
+                label: 'add_employee'.tr(),
                 backgroundColor: AppColors.accentColor,
                 onPressed: () {},
               ),
               QuickActionButton(
                 icon: Icons.trending_up_rounded,
-                label: 'View Analytics',
+                label: 'view_analytics'.tr(),
                 backgroundColor: Colors.white.withValues(alpha: 0.2),
                 onPressed: () {},
               ),
               QuickActionButton(
                 icon: Icons.check_circle_outline,
-                label: 'Approve Leave (5)',
+                label: 'approve_leave_count'.tr(args: ['5']),
                 backgroundColor: Colors.white.withValues(alpha: 0.2),
                 onPressed: () {},
               ),

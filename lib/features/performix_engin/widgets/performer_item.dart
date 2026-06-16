@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -67,9 +68,10 @@ class PerformerItem extends StatelessWidget {
                     ),
                     SizedBox(width: 8.w),
                     const StatusBadge(
-                      text: 'Excellent',
+                      text: 'excellent',
                       color: AppColors.successColor,
                       icon: Icons.star_rounded,
+                      isLocalized: true,
                     ),
                   ],
                 ),
@@ -101,7 +103,7 @@ class PerformerItem extends StatelessWidget {
                 ],
               ),
               Text(
-                'Performance Score',
+                'performance_score_label'.tr(),
                 style: AppStyles.regular12Grey().copyWith(fontSize: 9.sp),
               ),
             ],

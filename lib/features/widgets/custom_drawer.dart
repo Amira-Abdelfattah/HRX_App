@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -46,58 +47,52 @@ class CustomDrawer extends StatelessWidget {
               children: [
                 DrawerMenuItem(
                   icon: Icons.grid_view_rounded,
-                  title: 'Dashboard',
+                  title: 'dashboard'.tr(),
                   isSelected: selectedIndex == 0,
                   onTap: () => onItemSelected(0),
                 ),
                 DrawerMenuItem(
                   icon: Icons.people_outline,
-                  title: 'Employees',
+                  title: 'employees'.tr(),
                   isSelected: selectedIndex == 1,
                   onTap: () => onItemSelected(1),
                 ),
                 DrawerMenuItem(
                   icon: Icons.calendar_month_outlined,
-                  title: 'Attendance',
+                  title: 'attendance'.tr(),
                   isSelected: selectedIndex == 2,
                   onTap: () => onItemSelected(2),
                 ),
                 DrawerMenuItem(
                   icon: Icons.timer_outlined,
-                  title: 'Time Off',
+                  title: 'time_off'.tr(),
                   isSelected: selectedIndex == 3,
                   onTap: () => onItemSelected(3),
                 ),
                 DrawerMenuItem(
                   icon: Icons.monetization_on_outlined,
-                  title: 'Payroll',
+                  title: 'payroll'.tr(),
                   isSelected: selectedIndex == 4,
                   onTap: () => onItemSelected(4),
                 ),
                 const Divider(),
                 DrawerMenuItem(
                   icon: Icons.bolt,
-                  title: 'Performix Engine',
+                  title: 'performix_engine'.tr(),
                   isSelected: selectedIndex == 5,
                   onTap: () => onItemSelected(5),
                 ),
                 DrawerMenuItem(
-                  icon: Icons.person_add_alt_1_outlined,
-                  title: 'Recruitment',
+                  icon: Icons.bar_chart_rounded,
+                  title: 'analytics'.tr(),
                   isSelected: selectedIndex == 6,
                   onTap: () => onItemSelected(6),
                 ),
                 DrawerMenuItem(
-                  icon: Icons.bar_chart_rounded,
-                  title: 'Analytics',
+                  icon: Icons.settings_outlined,
+                  title: 'settings'.tr(),
                   isSelected: selectedIndex == 7,
                   onTap: () => onItemSelected(7),
-                ),
-                DrawerMenuItem(
-                  icon: Icons.settings_outlined,
-                  title: 'Settings',
-                  isSelected: selectedIndex == 8,
-                  onTap: () => onItemSelected(8),
                 ),
               ],
             ),

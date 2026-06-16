@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -39,14 +40,14 @@ class AttendanceHistoryView extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Text(
-            'Attendance History',
+            'attendance_history'.tr(),
             style: AppStyles.semi18PrimaryDark(
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
           SizedBox(height: 8.h),
           Text(
-            'View past attendance records and trends',
+            'attendance_history_desc'.tr(),
             textAlign: TextAlign.center,
             style: AppStyles.regular14Grey(),
           ),
@@ -62,7 +63,7 @@ class AttendanceHistoryView extends StatelessWidget {
               ),
               elevation: 0,
             ),
-            child: Text('View Full History', style: AppStyles.semi14White),
+            child: Text('view_full_history'.tr(), style: AppStyles.semi14White),
           ),
         ],
       ),

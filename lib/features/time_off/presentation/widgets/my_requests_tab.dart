@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,13 +38,14 @@ class MyRequestsTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'My Leave Requests',
+                    'my_leave_requests'.tr(),
                     style: AppStyles.semi18PrimaryDark(context: context),
                   ),
                   ElevatedButton.icon(
                     onPressed: onNewRequest,
                     icon: Icon(Icons.add, size: 16.sp, color: Colors.white),
-                    label: Text('New Request', style: AppStyles.semi12White),
+                    label: Text(
+                        'new_request'.tr(), style: AppStyles.semi12White),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       padding: EdgeInsets.symmetric(
@@ -66,31 +68,31 @@ class MyRequestsTab extends StatelessWidget {
                   columns: [
                     DataColumn(
                       label: Text(
-                        'LEAVE TYPE',
+                        'leave_type_caps'.tr(),
                         style: AppStyles.bold10Grey(context: context),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'FROM',
+                        'from'.tr(),
                         style: AppStyles.bold10Grey(context: context),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'TO',
+                        'to'.tr(),
                         style: AppStyles.bold10Grey(context: context),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'DAYS',
+                        'days'.tr(),
                         style: AppStyles.bold10Grey(context: context),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'STATUS',
+                        'status'.tr(),
                         style: AppStyles.bold10Grey(context: context),
                       ),
                     ),
@@ -101,7 +103,7 @@ class MyRequestsTab extends StatelessWidget {
                             cells: [
                               DataCell(
                                 Text(
-                                  'No requests yet',
+                                  'no_requests_yet'.tr(),
                                   style: AppStyles.regular12Grey(
                                     context: context,
                                   ),
@@ -184,9 +186,9 @@ class MyRequestsTab extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             decoration: BoxDecoration(
-              color: statusColor.withOpacity(0.1),
+              color: statusColor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(20.r),
-              border: Border.all(color: statusColor.withOpacity(0.5)),
+              border: Border.all(color: statusColor.withValues(alpha: 0.5)),
             ),
             child: Text(
               status,
@@ -198,3 +200,4 @@ class MyRequestsTab extends StatelessWidget {
     );
   }
 }
+

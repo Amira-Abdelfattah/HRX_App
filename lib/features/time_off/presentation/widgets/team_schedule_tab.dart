@@ -98,7 +98,7 @@ class TeamScheduleTab extends StatelessWidget {
         border: Border.all(
           color: isDark
               ? AppColors.darkBorderColor
-              : AppColors.borderColor.withOpacity(0.5),
+              : AppColors.borderColor.withValues(alpha: 0.5),
         ),
       ),
       child: Row(
@@ -135,7 +135,7 @@ class TeamScheduleTab extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.1),
+              color: Colors.green.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Text(
@@ -148,3 +148,4 @@ class TeamScheduleTab extends StatelessWidget {
     );
   }
 }
+

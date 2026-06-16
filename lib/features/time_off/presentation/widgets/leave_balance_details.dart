@@ -105,7 +105,7 @@ class LeaveBalanceDetails extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(8.w),
           decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.1),
+            color: iconColor.withValues(alpha: 0.1),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, color: iconColor, size: 18.sp),
@@ -135,7 +135,7 @@ class LeaveBalanceDetails extends StatelessWidget {
                         value: total > 0 ? used / total : 0,
                         backgroundColor: isDark
                             ? AppColors.darkBorderColor
-                            : AppColors.borderColor.withOpacity(0.3),
+                            : AppColors.borderColor.withValues(alpha: 0.3),
                         valueColor: AlwaysStoppedAnimation<Color>(iconColor),
                         minHeight: 6.h,
                       ),
@@ -158,3 +158,4 @@ class LeaveBalanceDetails extends StatelessWidget {
     );
   }
 }
+

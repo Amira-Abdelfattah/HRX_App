@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,7 +45,7 @@ class LeaveRequestCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    request['type'] ?? 'Leave Request',
+                    request['type'] ?? 'leave_requests'.tr(),
                     style: AppStyles.regular14PrimaryDark(
                       color: isDark ? Colors.white70 : AppColors.textMutedColor,
                     ),
@@ -52,7 +53,7 @@ class LeaveRequestCard extends StatelessWidget {
                 ],
               ),
               StatusBadge(
-                text: request['status'] ?? 'Pending',
+                text: request['status'] ?? 'pending'.tr(),
                 color: request['statusColor'] ?? AppColors.warningColor,
               ),
             ],
@@ -64,14 +65,14 @@ class LeaveRequestCard extends StatelessWidget {
               Expanded(
                 child: _buildDateItem(
                   context,
-                  "From",
+                  "from".tr(),
                   request['fromDate'] ?? '-',
                 ),
               ),
               Expanded(
                 child: _buildDateItem(
                   context,
-                  "To",
+                  "to".tr(),
                   request['toDate'] ?? '-',
                 ),
               ),
@@ -87,8 +88,8 @@ class LeaveRequestCard extends StatelessWidget {
               color: isDark ? Colors.white60 : AppColors.textMutedColor,
             ),
           ),
-          
-          if (request['status'] == 'Pending') ...[
+
+          if (request['status'] == 'pending'.tr()) ...[
             SizedBox(height: 20.h),
 
             Row(
@@ -104,7 +105,7 @@ class LeaveRequestCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                     ),
                     child: Text(
-                      "Approve", 
+                      "approve".tr(), 
                       style: GoogleFonts.poppins(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
@@ -125,7 +126,7 @@ class LeaveRequestCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                     ),
                     child: Text(
-                      "Reject", 
+                      "reject".tr(), 
                       style: GoogleFonts.poppins(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,

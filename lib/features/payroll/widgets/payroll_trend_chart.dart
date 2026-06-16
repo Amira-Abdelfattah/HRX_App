@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/charts/chart_container.dart';
@@ -10,17 +11,17 @@ class PayrollTrendChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<ChartData> data = [
-      ChartData('Jan', 150000),
-      ChartData('Feb', 155000),
-      ChartData('Mar', 160000),
-      ChartData('Apr', 165000),
-      ChartData('May', 168000),
-      ChartData('Jun', 170000),
+      ChartData('Jan'.tr(), 150000),
+      ChartData('Feb'.tr(), 155000),
+      ChartData('Mar'.tr(), 160000),
+      ChartData('Apr'.tr(), 165000),
+      ChartData('May'.tr(), 168000),
+      ChartData('Jun'.tr(), 170000),
     ];
 
     return ChartContainer(
-      title: 'Payroll Trend',
-      subtitle: 'Monthly payroll expenses over time',
+      title: 'payroll_trend'.tr(),
+      subtitle: 'monthly_payroll_expenses'.tr(),
       chart: ReusableBarChart(
         dataSeries: [data],
         showYAxis: false,

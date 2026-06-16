@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,7 +45,7 @@ class EngineHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Performix Engine',
+                      'performix_engine_title'.tr(),
                       style: AppStyles.bold32PrimaryDark(
                         color: Colors.white,
                       ).copyWith(fontSize: 24.sp),
@@ -52,7 +53,7 @@ class EngineHeader extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      'Smart Performance Evaluation System',
+                      'smart_eval_system'.tr(),
                       style: AppStyles.regular14Grey(
                         color: Colors.white.withValues(alpha: 0.7),
                       ),
@@ -67,10 +68,10 @@ class EngineHeader extends StatelessWidget {
           SizedBox(height: 32.h),
           Row(
             children: [
-              Expanded(child: _buildStat('Company Avg', '87.5')),
-              Expanded(child: _buildStat('Top Stars', '12')),
-              Expanded(child: _buildStat('Avg Growth', '+3.2%')),
-              Expanded(child: _buildStat('Depts', '6')),
+              Expanded(child: _buildStat('company_avg'.tr(), '87.5')),
+              Expanded(child: _buildStat('top_stars'.tr(), '12')),
+              Expanded(child: _buildStat('avg_growth'.tr(), '+3.2%')),
+              Expanded(child: _buildStat('depts'.tr(), '6')),
             ],
           ),
         ],

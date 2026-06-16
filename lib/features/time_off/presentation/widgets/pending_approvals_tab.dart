@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +35,7 @@ class PendingApprovalsTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Pending for Approval',
+            'pending_for_approval'.tr(),
             style: AppStyles.semi18PrimaryDark(context: context),
           ),
           SizedBox(height: 20.h),
@@ -44,7 +45,7 @@ class PendingApprovalsTab extends StatelessWidget {
             itemCount: pendingRequests.length,
             separatorBuilder: (context, index) =>
                 Divider(height: 24.h,
-                color: AppColors.borderColor.withOpacity(0.5)),
+                    color: AppColors.borderColor.withValues(alpha: 0.5)),
             itemBuilder: (context, index) {
               final request = pendingRequests[index];
               return Row(
@@ -52,7 +53,7 @@ class PendingApprovalsTab extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10.w),
                     decoration: BoxDecoration(
-                      color: Colors.orange.withOpacity(0.1),
+                      color: Colors.orange.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Icon(Icons.hourglass_empty, color: Colors.orange,
@@ -97,18 +98,18 @@ class PendingApprovalsTab extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.1),
+              color: Colors.green.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(
                 Icons.check_circle_outline, color: Colors.green, size: 40.sp),
           ),
           SizedBox(height: 20.h),
-          Text('All Caught Up!',
+          Text('all_caught_up'.tr(),
               style: AppStyles.semi18PrimaryDark(context: context)),
           SizedBox(height: 8.h),
           Text(
-            'No pending leave requests require your attention right now.',
+            'no_pending_requests'.tr(),
             style: AppStyles.regular14Grey(context: context),
             textAlign: TextAlign.center,
           ),
@@ -117,3 +118,4 @@ class PendingApprovalsTab extends StatelessWidget {
     );
   }
 }
+

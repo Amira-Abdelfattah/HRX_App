@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -27,7 +27,6 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
   final _endDateController = TextEditingController();
   final _reasonController = TextEditingController();
   DateTime? _startDate;
-  DateTime? _endDate;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
         if (state is TimeOffRequestSuccessState) {
           Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Request submitted successfully')),
+            SnackBar(content: Text('request_submitted'.tr())),
           );
         } else if (state is TimeOffRequestErrorState) {
           ScaffoldMessenger.of(
@@ -72,7 +71,7 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                       Container(
                         padding: EdgeInsets.all(8.w),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Icon(
@@ -87,11 +86,11 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Request Time Off',
+                              'request_time_off'.tr(),
                               style: AppStyles.semi16White,
                             ),
                             Text(
-                              'Submit a new leave request',
+                              'submit_new_request'.tr(),
                               style: AppStyles.regular12Grey(
                                 color: Colors.white70,
                               ),
@@ -115,14 +114,14 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Leave Type',
+                          'leave_type'.tr(),
                           style: AppStyles.medium14PrimaryDark(
                             context: context,
                           ),
                         ),
                         SizedBox(height: 8.h),
                         DropdownButtonFormField<TimeOffTypeEntity>(
-                          value: _selectedType,
+                          initialValue: _selectedType,
                           isExpanded: true,
                           dropdownColor: isDark
                               ? AppColors.darkSurfaceColor
@@ -146,7 +145,7 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                             });
                           },
                           validator: (value) => value == null
-                              ? 'Please select a leave type'
+                              ? 'select_leave_type'.tr()
                               : null,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.symmetric(
@@ -162,7 +161,8 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.r),
                               borderSide: BorderSide(
-                                color: AppColors.borderColor.withOpacity(0.5),
+                                color: AppColors.borderColor.withValues(
+                                    alpha: 0.5),
                               ),
                             ),
                           ),
@@ -175,14 +175,14 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Start Date',
+                                    'start_date'.tr(),
                                     style: AppStyles.medium14PrimaryDark(
                                       context: context,
                                     ),
                                   ),
                                   SizedBox(height: 8.h),
                                   CustomTextField(
-                                    hintText: 'mm/dd/yyyy',
+                                    hintText: 'date_format_hint'.tr(),
                                     controller: _startDateController,
                                     readOnly: true,
                                     prefixIcon: const Icon(
@@ -198,16 +198,17 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                                           const Duration(days: 365),
                                         ),
                                       );
-                                      if (date != null) {
+                                      if (date != null && mounted) {
                                         _startDate = date;
                                         _startDateController.text = DateFormat(
                                           'MM/dd/yyyy',
+                                          context.locale.languageCode,
                                         ).format(date);
                                       }
                                     },
                                     validator: (value) =>
                                         value == null || value.isEmpty
-                                        ? 'Required'
+                                            ? 'required'.tr()
                                         : null,
                                   ),
                                 ],
@@ -219,14 +220,14 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'End Date',
+                                    'end_date'.tr(),
                                     style: AppStyles.medium14PrimaryDark(
                                       context: context,
                                     ),
                                   ),
                                   SizedBox(height: 8.h),
                                   CustomTextField(
-                                    hintText: 'mm/dd/yyyy',
+                                    hintText: 'date_format_hint'.tr(),
                                     controller: _endDateController,
                                     readOnly: true,
                                     prefixIcon: const Icon(
@@ -243,16 +244,16 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                                           const Duration(days: 365),
                                         ),
                                       );
-                                      if (date != null) {
-                                        _endDate = date;
+                                      if (date != null && mounted) {
                                         _endDateController.text = DateFormat(
                                           'MM/dd/yyyy',
+                                          context.locale.languageCode,
                                         ).format(date);
                                       }
                                     },
                                     validator: (value) =>
                                         value == null || value.isEmpty
-                                        ? 'Required'
+                                            ? 'required'.tr()
                                         : null,
                                   ),
                                 ],
@@ -262,7 +263,7 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                         ),
                         SizedBox(height: 16.h),
                         Text(
-                          'Reason (required)',
+                          'reason'.tr(),
                           style: AppStyles.medium14PrimaryDark(
                             context: context,
                           ),
@@ -270,11 +271,11 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                         SizedBox(height: 8.h),
                         CustomTextField(
                           hintText:
-                              'Briefly describe the reason for your leave...',
+                          'reason_hint'.tr(),
                           controller: _reasonController,
                           maxLines: 3,
                           validator: (value) => value == null || value.isEmpty
-                              ? 'Please provide a reason'
+                              ? 'provide_reason'.tr()
                               : null,
                         ),
                         SizedBox(height: 24.h),
@@ -293,7 +294,7 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                                   ),
                                 ),
                                 child: Text(
-                                  'Cancel',
+                                  'cancel'.tr(),
                                   style: AppStyles.semi14PrimaryDark(
                                     context: context,
                                   ),
@@ -322,8 +323,8 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                                       }
                                     },
                                     text: state is TimeOffRequestLoadingState
-                                        ? 'Submitting...'
-                                        : 'Submit Request',
+                                        ? 'submitting'.tr()
+                                        : 'submit_request'.tr(),
                                   );
                                 },
                               ),
@@ -342,3 +343,4 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
     );
   }
 }
+

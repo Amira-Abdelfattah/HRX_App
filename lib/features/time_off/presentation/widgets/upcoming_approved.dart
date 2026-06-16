@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrx_app/core/utils/app_colors.dart';
@@ -22,7 +23,7 @@ class UpcomingApproved extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'UPCOMING APPROVED',
+            'upcoming_approved'.tr().toUpperCase(),
             style: AppStyles.bold10Grey(
               color: isDark ? AppColors.darkTextBody : AppColors.textMutedColor,
             ),
@@ -30,7 +31,7 @@ class UpcomingApproved extends StatelessWidget {
           SizedBox(height: 16.h),
           _buildUpcomingItem(
             context,
-            title: 'Annual Leave',
+            title: 'annual_leave'.tr(),
             date: 'Jun 15, 2026 - Jun 19, 2026',
             days: '5d',
             icon: Icons.calendar_month,
@@ -39,7 +40,7 @@ class UpcomingApproved extends StatelessWidget {
           SizedBox(height: 12.h),
           _buildUpcomingItem(
             context,
-            title: 'Sick Leave',
+            title: 'sick_leave'.tr(),
             date: 'May 20, 2026 - May 21, 2026',
             days: '2d',
             icon: Icons.sick_outlined,
@@ -73,7 +74,7 @@ class UpcomingApproved extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8.w),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8.r),
             ),
             child: Icon(icon, color: color, size: 20.sp),
@@ -105,7 +106,7 @@ class UpcomingApproved extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(6.r),
             ),
             child: Text(days, style: AppStyles.bold10Grey(color: color)),

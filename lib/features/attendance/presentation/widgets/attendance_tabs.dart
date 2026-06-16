@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,10 +32,10 @@ class AttendanceTabs extends StatelessWidget {
         unselectedLabelStyle: AppStyles.regular14Grey(),
         indicatorSize: TabBarIndicatorSize.tab,
         dividerColor: Colors.transparent,
-        tabs: const [
-          Tab(text: "Today's Attendance"),
-          Tab(text: "History"),
-          Tab(text: "Leave Requests"),
+        tabs: [
+          Tab(text: "todays_attendance".tr()),
+          Tab(text: "history".tr()),
+          Tab(text: "leave_requests".tr()),
         ],
       ),
     );

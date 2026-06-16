@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,10 +63,9 @@ class _AttendanceScreenState extends State<AttendanceScreen>
                 child: Builder(
                   builder: (context) {
                     return CustomPageHeader(
-                      title: "Attendance & Leave",
-                      subtitle:
-                          "Track employee attendance and manage leave requests",
-                      actionLabel: "Refresh",
+                      title: "attendance_leave".tr(),
+                      subtitle: "track_attendance".tr(),
+                      actionLabel: "refresh".tr(),
                       actionIcon: Icons.refresh_rounded,
                       onActionPressed: () {
                         context.read<AttendanceCubit>().loadTodayAttendance();

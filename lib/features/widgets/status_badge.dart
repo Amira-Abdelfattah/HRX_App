@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,12 +8,14 @@ class StatusBadge extends StatelessWidget {
   final String text;
   final Color color;
   final IconData? icon;
+  final bool isLocalized;
 
   const StatusBadge({
     super.key,
     required this.text,
     required this.color,
     this.icon,
+    this.isLocalized = false,
   });
 
   @override
@@ -31,7 +34,8 @@ class StatusBadge extends StatelessWidget {
             Icon(icon, size: 14.sp, color: color),
             SizedBox(width: 4.w),
           ],
-          Text(text, style: AppStyles.medium12Grey(color: color)),
+          Text(isLocalized ? text.tr() : text,
+              style: AppStyles.medium12Grey(color: color)),
         ],
       ),
     );

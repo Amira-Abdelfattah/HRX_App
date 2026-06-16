@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -78,11 +79,10 @@ class PaymentViewModel extends Cubit<PaymentStates> {
         );
       } catch (e) {
         print("DEBUG: Unexpected error in processPayment: $e");
-        emit(PaymentErrorState(
-            "Something went wrong. Please check your connection."));
+        emit(PaymentErrorState("something_went_wrong".tr()));
       }
     } else {
-      emit(PaymentErrorState('Please enter all required data first.'));
+      emit(PaymentErrorState('please_enter_all_required_data'.tr()));
     }
   }
 

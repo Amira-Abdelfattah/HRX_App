@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -75,11 +76,19 @@ class AttendanceLogTable extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       child: Row(
         children: [
-          Expanded(flex: 3, child: Text('Employee', style: AppStyles.semi13PrimaryDark())),
-          Expanded(flex: 2, child: Text('Check In', style: AppStyles.semi13PrimaryDark())),
-          Expanded(flex: 2, child: Text('Check Out', style: AppStyles.semi13PrimaryDark())),
-          Expanded(flex: 2, child: Text('Hours', style: AppStyles.semi13PrimaryDark())),
-          Expanded(flex: 2, child: Text('Status', style: AppStyles.semi13PrimaryDark())),
+          Expanded(flex: 3,
+              child: Text(
+                  'employee'.tr(), style: AppStyles.semi13PrimaryDark())),
+          Expanded(flex: 2,
+              child: Text(
+                  'check_in'.tr(), style: AppStyles.semi13PrimaryDark())),
+          Expanded(flex: 2,
+              child: Text(
+                  'check_out'.tr(), style: AppStyles.semi13PrimaryDark())),
+          Expanded(flex: 2,
+              child: Text('hours'.tr(), style: AppStyles.semi13PrimaryDark())),
+          Expanded(flex: 2,
+              child: Text('status'.tr(), style: AppStyles.semi13PrimaryDark())),
         ],
       ),
     );

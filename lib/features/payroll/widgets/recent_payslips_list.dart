@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
+
 import '../../widgets/status_badge.dart';
 
 class RecentPayslipsList extends StatelessWidget {
@@ -20,14 +22,14 @@ class RecentPayslipsList extends StatelessWidget {
         border: Border.all(
           color: isDark
               ? AppColors.darkBorderColor
-              : AppColors.borderColor.withOpacity(0.5),
+              : AppColors.borderColor.withValues(alpha: 0.5),
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Recent Payslips',
+            'recent_payslips'.tr(),
             style: AppStyles.semi18PrimaryDark(
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
@@ -38,14 +40,14 @@ class RecentPayslipsList extends StatelessWidget {
             child: DataTable(
               columnSpacing: 20.w,
               horizontalMargin: 0,
-              columns: const [
-                DataColumn(label: Text('Employee')),
-                DataColumn(label: Text('Department')),
-                DataColumn(label: Text('Salary')),
-                DataColumn(label: Text('Bonus')),
-                DataColumn(label: Text('Net Pay')),
-                DataColumn(label: Text('Status')),
-                DataColumn(label: Text('Action')),
+              columns: [
+                DataColumn(label: Text('employee'.tr())),
+                DataColumn(label: Text('department'.tr())),
+                DataColumn(label: Text('salary'.tr())),
+                DataColumn(label: Text('bonus'.tr())),
+                DataColumn(label: Text('net_pay'.tr())),
+                DataColumn(label: Text('status'.tr())),
+                DataColumn(label: Text('action'.tr())),
               ],
               rows: [
                 _buildRow(
@@ -55,7 +57,7 @@ class RecentPayslipsList extends StatelessWidget {
                   '\$8,500',
                   '\$500',
                   '\$8,150',
-                  'Paid',
+                  'paid'.tr(),
                   AppColors.successColor,
                 ),
                 _buildRow(
@@ -65,7 +67,7 @@ class RecentPayslipsList extends StatelessWidget {
                   '\$9,000',
                   '\$600',
                   '\$8,700',
-                  'Paid',
+                  'paid'.tr(),
                   AppColors.successColor,
                 ),
                 _buildRow(
@@ -75,7 +77,7 @@ class RecentPayslipsList extends StatelessWidget {
                   '\$7,000',
                   '\$300',
                   '\$6,600',
-                  'Processing',
+                  'processing'.tr(),
                   AppColors.warningColor,
                 ),
               ],
@@ -123,8 +125,9 @@ class RecentPayslipsList extends StatelessWidget {
                 : Icons.warning_rounded,
           ),
         ),
-        DataCell(TextButton(onPressed: () {}, child: const Text('View Slip'))),
+        DataCell(TextButton(onPressed: () {}, child: Text('view_slip'.tr()))),
       ],
     );
   }
 }
+

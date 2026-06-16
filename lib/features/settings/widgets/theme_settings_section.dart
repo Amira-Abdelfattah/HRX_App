@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +17,8 @@ class ThemeSettingsSection extends StatelessWidget {
     final currentMode = themeProvider.themeMode;
 
     return SettingSectionCard(
-      title: 'Theme',
-      subtitle: 'Choose your appearance',
+      title: 'theme'.tr(),
+      subtitle: 'choose_appearance'.tr(),
       icon: Icons.palette_outlined,
       iconColor: Colors.pinkAccent,
       child: Column(
@@ -25,8 +26,8 @@ class ThemeSettingsSection extends StatelessWidget {
           _buildThemeOption(
             context,
             id: ThemeMode.light,
-            title: 'Light Mode',
-            subtitle: 'Classic bright theme',
+            title: 'light_mode'.tr(),
+            subtitle: 'classic_bright_theme'.tr(),
             icon: Icons.wb_sunny_outlined,
             isSelected:
                 currentMode == ThemeMode.light ||
@@ -36,8 +37,8 @@ class ThemeSettingsSection extends StatelessWidget {
           _buildThemeOption(
             context,
             id: ThemeMode.dark,
-            title: 'Dark Mode',
-            subtitle: 'Easy on the eyes',
+            title: 'dark_mode'.tr(),
+            subtitle: 'easy_on_eyes'.tr(),
             icon: Icons.nightlight_round_outlined,
             isSelected:
                 currentMode == ThemeMode.dark ||
@@ -47,8 +48,8 @@ class ThemeSettingsSection extends StatelessWidget {
           _buildThemeOption(
             context,
             id: ThemeMode.system,
-            title: 'System Default',
-            subtitle: 'Use device settings',
+            title: 'system_default'.tr(),
+            subtitle: 'use_device_settings'.tr(),
             icon: Icons.settings_brightness_outlined,
             isSelected: currentMode == ThemeMode.system,
           ),

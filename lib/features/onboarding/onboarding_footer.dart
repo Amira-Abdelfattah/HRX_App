@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +35,7 @@ class OnboardingFooter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                isLastPage ? 'Get Started' : 'Next',
+                isLastPage ? 'get_started'.tr() : 'next'.tr(),
                 style: AppStyles.semi16White.copyWith(fontSize: 18.sp),
               ),
               SizedBox(width: 8.w),

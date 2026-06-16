@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +22,7 @@ class CustomBottomNavBar extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10.r,
             offset: const Offset(0, -2),
           ),
@@ -39,17 +40,20 @@ class CustomBottomNavBar extends StatelessWidget {
         selectedFontSize: 12.sp,
         unselectedFontSize: 12.sp,
         iconSize: 24.sp,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.grid_view_rounded), label: 'Dashboard'),
+              icon: const Icon(Icons.grid_view_rounded),
+              label: 'dashboard'.tr()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.people_outline), label: 'Employees'),
+              icon: const Icon(Icons.people_outline), label: 'employees'.tr()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_outlined), label: 'Attendance'),
+              icon: const Icon(Icons.calendar_month_outlined),
+              label: 'attendance'.tr()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.timer_outlined), label: 'Time Off'),
+              icon: const Icon(Icons.timer_outlined), label: 'time_off'.tr()),
           BottomNavigationBarItem(
-              icon: Icon(Icons.monetization_on_outlined), label: 'Payroll'),
+              icon: const Icon(Icons.monetization_on_outlined),
+              label: 'payroll'.tr()),
         ],
       ),
     );

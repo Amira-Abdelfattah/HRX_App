@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,43 +26,43 @@ class RecentActivitySection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Recent Activity',
+            'recent_activity'.tr(),
             style: AppStyles.semi18PrimaryDark(
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
-          Text('Latest updates', style: AppStyles.regular12Grey()),
+          Text('latest_updates'.tr(), style: AppStyles.regular12Grey()),
           SizedBox(height: 16.h),
           _buildActivityItem(
             context,
             Icons.person_add_outlined,
-            'New Employee Joined',
-            'Sarah Johnson joined as Senior Developer',
-            '2 hours ago',
+            'activity_new_employee_title'.tr(),
+            'activity_new_employee_desc'.tr(),
+            'hours_ago'.tr(args: ['2']),
             Colors.green,
           ),
           _buildActivityItem(
             context,
             Icons.warning_amber_rounded,
-            'Performance Alert',
-            '3 employees showing declining performance',
-            '4 hours ago',
+            'activity_performance_alert_title'.tr(),
+            'activity_performance_alert_desc'.tr(),
+            'hours_ago'.tr(args: ['4']),
             Colors.orange,
           ),
           _buildActivityItem(
             context,
             Icons.check_circle_outline,
-            'Leave Approved',
-            'Approved 5 leave requests',
-            '6 hours ago',
+            'activity_leave_approved_title'.tr(),
+            'activity_leave_approved_desc'.tr(),
+            'hours_ago'.tr(args: ['6']),
             Colors.blue,
           ),
           _buildActivityItem(
             context,
             Icons.access_time_outlined,
-            'Pending Reviews',
-            '12 Performance reviews due this week',
-            '1 day ago',
+            'activity_pending_reviews_title'.tr(),
+            'activity_pending_reviews_desc'.tr(),
+            'day_ago'.tr(),
             Colors.blueGrey,
           ),
         ],

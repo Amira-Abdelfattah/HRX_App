@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,12 +23,11 @@ class SettingsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomPageHeader(
-                title: 'Settings',
-                subtitle: 'Manage your company settings and preferences',
+              CustomPageHeader(
+                title: 'settings'.tr(),
+                subtitle: 'settings_subtitle'.tr(),
               ),
               SizedBox(height: 24.h),
-
               Column(
                 children: [
                   const CompanyInfoSection(),
@@ -40,15 +40,14 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
                   const LanguageSettingsSection(),
                   SizedBox(height: 32.h),
-
                   SizedBox(
                     width: double.infinity,
                     child: CustomElevatedButton(
-                      text: 'Save Changes',
+                      text: 'save_changes'.tr(),
                       onButtonClicked: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: const Text('Settings saved successfully'),
+                            content: Text('settings_saved'.tr()),
                             backgroundColor: AppColors.primaryColor,
                             behavior: SnackBarBehavior.floating,
                             shape: RoundedRectangleBorder(
