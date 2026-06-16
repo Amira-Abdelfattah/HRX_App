@@ -59,13 +59,15 @@ class AppStyles {
         color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle regular18White = GoogleFonts.poppins(
+  static TextStyle regular18White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.whiteColor,
   );
 
-  static TextStyle semi16TextWhite = GoogleFonts.poppins(
+  static TextStyle semi16TextWhite({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,
@@ -81,13 +83,15 @@ class AppStyles {
             .primaryColor),
   );
 
-  static TextStyle semi24White = GoogleFonts.poppins(
+  static TextStyle semi24White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,
   );
 
-  static TextStyle medium18White = GoogleFonts.poppins(
+  static TextStyle medium18White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.whiteColor,
@@ -107,7 +111,8 @@ class AppStyles {
         color: color ?? _adaptivePrimaryDark(context),
   );
 
-  static TextStyle medium20White = GoogleFonts.poppins(
+  static TextStyle medium20White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 20.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.whiteColor,
@@ -270,19 +275,22 @@ class AppStyles {
     color: color ?? AppColors.dangerColor,
   );
 
-  static TextStyle semi16White = GoogleFonts.poppins(
+  static TextStyle semi16White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,
   );
 
-  static TextStyle medium16White = GoogleFonts.poppins(
+  static TextStyle medium16White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.whiteColor,
   );
 
-  static TextStyle semi14White = GoogleFonts.poppins(
+  static TextStyle semi14White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,
@@ -390,7 +398,8 @@ class AppStyles {
     color: color ?? AppColors.warningColor,
   );
 
-  static TextStyle semi12White = GoogleFonts.poppins(
+  static TextStyle semi12White({BuildContext? context}) =>
+      GoogleFonts.poppins(
     fontSize: 12.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,

@@ -39,7 +39,8 @@ class BillingToggle extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'monthly_plan'.tr(),
-                    style: AppStyles.medium14Category(color: Colors.white),
+                    style: AppStyles.medium14Category(
+                        context: context, color: Colors.white),
                   ),
                 ),
               ),
@@ -61,6 +62,7 @@ class BillingToggle extends StatelessWidget {
                       Text(
                         'annual_plan'.tr(),
                         style: AppStyles.medium14Category(
+                          context: context,
                           color: isAnnual
                               ? AppColors.primaryColor
                               : Colors.white,

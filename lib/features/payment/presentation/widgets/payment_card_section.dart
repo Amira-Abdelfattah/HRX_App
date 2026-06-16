@@ -41,8 +41,9 @@ class PaymentCardSection extends StatelessWidget {
           ),
         ),
         SizedBox(height: 30.h),
-        _buildLabel('cardholder_name_label'.tr()),
+        _buildLabel(context, 'cardholder_name_label'.tr()),
         _buildTextField(
+          context,
           vm.nameController,
           'cardholder_name_hint'.tr(),
           Icons.person_outline,
@@ -53,8 +54,9 @@ class PaymentCardSection extends StatelessWidget {
             return null;
           },
         ),
-        _buildLabel('card_number_label'.tr()),
+        _buildLabel(context, 'card_number_label'.tr()),
         _buildTextField(
+          context,
           vm.cardNumberController,
           'card_number_hint'.tr(),
           Icons.credit_card,
@@ -81,8 +83,9 @@ class PaymentCardSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildLabel('expiration_date_label'.tr()),
+                  _buildLabel(context, 'expiration_date_label'.tr()),
                   _buildTextField(
+                    context,
                     vm.expiryController,
                     'expiration_date_hint'.tr(),
                     Icons.calendar_today_outlined,
@@ -124,8 +127,9 @@ class PaymentCardSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildLabel('cvv_label'.tr()),
+                  _buildLabel(context, 'cvv_label'.tr()),
                   _buildTextField(
+                    context,
                     vm.cvvController,
                     'cvv_hint'.tr(),
                     Icons.lock_outline,
@@ -150,12 +154,13 @@ class PaymentCardSection extends StatelessWidget {
             ),
           ],
         ),
-        _buildLabel('promo_coupon_label'.tr()),
+        _buildLabel(context, 'promo_coupon_label'.tr()),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: _buildTextField(
+                context,
                 TextEditingController(),
                 'promo_hint'.tr(),
                 Icons.percent,
@@ -169,6 +174,7 @@ class PaymentCardSection extends StatelessWidget {
                 child: Text(
                   'apply'.tr(),
                   style: AppStyles.bold20PrimaryDark(
+                    context: context,
                     color: Colors.white,
                   ).copyWith(fontSize: 14.sp),
                 ),
@@ -194,6 +200,7 @@ class PaymentCardSection extends StatelessWidget {
               }),
               backgroundColor: AppColors.accentColor,
               textStyle: AppStyles.bold20PrimaryDark(
+                context: context,
                 color: AppColors.primaryColor,
               ).copyWith(fontSize: 16.sp),
               onButtonClicked: state is PaymentLoadingState
@@ -212,7 +219,7 @@ class PaymentCardSection extends StatelessWidget {
     );
   }
 
-  Widget _buildLabel(String text) {
+  Widget _buildLabel(BuildContext context, String text) {
     return Padding(
       padding: EdgeInsets.only(bottom: 4.h, top: 8.h),
       child: Align(
@@ -220,6 +227,7 @@ class PaymentCardSection extends StatelessWidget {
         child: Text(
           text,
           style: AppStyles.bold20PrimaryDark(
+            context: context,
             color: Colors.white,
           ).copyWith(fontSize: 12.sp),
         ),
@@ -227,7 +235,7 @@ class PaymentCardSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(
+  Widget _buildTextField(BuildContext context,
     TextEditingController controller,
     String hint,
     IconData icon, {
@@ -242,8 +250,9 @@ class PaymentCardSection extends StatelessWidget {
       prefixIcon: Icon(icon, color: Colors.white54, size: 20.sp),
       filledColor: const Color(0xff1E3A73),
       borderColor: Colors.transparent,
-      style: AppStyles.medium14Category(color: Colors.white),
-      hintStyle: AppStyles.regular14Grey(color: Colors.white30),
+      style: AppStyles.medium14Category(context: context, color: Colors.white),
+      hintStyle: AppStyles.regular14Grey(
+          context: context, color: Colors.white30),
       keyboardType: keyboardType,
       focusNode: focusNode,
       validator: validator,

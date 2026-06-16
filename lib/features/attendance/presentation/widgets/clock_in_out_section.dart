@@ -116,7 +116,9 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                           'EEEE, MMMM dd, yyyy',
                             context.locale.languageCode
                         ).format(_now).toUpperCase(),
-                        style: AppStyles.medium12Grey().copyWith(
+                        style: AppStyles
+                            .medium12Grey(context: context)
+                            .copyWith(
                           color: AppColors.warningColor,
                         ),
                       ),
@@ -128,6 +130,7 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                           DateFormat('hh:mm:ss a', context.locale.languageCode)
                               .format(_now),
                           style: AppStyles.semi24PrimaryDark(
+                            context: context,
                             color: isDark
                                 ? Colors.white
                                 : AppColors.primaryColor,
@@ -150,7 +153,7 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                               "${'status_label'.tr()}: ${isCheckedIn
                                   ? 'checked_in'.tr()
                                   : 'checked_out'.tr()}",
-                              style: AppStyles.medium14Grey(),
+                              style: AppStyles.medium14Grey(context: context),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -180,7 +183,7 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                     ),
                     label: Text(
                       isCheckedIn ? "clock_out".tr() : "clock_in".tr(),
-                      style: AppStyles.semi14White,
+                      style: AppStyles.semi14White(context: context),
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: isCheckedIn
@@ -212,7 +215,9 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
                     Flexible(
                       child: Text(
                         "gps_location_info".tr(),
-                        style: AppStyles.regular10Grey().copyWith(
+                        style: AppStyles
+                            .regular10Grey(context: context)
+                            .copyWith(
                           fontSize: 11.sp,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -300,12 +305,12 @@ class _ClockInOutSectionState extends State<ClockInOutSection> {
               ),
             ),
             SizedBox(height: 20.h),
-            Text(title, style: AppStyles.semi18PrimaryDark()),
+            Text(title, style: AppStyles.semi18PrimaryDark(context: context)),
             SizedBox(height: 8.h),
             Text(
               message,
               textAlign: TextAlign.center,
-              style: AppStyles.medium14Grey(),
+              style: AppStyles.medium14Grey(context: context),
             ),
           ],
         ),

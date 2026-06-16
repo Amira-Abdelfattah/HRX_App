@@ -31,10 +31,10 @@ class LoginForm extends StatelessWidget {
             hintText: 'email_hint_login'.tr(),
             filledColor: Colors.white.withValues(alpha: 0.1),
             borderColor: Colors.transparent,
-            style: AppStyles.medium14Category().copyWith(
+            style: AppStyles.medium14Category(context: context).copyWith(
               color: AppColors.accentColor,
             ),
-            hintStyle: AppStyles.regular14Grey().copyWith(
+            hintStyle: AppStyles.regular14Grey(context: context).copyWith(
               color: AppColors.accentColor.withValues(alpha: 0.4),
             ),
           ),
@@ -57,10 +57,10 @@ class LoginForm extends StatelessWidget {
               ),
               onPressed: vm.togglePasswordVisibility,
             ),
-            style: AppStyles.medium14Category().copyWith(
+            style: AppStyles.medium14Category(context: context).copyWith(
               color: AppColors.accentColor,
             ),
-            hintStyle: AppStyles.regular14Grey().copyWith(
+            hintStyle: AppStyles.regular14Grey(context: context).copyWith(
               color: AppColors.accentColor.withValues(alpha: 0.4),
             ),
           ),
@@ -88,7 +88,7 @@ class LoginForm extends StatelessWidget {
                   SizedBox(width: 8.w),
                   Text(
                     'remember_me'.tr(),
-                    style: AppStyles.regular14Grey().copyWith(
+                    style: AppStyles.regular14Grey(context: context).copyWith(
                       color: Colors.white70,
                       fontSize: 14.sp,
                     ),
@@ -99,7 +99,7 @@ class LoginForm extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   'forgot_password'.tr(),
-                  style: AppStyles.semi14PrimaryDark().copyWith(
+                  style: AppStyles.semi14PrimaryDark(context: context).copyWith(
                     color: AppColors.accentColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 14.sp,

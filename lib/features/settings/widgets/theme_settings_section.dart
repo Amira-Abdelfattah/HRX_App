@@ -96,8 +96,10 @@ class ThemeSettingsSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: AppStyles.medium14PrimaryDark()),
-                  Text(subtitle, style: AppStyles.regular12Grey()),
+                  Text(title,
+                      style: AppStyles.medium14PrimaryDark(context: context)),
+                  Text(subtitle,
+                      style: AppStyles.regular12Grey(context: context)),
                 ],
               ),
             ),

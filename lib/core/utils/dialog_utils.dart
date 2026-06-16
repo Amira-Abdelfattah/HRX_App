@@ -17,7 +17,8 @@ class DialogUtils {
               CircularProgressIndicator(color: Theme.of(context).primaryColor),
               Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text(message, style: AppStyles.medium16PrimaryDark()),
+                child: Text(message,
+                    style: AppStyles.medium16PrimaryDark(context: context)),
               ),
             ],
           ),
@@ -49,7 +50,8 @@ class DialogUtils {
             if (Navigator.canPop(context)) Navigator.pop(context);
             if (posAction != null) Future.microtask(() => posAction.call());
           },
-          child: Text(posActionName, style: AppStyles.semi16PrimaryDark()),
+          child: Text(posActionName,
+              style: AppStyles.semi16PrimaryDark(context: context)),
         ),
       );
     }
@@ -60,7 +62,8 @@ class DialogUtils {
             if (Navigator.canPop(context)) Navigator.pop(context);
             if (negAction != null) Future.microtask(() => negAction.call());
           },
-          child: Text(negActionName, style: AppStyles.semi16PrimaryDark()),
+          child: Text(negActionName,
+              style: AppStyles.semi16PrimaryDark(context: context)),
         ),
       );
     }
@@ -68,7 +71,8 @@ class DialogUtils {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: Text(message, style: AppStyles.semi18PrimaryDark()),
+          content: Text(
+              message, style: AppStyles.semi18PrimaryDark(context: context)),
           title: Text(
             title ?? '',
             style: Theme.of(context).textTheme.titleMedium,

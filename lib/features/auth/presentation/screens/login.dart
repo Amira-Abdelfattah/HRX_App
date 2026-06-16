@@ -89,7 +89,9 @@ class LoginScreen extends StatelessWidget {
                       CustomElevatedButton(
                         text: 'sign_in_btn'.tr(),
                         backgroundColor: AppColors.accentColor,
-                        textStyle: AppStyles.semi20Primary().copyWith(
+                        textStyle: AppStyles
+                            .semi20Primary(context: context)
+                            .copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,
                         ),

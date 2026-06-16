@@ -28,10 +28,12 @@ class RecentActivitySection extends StatelessWidget {
           Text(
             'recent_activity'.tr(),
             style: AppStyles.semi18PrimaryDark(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
-          Text('latest_updates'.tr(), style: AppStyles.regular12Grey()),
+          Text('latest_updates'.tr(),
+              style: AppStyles.regular12Grey(context: context)),
           SizedBox(height: 16.h),
           _buildActivityItem(
             context,
@@ -100,11 +102,13 @@ class RecentActivitySection extends StatelessWidget {
                 Text(
                   title,
                   style: AppStyles.medium14PrimaryDark(
+                    context: context,
                     color: isDark ? Colors.white : AppColors.primaryColor,
                   ),
                 ),
-                Text(subtitle, style: AppStyles.regular12Grey()),
-                Text(time, style: AppStyles.light12Grey()),
+                Text(subtitle,
+                    style: AppStyles.regular12Grey(context: context)),
+                Text(time, style: AppStyles.light12Grey(context: context)),
               ],
             ),
           ),

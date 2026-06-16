@@ -30,12 +30,14 @@ class LeaveBalanceDetails extends StatelessWidget {
               Icon(
                 Icons.analytics_outlined,
                 size: 20.sp,
-                color: AppStyles.regular12Grey().color,
+                color: AppStyles
+                    .regular12Grey(context: context)
+                    .color,
               ),
               SizedBox(width: 8.w),
               Text(
                 'Leave Balance Details',
-                style: AppStyles.semi16PrimaryDark(),
+                style: AppStyles.semi16PrimaryDark(context: context),
               ),
             ],
           ),
@@ -118,7 +120,8 @@ class LeaveBalanceDetails extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(title, style: AppStyles.semi14PrimaryDark()),
+                  Text(title,
+                      style: AppStyles.semi14PrimaryDark(context: context)),
                   Text(
                     '$used',
                     style: AppStyles.semi14PrimaryDark(color: iconColor),
@@ -145,7 +148,7 @@ class LeaveBalanceDetails extends StatelessWidget {
                   Flexible(
                     child: Text(
                       '$percentage% used of $total days',
-                      style: AppStyles.regular10Grey(),
+                      style: AppStyles.regular10Grey(context: context),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

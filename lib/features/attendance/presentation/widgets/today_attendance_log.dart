@@ -16,31 +16,31 @@ class TodayAttendanceLog extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final List<Map<String, dynamic>> dummyData = [
-      {
-        'name': 'Sarah Johnson',
-        'in': '08:55 AM',
-        'out': '05:30 PM',
-        'hours': '9h 15m',
-        'status': 'present'.tr(),
-        'color': AppColors.successColor,
-      },
-      {
-        'name': 'Michael Chen',
-        'in': '09:00 AM',
-        'out': '06:00 PM',
-        'hours': '9h 0m',
-        'status': 'present'.tr(),
-        'color': AppColors.successColor,
-      },
-    ];
+    // final List<Map<String, dynamic>> dummyData = [
+    //   {
+    //     'name': 'Sarah Johnson',
+    //     'in': '08:55 AM',
+    //     'out': '05:30 PM',
+    //     'hours': '9h 15m',
+    //     'status': 'present'.tr(),
+    //     'color': AppColors.successColor,
+    //   },
+    //   {
+    //     'name': 'Michael Chen',
+    //     'in': '09:00 AM',
+    //     'out': '06:00 PM',
+    //     'hours': '9h 0m',
+    //     'status': 'present'.tr(),
+    //     'color': AppColors.successColor,
+    //   },
+    // ];
 
     return BlocBuilder<AttendanceCubit, AttendanceStates>(
       builder: (context, state) {
         // Combine real logs from Cubit with dummy data for display
         final List<Map<String, dynamic>> allData = [
           ...state.logs,
-          ...dummyData,
+          //...dummyData,
         ];
 
         return Column(
@@ -58,7 +58,8 @@ class TodayAttendanceLog extends StatelessWidget {
                 OutlinedButton.icon(
                   onPressed: () {},
                   icon: Icon(Icons.filter_list_rounded, size: 18.sp),
-                  label: Text("filter".tr(), style: AppStyles.medium14Grey()),
+                  label: Text("filter".tr(),
+                      style: AppStyles.medium14Grey(context: context)),
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
                       color: isDark

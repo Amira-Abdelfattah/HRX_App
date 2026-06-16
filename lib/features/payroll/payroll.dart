@@ -63,7 +63,7 @@ class PayrollScreen extends StatelessWidget {
               StatCard(
                 title: 'avg_salary'.tr(),
                 value: '\$8,200',
-                trend: '1.2% from last month',
+                trend: 'avg_salary_growth'.tr(args: ['1.2%']),
                 icon: Icons.trending_up_rounded,
                 color: Colors.teal.shade600,
                 trendColor: Colors.green,

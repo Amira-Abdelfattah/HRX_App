@@ -31,14 +31,14 @@ class PerformixEngineTabs extends StatelessWidget {
       ),
       child: Row(
         children: [
-          _buildTab(0, 'performance_leaderboard'.tr()),
-          _buildTab(1, 'insights_alerts'.tr()),
+          _buildTab(context, 0, 'performance_leaderboard'.tr()),
+          _buildTab(context, 1, 'insights_alerts'.tr()),
         ],
       ),
     );
   }
 
-  Widget _buildTab(int index, String label) {
+  Widget _buildTab(BuildContext context, int index, String label) {
     bool isActive = activeTab == index;
     return Expanded(
       child: GestureDetector(
@@ -53,6 +53,7 @@ class PerformixEngineTabs extends StatelessWidget {
           child: Text(
             label,
             style: AppStyles.medium14Grey(
+              context: context,
               color: isActive ? Colors.white : AppColors.textMutedColor,
             ),
           ),

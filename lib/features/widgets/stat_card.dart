@@ -65,7 +65,7 @@ class StatCard extends StatelessWidget {
             SizedBox(height: 10.h),
             Text(
               title,
-              style: AppStyles.regular12Grey(),
+              style: AppStyles.regular12Grey(context: context),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -76,6 +76,7 @@ class StatCard extends StatelessWidget {
               child: Text(
                 value,
                 style: AppStyles.bold28PrimaryDarkNumber(
+                  context: context,
                   color: isDark ? Colors.white : AppColors.primaryColor,
                 ).copyWith(fontSize: 24.sp),
               ),
@@ -85,6 +86,7 @@ class StatCard extends StatelessWidget {
               Text(
                 trend!,
                 style: AppStyles.medium12Grey(
+                  context: context,
                   color:
                       trendColor ??
                       (isPositive

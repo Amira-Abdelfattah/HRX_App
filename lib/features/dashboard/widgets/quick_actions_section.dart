@@ -30,14 +30,16 @@ class QuickActionsSection extends StatelessWidget {
               SizedBox(width: 8.w),
               Text(
                 'quick_actions'.tr(),
-                style: AppStyles.semi20Primary(color: Colors.white),
+                style: AppStyles.semi20Primary(
+                    context: context, color: Colors.white),
               ),
             ],
           ),
           SizedBox(height: 8.h),
           Text(
             'quick_actions_desc'.tr(),
-            style: AppStyles.regular14Grey(color: Colors.white70),
+            style: AppStyles.regular14Grey(
+                context: context, color: Colors.white70),
           ),
           SizedBox(height: 20.h),
           Wrap(

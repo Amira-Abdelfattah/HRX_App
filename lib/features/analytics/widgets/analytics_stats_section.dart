@@ -19,7 +19,7 @@ class AnalyticsStatsSection extends StatelessWidget {
             _buildStatItem(
               title: 'total_headcount'.tr(),
               value: '1,247',
-              trend: 'trend_from_last_quarter'.tr(args: ['↑ 12%']),
+              trend: 'trend_from_last_quarter'.tr(args: ['↑ 5.2%']),
               isPositive: true,
               icon: Icons.people_outline,
               color: Colors.blue,
@@ -37,7 +37,7 @@ class AnalyticsStatsSection extends StatelessWidget {
             _buildStatItem(
               title: 'new_hires'.tr(),
               value: '67',
-              trend: 'trend_from_q1'.tr(args: ['↑ 10%']),
+              trend: 'trend_from_q1'.tr(args: ['↑ 12%']),
               isPositive: true,
               icon: Icons.person_add_outlined,
               color: Colors.green,

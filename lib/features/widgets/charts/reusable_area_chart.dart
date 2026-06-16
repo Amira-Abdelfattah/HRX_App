@@ -22,12 +22,12 @@ class ReusableAreaChart extends StatelessWidget {
       margin: EdgeInsets.zero,
       primaryXAxis: CategoryAxis(
         majorGridLines: const MajorGridLines(width: 0),
-        labelStyle: AppStyles.regular10Grey(),
+        labelStyle: AppStyles.regular10Grey(context: context),
       ),
       primaryYAxis: NumericAxis(
         axisLine: const AxisLine(width: 0),
         majorTickLines: const MajorTickLines(size: 0),
-        labelStyle: AppStyles.regular10Grey(),
+        labelStyle: AppStyles.regular10Grey(context: context),
         majorGridLines: MajorGridLines(
           width: 1,
           color: AppColors.borderColor.withValues(alpha: 0.1),

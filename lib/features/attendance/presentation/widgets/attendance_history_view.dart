@@ -42,6 +42,7 @@ class AttendanceHistoryView extends StatelessWidget {
           Text(
             'attendance_history'.tr(),
             style: AppStyles.semi18PrimaryDark(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
@@ -49,7 +50,7 @@ class AttendanceHistoryView extends StatelessWidget {
           Text(
             'attendance_history_desc'.tr(),
             textAlign: TextAlign.center,
-            style: AppStyles.regular14Grey(),
+            style: AppStyles.regular14Grey(context: context),
           ),
           SizedBox(height: 24.h),
           ElevatedButton(
@@ -63,7 +64,8 @@ class AttendanceHistoryView extends StatelessWidget {
               ),
               elevation: 0,
             ),
-            child: Text('view_full_history'.tr(), style: AppStyles.semi14White),
+            child: Text('view_full_history'.tr(),
+                style: AppStyles.semi14White(context: context)),
           ),
         ],
       ),

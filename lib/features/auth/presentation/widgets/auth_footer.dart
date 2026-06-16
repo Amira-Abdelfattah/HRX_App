@@ -22,7 +22,7 @@ class AuthFooter extends StatelessWidget {
     return Center(
       child: RichText(
         text: TextSpan(
-          style: AppStyles.regular14Grey().copyWith(
+          style: AppStyles.regular14Grey(context: context).copyWith(
             color: AppColors.accentColor.withValues(alpha: 0.7),
             fontSize: 14.sp,
           ),
@@ -31,7 +31,7 @@ class AuthFooter extends StatelessWidget {
             TextSpan(
               text: linkText,
               recognizer: TapGestureRecognizer()..onTap = onTap,
-              style: AppStyles.semi14PrimaryDark().copyWith(
+              style: AppStyles.semi14PrimaryDark(context: context).copyWith(
                 color: AppColors.accentColor,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.underline,

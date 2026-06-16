@@ -47,6 +47,7 @@ class EngineHeader extends StatelessWidget {
                     Text(
                       'performix_engine_title'.tr(),
                       style: AppStyles.bold32PrimaryDark(
+                        context: context,
                         color: Colors.white,
                       ).copyWith(fontSize: 24.sp),
                       maxLines: 1,
@@ -55,6 +56,7 @@ class EngineHeader extends StatelessWidget {
                     Text(
                       'smart_eval_system'.tr(),
                       style: AppStyles.regular14Grey(
+                        context: context,
                         color: Colors.white.withValues(alpha: 0.7),
                       ),
                       maxLines: 1,
@@ -68,10 +70,10 @@ class EngineHeader extends StatelessWidget {
           SizedBox(height: 32.h),
           Row(
             children: [
-              Expanded(child: _buildStat('company_avg'.tr(), '87.5')),
-              Expanded(child: _buildStat('top_stars'.tr(), '12')),
-              Expanded(child: _buildStat('avg_growth'.tr(), '+3.2%')),
-              Expanded(child: _buildStat('depts'.tr(), '6')),
+              Expanded(child: _buildStat(context, 'company_avg'.tr(), '87.5')),
+              Expanded(child: _buildStat(context, 'top_stars'.tr(), '12')),
+              Expanded(child: _buildStat(context, 'avg_growth'.tr(), '+3.2%')),
+              Expanded(child: _buildStat(context, 'depts'.tr(), '6')),
             ],
           ),
         ],
@@ -79,13 +81,14 @@ class EngineHeader extends StatelessWidget {
     );
   }
 
-  Widget _buildStat(String label, String value) {
+  Widget _buildStat(BuildContext context, String label, String value) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
           style: AppStyles.regular12Grey(
+              context: context,
               color: Colors.white.withValues(alpha: 0.6)),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -93,7 +96,8 @@ class EngineHeader extends StatelessWidget {
         SizedBox(height: 4.h),
         Text(
           value,
-          style: AppStyles.bold20PrimaryDark(color: Colors.white),
+          style: AppStyles.bold20PrimaryDark(
+              context: context, color: Colors.white),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

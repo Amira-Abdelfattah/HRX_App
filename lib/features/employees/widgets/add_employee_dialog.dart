@@ -79,7 +79,9 @@ class AddEmployeeDialog extends StatelessWidget {
                               children: [
                                 Text(
                                   'add_employee'.tr(),
-                                  style: AppStyles.semi24White.copyWith(
+                                  style: AppStyles
+                                      .semi24White(context: context)
+                                      .copyWith(
                                     fontSize: 22.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -106,6 +108,7 @@ class AddEmployeeDialog extends StatelessWidget {
                             Text(
                               'add_employee_desc'.tr(),
                               style: AppStyles.regular12Grey(
+                                context: context,
                                 color: Colors.white.withValues(alpha: 0.8),
                               ),
                             ),
@@ -119,11 +122,13 @@ class AddEmployeeDialog extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildLabel('employee_name_caps'.tr()),
+                            _buildLabel(context, 'employee_name_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.nameController,
                               hintText: 'jon_hint'.tr(),
-                              style: AppStyles.semi20Primary().copyWith(
+                              style: AppStyles
+                                  .semi20Primary(context: context)
+                                  .copyWith(
                                   fontSize: 16.sp),
                               filledColor: const Color(0xFFF8FAFC),
                               validator: (value) =>
@@ -135,11 +140,13 @@ class AddEmployeeDialog extends StatelessWidget {
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('email_address_caps'.tr()),
+                            _buildLabel(context, 'email_address_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.emailController,
                               hintText: 'email_hint'.tr(),
-                              style: AppStyles.semi20Primary().copyWith(
+                              style: AppStyles
+                                  .semi20Primary(context: context)
+                                  .copyWith(
                                   fontSize: 16.sp),
                               filledColor: const Color(0xFFF8FAFC),
                               validator: (value) {
@@ -157,11 +164,12 @@ class AddEmployeeDialog extends StatelessWidget {
                             SizedBox(height: 4.h),
                             Row(
                               children: [
-                                _buildLabel('company_name_caps'.tr()),
+                                _buildLabel(context, 'company_name_caps'.tr()),
                                 SizedBox(width: 4.w),
                                 Text(
                                   'auto_caps'.tr(),
-                                  style: AppStyles.medium12Grey().copyWith(
+                                  style: AppStyles.medium12Grey(
+                                      context: context).copyWith(
                                     fontSize: 10.sp,
                                     color: Colors.grey.shade400,
                                   ),
@@ -172,7 +180,9 @@ class AddEmployeeDialog extends StatelessWidget {
                               controller: viewModel.companyController,
                               readOnly: true,
                               hintText: 'company'.tr(),
-                              style: AppStyles.semi20Primary().copyWith(
+                              style: AppStyles
+                                  .semi20Primary(context: context)
+                                  .copyWith(
                                 fontSize: 16.sp,
                                 color: const Color(0xFF1E3A8A),
                               ),
@@ -182,12 +192,14 @@ class AddEmployeeDialog extends StatelessWidget {
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('password_caps'.tr()),
+                            _buildLabel(context, 'password_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.passwordController,
                               hintText: '...',
                               obSecureText: true,
-                              style: AppStyles.semi20Primary().copyWith(
+                              style: AppStyles
+                                  .semi20Primary(context: context)
+                                  .copyWith(
                                   fontSize: 16.sp),
                               filledColor: const Color(0xFFEFF6FF),
                               validator: (value) =>
@@ -198,11 +210,13 @@ class AddEmployeeDialog extends StatelessWidget {
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('job_position_caps'.tr()),
+                            _buildLabel(context, 'job_position_caps'.tr()),
                             CustomTextField(
                               controller: viewModel.jobPositionController,
                               hintText: 'job_hint'.tr(),
-                              style: AppStyles.semi20Primary().copyWith(
+                              style: AppStyles
+                                  .semi20Primary(context: context)
+                                  .copyWith(
                                   fontSize: 16.sp),
                               borderColor: const Color(0xFF6366F1),
                               validator: (value) =>
@@ -213,11 +227,12 @@ class AddEmployeeDialog extends StatelessWidget {
                                   color: Colors.grey),
                             ),
                             SizedBox(height: 4.h),
-                            _buildLabel('system_role_caps'.tr()),
+                            _buildLabel(context, 'system_role_caps'.tr()),
                             SizedBox(height: 8.h),
                             Row(
                               children: [
                                 _buildRoleItem(
+                                  context,
                                   viewModel,
                                   'hr_manager'.tr(),
                                   'hr_manager',
@@ -226,6 +241,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                 ),
                                 SizedBox(width: 10.w),
                                 _buildRoleItem(
+                                  context,
                                   viewModel,
                                   'manager'.tr(),
                                   'manager',
@@ -234,6 +250,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                 ),
                                 SizedBox(width: 10.w),
                                 _buildRoleItem(
+                                  context,
                                   viewModel,
                                   'employee'.tr(),
                                   'user',
@@ -281,6 +298,7 @@ class AddEmployeeDialog extends StatelessWidget {
                                     child: Text(
                                       'cancel_caps'.tr(),
                                       style: AppStyles.semi14PrimaryDark(
+                                        context: context,
                                         color: Colors.grey.shade600,
                                       ).copyWith(fontWeight: FontWeight.bold),
                                     ),
@@ -294,7 +312,8 @@ class AddEmployeeDialog extends StatelessWidget {
                                         ? 'saving_caps'.tr()
                                         : 'save_employee_caps'.tr(),
                                     backgroundColor: const Color(0xFF1E3A8A),
-                                    textStyle: AppStyles.semi16White.copyWith(
+                                    textStyle: AppStyles.semi16White(
+                                        context: context).copyWith(
                                       fontSize: 14.sp,
                                       letterSpacing: 0.5,
                                     ),
@@ -324,12 +343,12 @@ class AddEmployeeDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildLabel(String label) {
+  Widget _buildLabel(BuildContext context, String label) {
     return Padding(
       padding: EdgeInsets.only(bottom: 2.h, left: 2.w),
       child: Text(
         label,
-        style: AppStyles.medium12Grey().copyWith(
+        style: AppStyles.medium12Grey(context: context).copyWith(
           letterSpacing: 0.8,
           fontSize: 10.sp,
           color: Colors.grey.shade600,
@@ -339,7 +358,7 @@ class AddEmployeeDialog extends StatelessWidget {
     );
   }
 
-  Widget _buildRoleItem(
+  Widget _buildRoleItem(BuildContext context,
     AddEmployeeViewModel viewModel,
     String label,
     String roleValue,
@@ -376,7 +395,7 @@ class AddEmployeeDialog extends StatelessWidget {
               SizedBox(height: 6.h),
               Text(
                 label,
-                style: AppStyles.medium12Grey().copyWith(
+                style: AppStyles.medium12Grey(context: context).copyWith(
                   color: isSelected
                       ? activeColor
                       : Colors.grey.shade600,

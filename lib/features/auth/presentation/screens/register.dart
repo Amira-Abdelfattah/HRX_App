@@ -49,31 +49,33 @@ class RegisterScreen extends StatelessWidget {
                 key: 'company_name',
                 value: companyName,
               ),
-            ]);
-            final userData = {
-              'name': userName,
-              'email': vm.emailController.text,
-              'password': vm.passwordController.text,
-              'company': companyName,
-              'role': userRole,
-            };
+            ]).then((_) {
+              final userData = {
+                'name': userName,
+                'email': vm.emailController.text,
+                'password': vm.passwordController.text,
+                'company': companyName,
+                'role': userRole,
+              };
 
-            DialogUtils.showMessage(
-              context: context,
-              message: 'account_initialized'.tr(),
-              posActionName: 'proceed_payment'.tr(),
-              posAction: () {
-                Future.delayed(const Duration(milliseconds: 120), () {
-                  navigatorKey.currentState?.pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => PaymentScreen(
-                        userData: userData,
+              DialogUtils.showMessage(
+                context: context,
+                message: 'account_initialized'.tr(),
+                posActionName: 'proceed_payment'.tr(),
+                posAction: () {
+                  Future.delayed(const Duration(milliseconds: 120), () {
+                    navigatorKey.currentState?.pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PaymentScreen(
+                              userData: userData,
+                            ),
                       ),
-                    ),
-                  );
-                });
-              },
-            );
+                    );
+                  });
+                },
+              );
+            });
           }
         },
         builder: (context, state) {
@@ -96,7 +98,9 @@ class RegisterScreen extends StatelessWidget {
                       CustomElevatedButton(
                         text: 'subscribe_btn'.tr(),
                         backgroundColor: AppColors.accentColor,
-                        textStyle: AppStyles.semi20Primary().copyWith(
+                        textStyle: AppStyles
+                            .semi20Primary(context: context)
+                            .copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,
                         ),

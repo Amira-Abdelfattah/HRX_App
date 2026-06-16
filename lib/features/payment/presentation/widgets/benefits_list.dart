@@ -31,6 +31,7 @@ class BenefitsList extends StatelessWidget {
           Text(
             'included_benefits'.tr(),
             style: AppStyles.bold20PrimaryDark(
+              context: context,
               color: Colors.white,
             ).copyWith(fontSize: 12.sp),
           ),
@@ -57,6 +58,7 @@ class BenefitsList extends StatelessWidget {
                     child: Text(
                       benefits[index],
                       style: AppStyles.regular12Grey(
+                        context: context,
                         color: Colors.white70,
                       ).copyWith(fontSize: 10.sp),
                     ),

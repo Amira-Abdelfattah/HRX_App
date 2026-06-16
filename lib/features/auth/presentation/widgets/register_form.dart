@@ -31,10 +31,10 @@ class RegisterForm extends StatelessWidget {
                 hintText: 'name_hint_register'.tr(),
                 filledColor: const Color(0xff1E3A73),
                 borderColor: Colors.transparent,
-                style: AppStyles.medium14Category().copyWith(
+                style: AppStyles.medium14Category(context: context).copyWith(
                   color: Colors.white,
                 ),
-                hintStyle: AppStyles.regular14Grey().copyWith(
+                hintStyle: AppStyles.regular14Grey(context: context).copyWith(
                   color: Colors.white.withValues(alpha: 0.3),
                 ),
               ),
@@ -52,10 +52,14 @@ class RegisterForm extends StatelessWidget {
                           hintText: 'company_hint_register'.tr(),
                           filledColor: const Color(0xff1E3A73),
                           borderColor: Colors.transparent,
-                          style: AppStyles.medium14Category().copyWith(
+                          style: AppStyles
+                              .medium14Category(context: context)
+                              .copyWith(
                             color: Colors.white,
                           ),
-                          hintStyle: AppStyles.regular14Grey().copyWith(
+                          hintStyle: AppStyles
+                              .regular14Grey(context: context)
+                              .copyWith(
                             color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),
@@ -71,7 +75,9 @@ class RegisterForm extends StatelessWidget {
                         DropdownButtonFormField<String>(
                           value: viewModel.selectedRole,
                           dropdownColor: const Color(0xff1E3A73),
-                          style: AppStyles.medium14Category().copyWith(
+                          style: AppStyles
+                              .medium14Category(context: context)
+                              .copyWith(
                             color: Colors.white,
                           ),
                           icon: const Icon(
@@ -130,10 +136,10 @@ class RegisterForm extends StatelessWidget {
                 hintText: 'email_phone_hint_register'.tr(),
                 filledColor: const Color(0xff1E3A73),
                 borderColor: Colors.transparent,
-                style: AppStyles.medium14Category().copyWith(
+                style: AppStyles.medium14Category(context: context).copyWith(
                   color: Colors.white,
                 ),
-                hintStyle: AppStyles.regular14Grey().copyWith(
+                hintStyle: AppStyles.regular14Grey(context: context).copyWith(
                   color: Colors.white.withValues(alpha: 0.3),
                 ),
               ),
@@ -162,10 +168,14 @@ class RegisterForm extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          style: AppStyles.medium14Category().copyWith(
+                          style: AppStyles
+                              .medium14Category(context: context)
+                              .copyWith(
                             color: Colors.white,
                           ),
-                          hintStyle: AppStyles.regular14Grey().copyWith(
+                          hintStyle: AppStyles
+                              .regular14Grey(context: context)
+                              .copyWith(
                             color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),
@@ -200,10 +210,14 @@ class RegisterForm extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                          style: AppStyles.medium14Category().copyWith(
+                          style: AppStyles
+                              .medium14Category(context: context)
+                              .copyWith(
                             color: Colors.white,
                           ),
-                          hintStyle: AppStyles.regular14Grey().copyWith(
+                          hintStyle: AppStyles
+                              .regular14Grey(context: context)
+                              .copyWith(
                             color: Colors.white.withValues(alpha: 0.3),
                           ),
                         ),

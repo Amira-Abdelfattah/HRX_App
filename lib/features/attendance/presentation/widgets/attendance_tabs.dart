@@ -28,8 +28,8 @@ class AttendanceTabs extends StatelessWidget {
         ),
         labelColor: Colors.white,
         unselectedLabelColor: isDark ? Colors.grey : AppColors.textMutedColor,
-        labelStyle: AppStyles.semi14White,
-        unselectedLabelStyle: AppStyles.regular14Grey(),
+        labelStyle: AppStyles.semi14White(context: context),
+        unselectedLabelStyle: AppStyles.regular14Grey(context: context),
         indicatorSize: TabBarIndicatorSize.tab,
         dividerColor: Colors.transparent,
         tabs: [

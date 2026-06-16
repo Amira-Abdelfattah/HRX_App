@@ -29,7 +29,8 @@ class PaymentAppBar extends StatelessWidget {
           ),
           Text(
             'back_to_registration'.tr(),
-            style: AppStyles.regular14Grey(color: Colors.white70),
+            style: AppStyles.regular14Grey(
+                context: context, color: Colors.white70),
           ),
         ],
       ),

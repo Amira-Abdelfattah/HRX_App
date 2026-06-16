@@ -30,7 +30,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
         ),
         title: Text(
           'back_to_employees'.tr(),
-          style: AppStyles.regular14Grey(),
+          style: AppStyles.regular14Grey(context: context),
         ),
         titleSpacing: 0,
       ),
@@ -39,11 +39,12 @@ class EmployeeDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildProfileHeader(isDark),
+            _buildProfileHeader(context, isDark),
             SizedBox(height: 20.h),
 
             // Main Performance Stat
             _buildStatCard(
+              context,
               'performance_score'.tr(),
               '${employee['perf'] ?? 86}/100',
               'from_last_month'.tr(args: ['↑ 5%']),
@@ -58,6 +59,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: _buildStatCard(
+                    context,
                     'attendance'.tr(),
                     '97%',
                     'from_last_month'.tr(args: ['↑ 2%']),
@@ -70,6 +72,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
                 SizedBox(width: 16.w),
                 Expanded(
                   child: _buildStatCard(
+                    context,
                     'join_date'.tr(),
                     '-',
                     'reporting_to'.tr(args: ['M. Chen']),
@@ -83,10 +86,10 @@ class EmployeeDetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
 
-            _buildEmployeeDetails(isDark),
+            _buildEmployeeDetails(context, isDark),
             SizedBox(height: 20.h),
 
-            _buildQuickStats(isDark),
+            _buildQuickStats(context, isDark),
             SizedBox(height: 30.h),
           ],
         ),
@@ -94,7 +97,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileHeader(bool isDark) {
+  Widget _buildProfileHeader(BuildContext context, bool isDark) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24.w),
@@ -128,7 +131,8 @@ class EmployeeDetailsScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     employee['init'] ?? 'U',
-                    style: AppStyles.semi24White.copyWith(fontSize: 36.sp),
+                    style: AppStyles.semi24White(context: context).copyWith(
+                        fontSize: 36.sp),
                   ),
                 ),
                 Container(
@@ -149,13 +153,15 @@ class EmployeeDetailsScreen extends StatelessWidget {
           // Name and Role
           Text(
             employee['name'] ?? 'Unknown',
-            style: AppStyles.bold32PrimaryDark().copyWith(fontSize: 24.sp),
+            style: AppStyles.bold32PrimaryDark(context: context).copyWith(
+                fontSize: 24.sp),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 4.h),
           Text(
             employee['role'] ?? 'Developer',
             style: AppStyles.medium14Grey(
+              context: context,
               color: AppColors.primaryColor.withValues(alpha: 0.6),
             ),
             textAlign: TextAlign.center,
@@ -167,7 +173,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
             children: [
               _buildBadge('active'.tr(), const Color(0xFF22C55E)),
               SizedBox(width: 8.w),
-              _buildIdBadge('EMP-61'),
+              _buildIdBadge(context, 'EMP-61'),
             ],
           ),
 
@@ -177,6 +183,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
 
           // Contact Info
           _buildInfoChip(
+            context,
             Icons.email_outlined,
             'email_address_caps'.tr(),
             employee['email'] ?? 'jon@gmail.com',
@@ -187,6 +194,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildInfoChip(
+                  context,
                   Icons.phone_outlined,
                   'phone_caps'.tr(),
                   '-',
@@ -196,6 +204,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
               SizedBox(width: 12.w),
               Expanded(
                 child: _buildInfoChip(
+                  context,
                   Icons.location_on_outlined,
                   'location_caps'.tr(),
                   'Cairo',
@@ -238,7 +247,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildIdBadge(String id) {
+  Widget _buildIdBadge(BuildContext context, String id) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
       decoration: BoxDecoration(
@@ -247,12 +256,13 @@ class EmployeeDetailsScreen extends StatelessWidget {
       ),
       child: Text(
         id,
-        style: AppStyles.medium12Grey().copyWith(fontSize: 11.sp),
+        style: AppStyles.medium12Grey(context: context).copyWith(
+            fontSize: 11.sp),
       ),
     );
   }
 
-  Widget _buildInfoChip(
+  Widget _buildInfoChip(BuildContext context,
     IconData icon,
     String label,
     String value,
@@ -293,7 +303,8 @@ class EmployeeDetailsScreen extends StatelessWidget {
                 ),
                 Text(
                   value,
-                  style: AppStyles.medium14Grey().copyWith(fontSize: 12.sp),
+                  style: AppStyles.medium14Grey(context: context).copyWith(
+                      fontSize: 12.sp),
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
@@ -304,7 +315,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard(
+  Widget _buildStatCard(BuildContext context,
     String title,
     String value,
     String sub,
@@ -347,14 +358,15 @@ class EmployeeDetailsScreen extends StatelessWidget {
           SizedBox(height: 16.h),
           Text(
             title,
-            style: AppStyles.regular12Grey().copyWith(fontSize: 12.sp),
+            style: AppStyles.regular12Grey(context: context).copyWith(
+                fontSize: 12.sp),
           ),
           SizedBox(height: 4.h),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
               value,
-              style: AppStyles.bold32PrimaryDark()
+              style: AppStyles.bold32PrimaryDark(context: context)
                   .copyWith(fontSize: compact ? 22.sp : 28.sp),
             ),
           ),
@@ -374,7 +386,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmployeeDetails(bool isDark) {
+  Widget _buildEmployeeDetails(BuildContext context, bool isDark) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24.w),
@@ -387,20 +399,24 @@ class EmployeeDetailsScreen extends StatelessWidget {
         children: [
           Text(
             'employee_details'.tr(),
-            style: AppStyles.bold20PrimaryDark().copyWith(fontSize: 18.sp),
+            style: AppStyles.bold20PrimaryDark(context: context).copyWith(
+                fontSize: 18.sp),
           ),
           SizedBox(height: 16.h),
-          _buildDetailRow('employee_id'.tr(), 'EMP-61', isDark),
-          _buildDetailRow('department'.tr(), employee['dept'] ?? '-', isDark),
-          _buildDetailRow('position'.tr(), employee['role'] ?? '-', isDark),
-          _buildDetailRow('manager'.tr(), 'Michael Chen', isDark),
-          _buildDetailRow('join_date'.tr(), '-', isDark, showDivider: false),
+          _buildDetailRow(context, 'employee_id'.tr(), 'EMP-61', isDark),
+          _buildDetailRow(
+              context, 'department'.tr(), employee['dept'] ?? '-', isDark),
+          _buildDetailRow(
+              context, 'position'.tr(), employee['role'] ?? '-', isDark),
+          _buildDetailRow(context, 'manager'.tr(), 'Michael Chen', isDark),
+          _buildDetailRow(
+              context, 'join_date'.tr(), '-', isDark, showDivider: false),
         ],
       ),
     );
   }
 
-  Widget _buildDetailRow(
+  Widget _buildDetailRow(BuildContext context,
     String label,
     String value,
     bool isDark, {
@@ -415,11 +431,13 @@ class EmployeeDetailsScreen extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: AppStyles.regular14Grey().copyWith(fontSize: 13.sp),
+                style: AppStyles.regular14Grey(context: context).copyWith(
+                    fontSize: 13.sp),
               ),
               Text(
                 value,
-                style: AppStyles.medium14Grey().copyWith(fontSize: 13.sp),
+                style: AppStyles.medium14Grey(context: context).copyWith(
+                    fontSize: 13.sp),
               ),
             ],
           ),
@@ -429,7 +447,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickStats(bool isDark) {
+  Widget _buildQuickStats(BuildContext context, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -437,7 +455,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 4.w, bottom: 12.h),
           child: Text(
             'quick_stats'.tr(),
-            style: AppStyles.bold20PrimaryDark(),
+            style: AppStyles.bold20PrimaryDark(context: context),
           ),
         ),
         _buildQuickStatItem(

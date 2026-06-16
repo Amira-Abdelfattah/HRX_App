@@ -26,12 +26,13 @@ class DashboardScreen extends StatelessWidget {
           Text(
             'dashboard_overview'.tr(),
             style: AppStyles.bold32PrimaryDark(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
           Text(
             'welcome_back_dashboard'.tr(),
-            style: AppStyles.regular14Grey(),
+            style: AppStyles.regular14Grey(context: context),
           ),
           SizedBox(height: 24.h),
           GridView.count(

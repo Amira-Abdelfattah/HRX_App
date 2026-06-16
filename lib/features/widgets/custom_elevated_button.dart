@@ -40,8 +40,10 @@ class CustomElevatedButton extends StatelessWidget {
           if (prefixIconButton != null) ...[
             prefixIconButton!,
             SizedBox(width: 8.w),
-          ],
-          Text(text, style: textStyle ?? AppStyles.semi16White),
+          ],ext(
+            text,
+            style: textStyle ?? AppStyles.semi16White(context: context),
+          ),
         ],
       ),
     );

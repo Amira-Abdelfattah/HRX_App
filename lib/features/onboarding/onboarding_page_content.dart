@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_styles.dart';
-
 import 'onboarding_model.dart';
 
 class OnboardingPageContent extends StatelessWidget {
@@ -44,7 +43,7 @@ class OnboardingPageContent extends StatelessWidget {
           Text(
             pageModel.title,
             textAlign: TextAlign.center,
-            style: AppStyles.semi24PrimaryDark().copyWith(
+            style: AppStyles.semi24PrimaryDark(context: context).copyWith(
               fontSize: 26.sp,
               color: AppColors.primaryColor,
               fontWeight: FontWeight.bold,
@@ -56,7 +55,7 @@ class OnboardingPageContent extends StatelessWidget {
             child: Text(
               pageModel.description,
               textAlign: TextAlign.center,
-              style: AppStyles.regular14Grey().copyWith(
+              style: AppStyles.regular14Grey(context: context).copyWith(
                 fontSize: 16.sp,
                 color: AppColors.textBodyColor,
                 height: 1.5,

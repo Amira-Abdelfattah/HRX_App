@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../core/utils/app_styles.dart';
 
 class QuickActionButton extends StatelessWidget {
@@ -34,7 +35,7 @@ class QuickActionButton extends StatelessWidget {
             children: [
               Icon(icon, color: Colors.white, size: 18.sp),
               SizedBox(width: 8.w),
-              Text(label, style: AppStyles.semi14White),
+              Text(label, style: AppStyles.semi14White(context: context)),
             ],
           ),
         ),

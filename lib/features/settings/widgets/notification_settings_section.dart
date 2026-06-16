@@ -23,6 +23,7 @@ class NotificationSettingsSection extends StatelessWidget {
       child: Column(
         children: [
           _buildSwitchItem(
+            context,
             'email'.tr(),
             'receive_email_notifications'.tr(),
             themeProvider.emailNotifications,
@@ -32,6 +33,7 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
+            context,
             'push'.tr(),
             'receive_push_notifications'.tr(),
             themeProvider.pushNotifications,
@@ -41,6 +43,7 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
+            context,
             'performance_alerts'.tr(),
             'get_performance_alerts'.tr(),
             themeProvider.performanceAlerts,
@@ -50,6 +53,7 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
+            context,
             'leave_requests_notifications'.tr(),
             'get_leave_notifications'.tr(),
             themeProvider.leaveRequests,
@@ -59,6 +63,7 @@ class NotificationSettingsSection extends StatelessWidget {
             ),
           ),
           _buildSwitchItem(
+            context,
             'new_hires_notifications'.tr(),
             'get_hire_notifications'.tr(),
             themeProvider.newHires,
@@ -72,7 +77,7 @@ class NotificationSettingsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildSwitchItem(
+  Widget _buildSwitchItem(BuildContext context,
     String title,
     String subtitle,
     bool value,
@@ -86,8 +91,10 @@ class NotificationSettingsSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: AppStyles.medium14PrimaryDark()),
-                Text(subtitle, style: AppStyles.regular12Grey()),
+                Text(title,
+                    style: AppStyles.medium14PrimaryDark(context: context)),
+                Text(
+                    subtitle, style: AppStyles.regular12Grey(context: context)),
               ],
             ),
           ),

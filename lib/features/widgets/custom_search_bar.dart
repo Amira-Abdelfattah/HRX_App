@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/utils/app_colors.dart';
-
 import '../../core/utils/app_styles.dart';
 
 class CustomSearchBar extends StatelessWidget {
@@ -46,7 +45,7 @@ class CustomSearchBar extends StatelessWidget {
         ),
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: AppStyles.regular14Grey(),
+          hintStyle: AppStyles.regular14Grey(context: context),
           prefixIcon: Icon(
             Icons.search,
             size: 22.sp,

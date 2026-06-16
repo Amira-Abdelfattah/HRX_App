@@ -38,7 +38,7 @@ class AttendanceLogTable extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildHeader(isDark),
+                    _buildHeader(context, isDark),
                     const Divider(height: 1),
                     Column(
                       children: data.asMap().entries.map((entry) {
@@ -46,7 +46,7 @@ class AttendanceLogTable extends StatelessWidget {
                         var item = entry.value;
                         return Column(
                           children: [
-                            _buildRow(item, isDark),
+                            _buildRow(context, item, isDark),
                             if (index != data.length - 1)
                               Divider(
                                 height: 1,
@@ -69,7 +69,7 @@ class AttendanceLogTable extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(bool isDark) {
+  Widget _buildHeader(BuildContext context, bool isDark) {
     return Container(
       color: isDark ? AppColors.darkBackgroundColor : AppColors.backgroundColor
           .withValues(alpha: 0.5),
@@ -78,23 +78,29 @@ class AttendanceLogTable extends StatelessWidget {
         children: [
           Expanded(flex: 3,
               child: Text(
-                  'employee'.tr(), style: AppStyles.semi13PrimaryDark())),
+                  'employee'.tr(),
+                  style: AppStyles.semi13PrimaryDark(context: context))),
           Expanded(flex: 2,
               child: Text(
-                  'check_in'.tr(), style: AppStyles.semi13PrimaryDark())),
+                  'check_in'.tr(),
+                  style: AppStyles.semi13PrimaryDark(context: context))),
           Expanded(flex: 2,
               child: Text(
-                  'check_out'.tr(), style: AppStyles.semi13PrimaryDark())),
+                  'check_out'.tr(),
+                  style: AppStyles.semi13PrimaryDark(context: context))),
           Expanded(flex: 2,
-              child: Text('hours'.tr(), style: AppStyles.semi13PrimaryDark())),
+              child: Text('hours'.tr(),
+                  style: AppStyles.semi13PrimaryDark(context: context))),
           Expanded(flex: 2,
-              child: Text('status'.tr(), style: AppStyles.semi13PrimaryDark())),
+              child: Text('status'.tr(),
+                  style: AppStyles.semi13PrimaryDark(context: context))),
         ],
       ),
     );
   }
 
-  Widget _buildRow(Map<String, dynamic> item, bool isDark) {
+  Widget _buildRow(BuildContext context, Map<String, dynamic> item,
+      bool isDark) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Row(
@@ -103,22 +109,25 @@ class AttendanceLogTable extends StatelessWidget {
             flex: 3,
             child: Text(
               item['name'],
-              style: AppStyles.medium14PrimaryDark(),
+              style: AppStyles.medium14PrimaryDark(context: context),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
           ),
           Expanded(
             flex: 2,
-            child: Text(item['in'], style: AppStyles.regular13Black()),
+            child: Text(
+                item['in'], style: AppStyles.regular13Black(context: context)),
           ),
           Expanded(
             flex: 2,
-            child: Text(item['out'], style: AppStyles.regular13Black()),
+            child: Text(
+                item['out'], style: AppStyles.regular13Black(context: context)),
           ),
           Expanded(
             flex: 2,
-            child: Text(item['hours'], style: AppStyles.regular13Black()),
+            child: Text(item['hours'],
+                style: AppStyles.regular13Black(context: context)),
           ),
           Expanded(
             flex: 2,

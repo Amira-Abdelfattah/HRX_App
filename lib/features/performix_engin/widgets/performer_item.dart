@@ -47,7 +47,8 @@ class PerformerItem extends StatelessWidget {
             width: 40.w,
             height: 40.w,
             decoration: BoxDecoration(color: rankColor, shape: BoxShape.circle),
-            child: Center(child: Text('$rank', style: AppStyles.semi16White)),
+            child: Center(child: Text(
+                '$rank', style: AppStyles.semi16White(context: context))),
           ),
           SizedBox(width: 16.w),
           Expanded(
@@ -60,6 +61,7 @@ class PerformerItem extends StatelessWidget {
                       child: Text(
                         name,
                         style: AppStyles.bold20PrimaryDark(
+                          context: context,
                           color: isDark ? Colors.white : AppColors.primaryColor,
                         ).copyWith(fontSize: 15.sp),
                         maxLines: 1,
@@ -75,7 +77,8 @@ class PerformerItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text('$role • $dept', style: AppStyles.regular12Grey()),
+                Text('$role • $dept',
+                    style: AppStyles.regular12Grey(context: context)),
               ],
             ),
           ),
@@ -87,6 +90,7 @@ class PerformerItem extends StatelessWidget {
                   Text(
                     score,
                     style: AppStyles.bold20PrimaryDark(
+                      context: context,
                       color: isDark ? Colors.white : AppColors.primaryColor,
                     ).copyWith(fontSize: 18.sp),
                   ),
@@ -98,13 +102,16 @@ class PerformerItem extends StatelessWidget {
                   ),
                   Text(
                     trend,
-                    style: AppStyles.medium12Green().copyWith(fontSize: 10.sp),
+                    style: AppStyles.medium12Green(
+                        color: AppColors.successColor).copyWith(
+                        fontSize: 10.sp),
                   ),
                 ],
               ),
               Text(
                 'performance_score_label'.tr(),
-                style: AppStyles.regular12Grey().copyWith(fontSize: 9.sp),
+                style: AppStyles.regular12Grey(context: context).copyWith(
+                    fontSize: 9.sp),
               ),
             ],
           ),

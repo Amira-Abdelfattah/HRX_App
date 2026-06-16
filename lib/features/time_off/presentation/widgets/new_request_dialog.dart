@@ -87,7 +87,7 @@ class _NewRequestDialogState extends State<NewRequestDialog> {
                           children: [
                             Text(
                               'request_time_off'.tr(),
-                              style: AppStyles.semi16White,
+                              style: AppStyles.semi16White(context: context),
                             ),
                             Text(
                               'submit_new_request'.tr(),

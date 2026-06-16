@@ -23,7 +23,7 @@ class ThisYearStats extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('this_year'.tr(), style: AppStyles.bold10Grey()),
+          Text('this_year'.tr(), style: AppStyles.bold10Grey(context: context)),
           SizedBox(height: 16.h),
           GridView.count(
             shrinkWrap: true,
@@ -62,9 +62,10 @@ class ThisYearStats extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(value, style: AppStyles.bold20PrimaryDark(color: color)),
+          Text(value, style: AppStyles.bold20PrimaryDark(
+              context: context, color: color)),
           SizedBox(height: 4.h),
-          Text(label, style: AppStyles.regular10Grey()),
+          Text(label, style: AppStyles.regular10Grey(context: context)),
         ],
       ),
     );

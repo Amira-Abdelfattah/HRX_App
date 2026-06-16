@@ -155,7 +155,7 @@ class _TimeOffScreenContentState extends State<TimeOffScreenContent>
                           unselectedLabelColor: isDark
                               ? AppColors.darkTextBody
                               : AppColors.textMutedColor,
-                          labelStyle: AppStyles.semi14White,
+                          labelStyle: AppStyles.semi14White(context: context),
                           unselectedLabelStyle: AppStyles.regular14Grey(
                             context: context,
                           ),

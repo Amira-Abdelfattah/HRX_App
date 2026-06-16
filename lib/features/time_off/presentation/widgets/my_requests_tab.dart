@@ -45,7 +45,8 @@ class MyRequestsTab extends StatelessWidget {
                     onPressed: onNewRequest,
                     icon: Icon(Icons.add, size: 16.sp, color: Colors.white),
                     label: Text(
-                        'new_request'.tr(), style: AppStyles.semi12White),
+                        'new_request'.tr(),
+                        style: AppStyles.semi12White(context: context)),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       padding: EdgeInsets.symmetric(

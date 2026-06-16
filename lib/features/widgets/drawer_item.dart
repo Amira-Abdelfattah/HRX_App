@@ -31,8 +31,10 @@ class DrawerMenuItem extends StatelessWidget {
       title: Text(
         title,
         style: isSelected
-            ? AppStyles.medium16PrimaryDarkText(color: AppColors.accentColor)
+            ? AppStyles.medium16PrimaryDarkText(
+            context: context, color: AppColors.accentColor)
             : AppStyles.regular16PrimaryDark(
+          context: context,
                 color: isDark
                     ? AppColors.darkTextPrimary
                     : AppColors.textPrimaryColor,

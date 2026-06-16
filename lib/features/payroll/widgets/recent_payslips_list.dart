@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
-
 import '../../widgets/status_badge.dart';
 
 class RecentPayslipsList extends StatelessWidget {
@@ -31,6 +30,7 @@ class RecentPayslipsList extends StatelessWidget {
           Text(
             'recent_payslips'.tr(),
             style: AppStyles.semi18PrimaryDark(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
@@ -51,6 +51,7 @@ class RecentPayslipsList extends StatelessWidget {
               ],
               rows: [
                 _buildRow(
+                  context,
                   'Sarah Johnson',
                   'EMP-1247',
                   'Engineering',
@@ -61,6 +62,7 @@ class RecentPayslipsList extends StatelessWidget {
                   AppColors.successColor,
                 ),
                 _buildRow(
+                  context,
                   'Michael Chen',
                   'EMP-1248',
                   'Product',
@@ -71,6 +73,7 @@ class RecentPayslipsList extends StatelessWidget {
                   AppColors.successColor,
                 ),
                 _buildRow(
+                  context,
                   'James Brown',
                   'EMP-1250',
                   'Sales',
@@ -88,7 +91,7 @@ class RecentPayslipsList extends StatelessWidget {
     );
   }
 
-  DataRow _buildRow(
+  DataRow _buildRow(BuildContext context,
     String name,
     String id,
     String dept,
@@ -105,8 +108,9 @@ class RecentPayslipsList extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(name, style: AppStyles.medium14PrimaryDark()),
-              Text(id, style: AppStyles.regular10Grey()),
+              Text(
+                  name, style: AppStyles.medium14PrimaryDark(context: context)),
+              Text(id, style: AppStyles.regular10Grey(context: context)),
             ],
           ),
         ),

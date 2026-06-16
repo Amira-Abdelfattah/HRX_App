@@ -35,14 +35,15 @@ class OnboardingHeader extends StatelessWidget {
             children: [
               Text(
                 'HR',
-                style: AppStyles.bold28Primary().copyWith(
-                  fontSize: 22.sp,
+                style: AppStyles.bold28Primary(
+                  context: context,
+                ).copyWithfontSize: 22.sp,
                   color: AppColors.primaryColor,
                 ),
               ),
               Text(
                 'X',
-                style: AppStyles.bold28Primary().copyWith(
+                style: AppStyles.bold28Primary(context: context).copyWith(
                   fontSize: 22.sp,
                   color: AppColors.accentColor,
                 ),
@@ -53,7 +54,7 @@ class OnboardingHeader extends StatelessWidget {
             onPressed: onSkip,
             child: Text(
               'skip'.tr(),
-              style: AppStyles.medium14Grey().copyWith(
+              style: AppStyles.medium14Grey(context: context).copyWith(
                 color: AppColors.textMutedColor,
                 fontWeight: FontWeight.bold,
               ),

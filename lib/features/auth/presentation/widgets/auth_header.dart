@@ -24,8 +24,9 @@ class AuthHeader extends StatelessWidget {
         if (showLogo)
           Text(
             'HRX',
-            style: AppStyles.bold28Primary().copyWith(
-              color: AppColors.accentColor,
+            style: AppStyles.bold28Primary(
+              context: context,
+            ).copyWithcolor: AppColors.accentColor,
               fontSize: 22.sp,
             ),
           ),
@@ -36,7 +37,7 @@ class AuthHeader extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: AppStyles.semi24White.copyWith(
+                style: AppStyles.semi24White(context: context).copyWith(
                   fontSize: 30.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -46,7 +47,7 @@ class AuthHeader extends StatelessWidget {
               Text(
                 subtitle,
                 textAlign: TextAlign.center,
-                style: AppStyles.regular14Grey().copyWith(
+                style: AppStyles.regular14Grey(context: context).copyWith(
                   color: Colors.white.withValues(alpha: 0.6),
                   fontSize: 14.sp,
                 ),

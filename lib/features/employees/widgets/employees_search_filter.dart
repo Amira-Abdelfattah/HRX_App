@@ -64,11 +64,12 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
               onChanged: (_) => _onChanged(),
               textAlignVertical: TextAlignVertical.center,
               style: AppStyles.regular14PrimaryDark(
+                context: context,
                 color: isDark ? Colors.white : AppColors.primaryColor,
               ),
               decoration: InputDecoration(
                 hintText: 'search_employees_hint'.tr(),
-                hintStyle: AppStyles.regular14Grey(),
+                hintStyle: AppStyles.regular14Grey(context: context),
                 prefixIcon: Icon(
                   Icons.search,
                   size: 22.sp,
@@ -113,6 +114,7 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
                 Text(
                   selectedDepartmentKey.tr(),
                   style: AppStyles.medium14Grey(
+                    context: context,
                     color: isDark ? Colors.white : AppColors.textPrimaryColor,
                   ),
                 ),
@@ -132,7 +134,8 @@ class _EmployeesSearchFilterState extends State<EmployeesSearchFilter> {
                     PopupMenuItem(
                       value: deptKey,
                       child: Text(deptKey.tr(),
-                          style: AppStyles.regular14PrimaryDark()),
+                          style: AppStyles.regular14PrimaryDark(
+                              context: context)),
                 ),
               )
               .toList(),

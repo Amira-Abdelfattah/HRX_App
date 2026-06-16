@@ -68,8 +68,10 @@ class CustomTextField extends StatelessWidget {
         maxLines: maxLines ?? 1,
         cursorColor: isDark ? AppColors.whiteColor : AppColors.primaryColor,
         style: style ??
-            AppStyles.medium14PrimaryDarkName(color: AppColors.primaryColor),
-        obscureText: obSecureText,
+            AppStyles.medium14PrimaryDarkName(
+              context: context,
+              color: AppColors.primaryColor,
+            )obscureText: obSecureText,
         obscuringCharacter: '*',
         decoration: InputDecoration(
           filled: true,
@@ -77,7 +79,7 @@ class CustomTextField extends StatelessWidget {
               (isDark ? AppColors.darkSurfaceLightColor : AppColors.whiteColor),
           hintText: hintText,
           labelText: labelText,
-          labelStyle: labelStyle ?? AppStyles.regular14Grey(),
+          labelStyle: labelStyle ?? AppStyles.regular14Grey(context: context),
           hintStyle: hintStyle ??
               AppStyles.medium14Green(color: AppColors.whiteColor),
           prefixIcon: prefixIcon,

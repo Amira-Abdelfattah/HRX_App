@@ -36,7 +36,8 @@ class OnboardingFooter extends StatelessWidget {
             children: [
               Text(
                 isLastPage ? 'get_started'.tr() : 'next'.tr(),
-                style: AppStyles.semi16White.copyWith(fontSize: 18.sp),
+                style: AppStyles.semi16White(context: context).copyWith(
+                    fontSize: 18.sp),
               ),
               SizedBox(width: 8.w),
               Icon(Icons.arrow_forward, color: Colors.white, size: 20.r),

@@ -21,6 +21,7 @@ class PaymentHeader extends StatelessWidget {
           child: Text(
             'step_2_of_2'.tr(),
             style: AppStyles.bold20PrimaryDark(
+              context: context,
               color: AppColors.accentColor,
             ).copyWith(fontSize: 10.sp, letterSpacing: 1.2),
           ),
@@ -28,7 +29,7 @@ class PaymentHeader extends StatelessWidget {
         SizedBox(height: 12.h),
         Text(
           'complete_subscription'.tr(),
-          style: AppStyles.semi24White.copyWith(
+          style: AppStyles.semi24White(context: context).copyWith(
             fontSize: 28.sp,
             fontWeight: FontWeight.bold,
           ),
@@ -37,7 +38,8 @@ class PaymentHeader extends StatelessWidget {
         Text(
           'payment_welcome'.tr(),
           textAlign: TextAlign.center,
-          style: AppStyles.regular14Grey(color: Colors.white70),
+          style: AppStyles.regular14Grey(
+              context: context, color: Colors.white70),
         ),
       ],
     );

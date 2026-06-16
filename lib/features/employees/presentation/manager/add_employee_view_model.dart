@@ -18,7 +18,7 @@ class AddEmployeeViewModel extends Cubit<AddEmployeeStates> {
   void _loadCompany() {
     final savedCompany = SharedPreferenceUtils.getData(
         key: 'company_name') as String?;
-    if (savedCompany != null) {
+    if (savedCompany != null && savedCompany != "false") {
       companyController.text = savedCompany;
     }
   }

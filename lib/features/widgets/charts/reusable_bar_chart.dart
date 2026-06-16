@@ -35,18 +35,18 @@ class ReusableBarChart extends StatelessWidget {
           ? Legend(
               isVisible: true,
               position: LegendPosition.bottom,
-              textStyle: AppStyles.regular10Grey(),
+              textStyle: AppStyles.regular10Grey(context: context),
             )
           : const Legend(isVisible: false),
       primaryXAxis: CategoryAxis(
         majorGridLines: const MajorGridLines(width: 0),
-        labelStyle: AppStyles.regular10Grey(),
+        labelStyle: AppStyles.regular10Grey(context: context),
       ),
       primaryYAxis: NumericAxis(
         isVisible: showYAxis,
         axisLine: const AxisLine(width: 0),
         majorTickLines: const MajorTickLines(size: 0),
-        labelStyle: AppStyles.regular10Grey(),
+        labelStyle: AppStyles.regular10Grey(context: context),
         majorGridLines: MajorGridLines(
           width: 1,
           color: AppColors.borderColor.withValues(alpha: 0.1),

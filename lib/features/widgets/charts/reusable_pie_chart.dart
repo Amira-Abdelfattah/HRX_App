@@ -17,7 +17,7 @@ class ReusablePieChart extends StatelessWidget {
         isVisible: true,
         overflowMode: LegendItemOverflowMode.wrap,
         position: LegendPosition.right,
-        textStyle: AppStyles.regular10Grey(),
+        textStyle: AppStyles.regular10Grey(context: context),
       ),
       series: <CircularSeries>[
         PieSeries<ChartData, String>(
@@ -28,7 +28,7 @@ class ReusablePieChart extends StatelessWidget {
           dataLabelSettings: DataLabelSettings(
             isVisible: true,
             labelPosition: ChartDataLabelPosition.outside,
-            textStyle: AppStyles.regular10Grey(),
+            textStyle: AppStyles.regular10Grey(context: context),
           ),
         ),
       ],

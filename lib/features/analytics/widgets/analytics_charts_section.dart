@@ -6,7 +6,6 @@ import '../../widgets/charts/chart_container.dart';
 import '../../widgets/charts/chart_data.dart';
 import '../../widgets/charts/reusable_area_chart.dart';
 import '../../widgets/charts/reusable_bar_chart.dart';
-import '../../widgets/charts/reusable_line_chart.dart';
 import '../../widgets/charts/reusable_pie_chart.dart';
 
 class AnalyticsChartsSection extends StatelessWidget {
@@ -34,37 +33,37 @@ class AnalyticsChartsSection extends StatelessWidget {
         ),
         SizedBox(height: 16.h),
 
-        // Attrition vs Hiring
-        ChartContainer(
-          title: 'attrition_vs_hiring'.tr(),
-          subtitle: 'monthly_comparison'.tr(),
-          chart: ReusableLineChart(
-            dataSeries: [
-              [
-                ChartData('Jan'.tr(), 4),
-                ChartData('Feb'.tr(), 5),
-                ChartData('Mar'.tr(), 5),
-                ChartData('Apr'.tr(), 4),
-                ChartData('May'.tr(), 3),
-                ChartData('Jun'.tr(), 4),
-              ],
-              [
-                ChartData('Jan'.tr(), 9),
-                ChartData('Feb'.tr(), 12),
-                ChartData('Mar'.tr(), 15),
-                ChartData('Apr'.tr(), 10),
-                ChartData('May'.tr(), 14),
-                ChartData('Jun'.tr(), 16),
-              ],
-            ],
-            seriesNames: [
-              'attrition_percent'.tr(),
-              'new_hires'.tr(),
-            ],
-            colors: const [Colors.redAccent, Colors.green],
-          ),
-        ),
-        SizedBox(height: 16.h),
+        // // Attrition vs Hiring
+        // ChartContainer(
+        //   title: 'attrition_vs_hiring'.tr(),
+        //   subtitle: 'monthly_comparison'.tr(),
+        //   chart: ReusableLineChart(
+        //     dataSeries: [
+        //       [
+        //         ChartData('Jan'.tr(), 4),
+        //         ChartData('Feb'.tr(), 5),
+        //         ChartData('Mar'.tr(), 5),
+        //         ChartData('Apr'.tr(), 4),
+        //         ChartData('May'.tr(), 3),
+        //         ChartData('Jun'.tr(), 4),
+        //       ],
+        //       [
+        //         ChartData('Jan'.tr(), 9),
+        //         ChartData('Feb'.tr(), 12),
+        //         ChartData('Mar'.tr(), 15),
+        //         ChartData('Apr'.tr(), 10),
+        //         ChartData('May'.tr(), 14),
+        //         ChartData('Jun'.tr(), 16),
+        //       ],
+        //     ],
+        //     seriesNames: [
+        //       'attrition_percent'.tr(),
+        //       'new_hires'.tr(),
+        //     ],
+        //     colors: const [Colors.redAccent, Colors.green],
+        //   ),
+        // ),
+        // SizedBox(height: 16.h),
 
         // Employee Distribution
         ChartContainer(

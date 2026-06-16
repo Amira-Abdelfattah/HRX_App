@@ -43,8 +43,10 @@ class CustomPageHeader extends StatelessWidget {
         if (actionLabel != null)
           ElevatedButton.icon(
             onPressed: onActionPressed,
-            icon: Icon(actionIcon ?? Icons.add, color: Colors.white, size: 18.sp),
-            label: Text(actionLabel!, style: AppStyles.semi12White),
+            icon: Icon(actionIcon ?? Icons.add, color: Colors.white, size: 18.sp),abel: Text(
+              actionLabel!,
+              style: AppStyles.semi12White(context: context),
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

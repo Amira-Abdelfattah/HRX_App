@@ -19,6 +19,7 @@ class InsightsView extends StatelessWidget {
           children: [
             Expanded(
               child: _buildInfoCard(
+                context,
                 'top_dept_month'.tr(),
                 'eng_team_achieved'.tr(),
                 const Color(0xFFDCFCE7),
@@ -29,6 +30,7 @@ class InsightsView extends StatelessWidget {
             SizedBox(width: 12.w),
             Expanded(
               child: _buildInfoCard(
+                context,
                 'performance_drop_alert'.tr(),
                 'three_employees_declining'.tr(),
                 const Color(0xFFFEF9C3),
@@ -44,6 +46,7 @@ class InsightsView extends StatelessWidget {
           children: [
             Expanded(
               child: _buildInfoCard(
+                context,
                 'q2_goal_progress'.tr(),
                 'company_wide_target'.tr(),
                 isDark
@@ -70,6 +73,7 @@ class InsightsView extends StatelessWidget {
         Text(
           'department_performance'.tr(),
           style: AppStyles.bold20PrimaryDark(
+            context: context,
             color: isDark ? Colors.white : AppColors.primaryColor,
           ).copyWith(fontSize: 18.sp),
         ),
@@ -84,48 +88,52 @@ class InsightsView extends StatelessWidget {
           childAspectRatio: 1.25,
           children: [
             _buildDeptCard(
+              context,
               isDark,
               'engineering'.tr(),
               '90',
               'employees_count'.tr(args: ['45']),
-              'top_employee'.tr(namedArgs: {'name': 'Sarah Johnson'}),
+              'top_employee'.tr(args: ['Sarah Johnson']),
               true,
             ),
             _buildDeptCard(
+              context,
               isDark,
               'product'.tr(),
               '87',
               'employees_count'.tr(args: ['28']),
-              'top_employee'.tr(namedArgs: {'name': 'Michael Chen'}),
+              'top_employee'.tr(args: ['Michael Chen']),
               true,
             ),
             _buildDeptCard(
+              context,
               isDark,
               'design'.tr(),
               '88',
               'employees_count'.tr(args: ['22']),
-              'top_employee'.tr(namedArgs: {'name': 'Emma Williams'}),
+              'top_employee'.tr(args: ['Emma Williams']),
               false,
             ),
             _buildDeptCard(
+              context,
               isDark,
               'sales'.tr(),
               '84',
               'employees_count'.tr(args: ['38']),
-              'top_employee'.tr(namedArgs: {'name': 'David Lee'}),
+              'top_employee'.tr(args: ['David Lee']),
               false,
             ),
           ],
         ),
 
         SizedBox(height: 32.h),
-        _buildDetailedAlertsSection(isDark),
+        _buildDetailedAlertsSection(context, isDark),
         SizedBox(height: 24.h),
       ],
     );
   }
 
-  Widget _buildInfoCard(
+  Widget _buildInfoCard(BuildContext context,
     String title,
     String sub,
     Color bgColor,
@@ -174,7 +182,7 @@ class InsightsView extends StatelessWidget {
     );
   }
 
-  Widget _buildDeptCard(
+  Widget _buildDeptCard(BuildContext context,
     bool isDark,
     String title,
     String score,
@@ -203,6 +211,7 @@ class InsightsView extends StatelessWidget {
               Text(
                 title,
                 style: AppStyles.medium14PrimaryDark(
+                  context: context,
                   color: isDark ? Colors.white : AppColors.primaryColor,
                 ),
               ),
@@ -217,22 +226,27 @@ class InsightsView extends StatelessWidget {
           Text(
             score,
             style: AppStyles.bold28PrimaryDarkNumber(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
-          Text('avg_score'.tr(), style: AppStyles.regular10Grey()),
+          Text('avg_score'.tr(),
+              style: AppStyles.regular10Grey(context: context)),
           SizedBox(height: 6.h),
-          Text(employees, style: AppStyles.regular10Grey()),
+          Text(employees, style: AppStyles.regular10Grey(context: context)),
           Text(
             top,
-            style: AppStyles.regular10Grey(color: AppColors.secondaryColor),
+            style: AppStyles.regular10Grey(
+              context: context,
+              color: AppColors.secondaryColor,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildDetailedAlertsSection(bool isDark) {
+  Widget _buildDetailedAlertsSection(BuildContext context, bool isDark) {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
@@ -258,6 +272,7 @@ class InsightsView extends StatelessWidget {
               Text(
                 'performance_alerts'.tr(),
                 style: AppStyles.bold20PrimaryDark(
+                  context: context,
                   color: isDark ? Colors.white : AppColors.primaryColor,
                 ).copyWith(fontSize: 18.sp),
               ),
@@ -265,6 +280,7 @@ class InsightsView extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           _buildDetailedAlertTile(
+            context,
             'James Brown',
             'james_brown_issue'.tr(),
             'james_brown_action'.tr(),
@@ -272,6 +288,7 @@ class InsightsView extends StatelessWidget {
             'high'.tr(),
           ),
           _buildDetailedAlertTile(
+            context,
             'Lisa Anderson',
             'lisa_anderson_issue'.tr(),
             'lisa_anderson_action'.tr(),
@@ -279,6 +296,7 @@ class InsightsView extends StatelessWidget {
             'medium'.tr(),
           ),
           _buildDetailedAlertTile(
+            context,
             'Alex Thompson',
             'alex_thompson_issue'.tr(),
             'alex_thompson_action'.tr(),
@@ -290,7 +308,7 @@ class InsightsView extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailedAlertTile(
+  Widget _buildDetailedAlertTile(BuildContext context,
     String name,
     String issue,
     String action,
@@ -311,7 +329,8 @@ class InsightsView extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(name, style: AppStyles.medium14PrimaryDark()),
+              Text(
+                  name, style: AppStyles.medium14PrimaryDark(context: context)),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                 decoration: BoxDecoration(
@@ -330,7 +349,7 @@ class InsightsView extends StatelessWidget {
             ],
           ),
           SizedBox(height: 4.h),
-          Text(issue, style: AppStyles.regular12Grey()),
+          Text(issue, style: AppStyles.regular12Grey(context: context)),
           SizedBox(height: 4.h),
           Text(
             action,

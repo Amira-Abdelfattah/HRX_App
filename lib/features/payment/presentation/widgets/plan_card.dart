@@ -49,13 +49,15 @@ class PlanCard extends StatelessWidget {
                 Text(
                   title,
                   style: AppStyles.bold20PrimaryDark(
+                    context: context,
                     color: Colors.white,
                   ).copyWith(fontSize: 18.sp),
                 ),
                 SizedBox(height: 4.h),
                 Text(
                   description,
-                  style: AppStyles.regular12Grey(color: Colors.white70),
+                  style: AppStyles.regular12Grey(
+                      context: context, color: Colors.white70),
                 ),
                 SizedBox(height: 20.h),
                 Row(
@@ -63,13 +65,15 @@ class PlanCard extends StatelessWidget {
                   children: [
                     Text(
                       price,
-                      style: AppStyles.bold32PrimaryDark(color: Colors.white),
+                      style: AppStyles.bold32PrimaryDark(
+                          context: context, color: Colors.white),
                     ),
                     Padding(
                       padding: EdgeInsets.only(bottom: 6.h, left: 4.w),
                       child: Text(
                         period,
-                        style: AppStyles.regular12Grey(color: Colors.white60),
+                        style: AppStyles.regular12Grey(
+                            context: context, color: Colors.white60),
                       ),
                     ),
                   ],
@@ -99,6 +103,7 @@ class PlanCard extends StatelessWidget {
                 child: Text(
                   'POPULAR',
                   style: AppStyles.bold20PrimaryDark(
+                    context: context,
                     color: AppColors.primaryColor,
                   ).copyWith(fontSize: 10.sp),
                 ),

@@ -47,11 +47,9 @@ class ChartContainer extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppStyles.semi18PrimaryDark(
-              color: isDark ? Colors.white : AppColors.primaryColor,
-            ),
+            style: AppStyles.semi18PrimaryDark(context: context),
           ),
-          Text(subtitle, style: AppStyles.regular12Grey()),
+          Text(subtitle, style: AppStyles.regular12Grey(context: context)),
           SizedBox(height: 20.h),
           SizedBox(height: height ?? 220.h, child: chart),
         ],

@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _navigateToOnboarding() {
-    Timer(const Duration(milliseconds: 4000), () {
+    Timer(const Duration(milliseconds: 10000), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const OnboardingScreen()),
@@ -91,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
                   SizedBox(height: 12.h),
                   Text(
                     "Future-Proof HR Management",
-                      style: AppStyles.semi16PrimaryMenu()
+                      style: AppStyles.semi16PrimaryMenu(context: context)
                   ),
                 ],
               ),

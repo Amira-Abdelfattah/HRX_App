@@ -67,9 +67,11 @@ class SettingSectionCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: AppStyles.semi18PrimaryDark()),
+                    Text(title,
+                        style: AppStyles.semi18PrimaryDark(context: context)),
                     if (subtitle != null)
-                      Text(subtitle!, style: AppStyles.regular12Grey()),
+                      Text(subtitle!,
+                          style: AppStyles.regular12Grey(context: context)),
                   ],
                 ),
               ),

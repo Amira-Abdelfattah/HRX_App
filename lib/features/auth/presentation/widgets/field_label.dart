@@ -14,7 +14,7 @@ class FieldLabel extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 8.h),
       child: Text(
         label,
-        style: AppStyles.semi16White.copyWith(
+        style: AppStyles.semi16White(context: context).copyWith(
           fontSize: 14.sp,
           fontWeight: FontWeight.w600,
           color: Colors.white.withValues(alpha: 0.9),

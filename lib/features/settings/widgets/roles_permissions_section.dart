@@ -18,16 +18,16 @@ class RolesPermissionsSection extends StatelessWidget {
       iconColor: Colors.indigo,
       child: Column(
         children: [
-          _buildRoleItem('admin'.tr()),
-          _buildRoleItem('hr_manager'.tr()),
-          _buildRoleItem('manager'.tr()),
-          _buildRoleItem('employee'.tr()),
+          _buildRoleItem(context, 'admin'.tr()),
+          _buildRoleItem(context, 'hr_manager'.tr()),
+          _buildRoleItem(context, 'manager'.tr()),
+          _buildRoleItem(context, 'employee'.tr()),
         ],
       ),
     );
   }
 
-  Widget _buildRoleItem(String roleName) {
+  Widget _buildRoleItem(BuildContext context, String roleName) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12.h),
       decoration: BoxDecoration(
@@ -47,13 +47,15 @@ class RolesPermissionsSection extends StatelessWidget {
           ),
           SizedBox(width: 12.w),
           Expanded(
-            child: Text(roleName, style: AppStyles.medium14PrimaryDark()),
+            child: Text(roleName,
+                style: AppStyles.medium14PrimaryDark(context: context)),
           ),
           TextButton(
             onPressed: () {},
             child: Text(
               'edit'.tr(),
               style: AppStyles.medium14PrimaryDark(
+                context: context,
                 color: AppColors.secondaryColor,
               ),
             ),

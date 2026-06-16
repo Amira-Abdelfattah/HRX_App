@@ -85,6 +85,7 @@ class EmployeeCard extends StatelessWidget {
                         child: Text(
                           initials,
                           style: AppStyles.semi18PrimaryDark(
+                            context: context,
                             color: isDark
                                 ? AppColors.accentColor
                                 : AppColors.primaryColor,
@@ -125,6 +126,7 @@ class EmployeeCard extends StatelessWidget {
                   child: Text(
                     status.toUpperCase(),
                     style: AppStyles.bold10Grey(
+                      context: context,
                       color: statusColor,
                     ).copyWith(letterSpacing: 0.5),
                   ),
@@ -137,6 +139,7 @@ class EmployeeCard extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppStyles.semi18PrimaryDark(
+                context: context,
                 color: isDark ? AppColors.whiteColor : AppColors.primaryColor,
               ),
             ),
@@ -145,7 +148,7 @@ class EmployeeCard extends StatelessWidget {
               role,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: AppStyles.medium12Grey().copyWith(
+              style: AppStyles.medium12Grey(context: context).copyWith(
                 color: isDark
                     ? AppColors.darkTextBody
                     : AppColors.textMutedColor,
@@ -165,7 +168,7 @@ class EmployeeCard extends StatelessWidget {
                     department,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AppStyles.regular11Grey(),
+                    style: AppStyles.regular11Grey(context: context),
                   ),
                 ),
               ],
@@ -183,11 +186,13 @@ class EmployeeCard extends StatelessWidget {
               children: [
                 Text(
                   'performance_caps'.tr(),
-                  style: AppStyles.bold10Grey().copyWith(letterSpacing: 0.5),
+                  style: AppStyles.bold10Grey(context: context).copyWith(
+                      letterSpacing: 0.5),
                 ),
                 Text(
                   '$performance%',
                   style: AppStyles.semi12PrimaryDark(
+                    context: context,
                     color: isDark ? AppColors.accentColor : AppColors.primaryColor,
                   ),
                 ),

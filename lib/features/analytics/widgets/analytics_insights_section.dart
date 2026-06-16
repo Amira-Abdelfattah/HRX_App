@@ -20,20 +20,24 @@ class AnalyticsInsightsSection extends StatelessWidget {
         children: [
           Text(
             'key_insights'.tr(),
-            style: AppStyles.semi18PrimaryDark(color: Colors.white),
+            style: AppStyles.semi18PrimaryDark(
+                context: context, color: Colors.white),
           ),
           SizedBox(height: 20.h),
           _buildInsightItem(
+            context,
             title: 'retention_improving'.tr(),
             description: 'retention_desc'.tr(),
           ),
           SizedBox(height: 12.h),
           _buildInsightItem(
+            context,
             title: 'hiring_momentum'.tr(),
             description: 'hiring_desc'.tr(),
           ),
           SizedBox(height: 12.h),
           _buildInsightItem(
+            context,
             title: 'performance_growth'.tr(),
             description: 'performance_growth_desc'.tr(),
           ),
@@ -42,7 +46,7 @@ class AnalyticsInsightsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildInsightItem({
+  Widget _buildInsightItem(BuildContext context, {
     required String title,
     required String description,
   }) {
@@ -55,11 +59,12 @@ class AnalyticsInsightsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: AppStyles.semi14White),
+          Text(title, style: AppStyles.semi14White(context: context)),
           SizedBox(height: 8.h),
           Text(
             description,
             style: AppStyles.regular12Grey(
+              context: context,
               color: Colors.white.withValues(alpha: 0.7),
             ),
           ),

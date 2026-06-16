@@ -76,7 +76,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
                         .withValues(alpha: 0.1),
                 child: Text(
                   employee['init'] ?? 'U',
-                  style: AppStyles.semi24White.copyWith(
+                  style: AppStyles.semi24White(context: context).copyWith(
                     color:
                         employee['color'] as Color? ?? AppColors.primaryColor,
                   ),
@@ -95,7 +95,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
                     ),
                     Text(
                       '${employee['role'] ?? 'Employee'} • ${employee['dept'] ?? 'General'}',
-                      style: AppStyles.medium12Grey(),
+                      style: AppStyles.medium12Grey(context: context),
                     ),
                   ],
                 ),
@@ -121,15 +121,16 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           Text(
             'performance_breakdown'.tr(),
             style: AppStyles.semi16PrimaryMenu(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ),
           ),
           SizedBox(height: 16.h),
-          _buildMetricRow('efficiency'.tr(), 0.85, Colors.blue),
+          _buildMetricRow(context, 'efficiency'.tr(), 0.85, Colors.blue),
           SizedBox(height: 12.h),
-          _buildMetricRow('quality'.tr(), 0.92, Colors.green),
+          _buildMetricRow(context, 'quality'.tr(), 0.92, Colors.green),
           SizedBox(height: 12.h),
-          _buildMetricRow('timeliness'.tr(), 0.78, Colors.orange),
+          _buildMetricRow(context, 'timeliness'.tr(), 0.78, Colors.orange),
           SizedBox(height: 24.h),
           Center(
             child: TextButton(
@@ -144,7 +145,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
               },
               child: Text(
                 'view_full_leaderboard'.tr(),
-                style: AppStyles.semi14PrimaryDark(),
+                style: AppStyles.semi14PrimaryDark(context: context),
               ),
             ),
           ),
@@ -153,15 +154,17 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
     );
   }
 
-  Widget _buildMetricRow(String label, double value, Color color) {
+  Widget _buildMetricRow(BuildContext context, String label, double value,
+      Color color) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(label, style: AppStyles.regular12Grey()),
-            Text('${(value * 100).toInt()}%', style: AppStyles.medium12Grey()),
+            Text(label, style: AppStyles.regular12Grey(context: context)),
+            Text('${(value * 100).toInt()}%',
+                style: AppStyles.medium12Grey(context: context)),
           ],
         ),
         SizedBox(height: 8.h),
@@ -230,6 +233,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
         Text(
           'top_performers'.tr(),
           style: AppStyles.bold20PrimaryDark(
+            context: context,
             color: isDark ? Colors.white : AppColors.primaryColor,
           ).copyWith(fontSize: 18.sp),
         ),
@@ -281,6 +285,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           Text(
             'select_employee'.tr(),
             style: AppStyles.bold20PrimaryDark(
+              context: context,
               color: isDark ? Colors.white : AppColors.primaryColor,
             ).copyWith(fontSize: 18.sp),
           ),
@@ -288,7 +293,7 @@ class _PerformixEngineScreenState extends State<PerformixEngineScreen> {
           Text(
             'select_employee_desc'.tr(),
             textAlign: TextAlign.center,
-            style: AppStyles.regular12Grey(),
+            style: AppStyles.regular12Grey(context: context),
           ),
         ],
       ),
